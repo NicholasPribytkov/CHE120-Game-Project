@@ -1,7 +1,7 @@
 import PySimpleGUI as sg
 import threading
 import time
-
+import Molecules as mol
 # Function to handle countdown in a separate thread
 def start_countdown(timer_label, button_key, countdown_time):
     window[button_key].update(disabled=True)
@@ -13,7 +13,7 @@ def start_countdown(timer_label, button_key, countdown_time):
 
 # Set up the layout with two buttons and two text elements for each countdown
 layout1 = [
-    [sg.Button("Start Timer 1", key="Start1"), sg.Text("", key="Countdown1")],
+    [sg.Button("Start Timer 1", key="Start1", disabled=True), sg.Text("", key="Countdown1")],
     [sg.Button("Start Timer 2", key="Start2"), sg.Text("", key="Countdown2")],
     ]
 
@@ -22,22 +22,26 @@ layout2 = [
   
 ]
 layout = [[sg.Column(layout1, visible = True, key= '-COL1-'), sg.Column(layout2, visible = False, key= '-COL2-')],
-[sg.Button("Layout 1")],[sg.Button("Layout 2")]
+[sg.Button("Layout 1")],[sg.Button("Layout 2")], [sg.Button("generate")]
 ]
-
+Mix = None
 
 window = sg.Window("Independent Countdown Timers", layout)
 current_layout = 1
 while True:
     event, values = window.read()
-
+    
     if event == sg.WIN_CLOSED:
         break
-
+    if event == "generate":
+        Mix = mol.Hydrogen("H2", 2)
+    if type(Mix) == type(mol.Hydrogen("temp", 1)):
+        window["Start1"].update(disabled=False)
     # Start Timer 1 countdown in a new thread
     if event == "Start1":
         threading.Thread(target=start_countdown, args=("Countdown1", "Start1", 5), daemon=True).start()
-    
+        Mix = mol.Water("H2O", Mix.amount())
+        Mix.myinfo()
     if event == "Layout 1":
         if current_layout != 1:
             window[f'-COL{current_layout}-'].update(visible=False)
