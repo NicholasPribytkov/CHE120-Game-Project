@@ -2,35 +2,44 @@
 """
 Created on Wed Nov  6 13:32:49 2024
 
-@author: liamg
+@authors:   Liam Gleason
+            Nicholas Pribytkov
 """
 
+# This script creates classes for each molecule/element and stores information regarding it
+# Quantities can be edited here to store how much of each molecule we have
+# All quantities are in MOLES
+
 class Hydrogen:
-    def Molecule(somename, quantity):
-        print(somename)
-        print(quantity)
-        somename.quantity = quantity
-   
-    def myinfo(self):
-        print(self.myname() + " " + str(self.amount()) + "kg")
-    def myname(self):
-        return self.name
-    
-    def amount(self):
-        return self.quantity
+    Compound = "H2"
+    Quantity = 0
 
-class Water:
-    def Molecule(somename, name, quantity):
-        somename.name = name
-        somename.quantity = quantity
-   
-    def myinfo(self):
-        print(self.myname() + " " + str(self.amount()) + "kg")
-    def myname(self):
-        return self.name
-    
-    def amount(self):
-        return self.quantity
+class Carbon:
+    Compound = "C"
+    Quantity = 0
 
-mix1 = Hydrogen.Molecule("H2", 3)
-mix2 = Water("H2O", 2)
+class Oxygen:
+    Compound = "O2"
+    Quantity = 0
+    
+class Nitrogen:
+    Compound = "N2"
+    Quantity = 0
+
+class Sodium:
+    Compound = "Na"
+    Quantity = 0
+
+class Chlorine:
+    Compound = "Cl"
+    Compound = 0
+    
+class Calcium:
+    Compound = "Ca"
+    Compound = 0
+
+class Sulfur:
+    Compound = "S"
+    Compound = 0
+    
+    
