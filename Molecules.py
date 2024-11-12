@@ -38,8 +38,8 @@ class Calcium:
     Compound = "Ca"
     Compound = 0
 
-class Sulfur:
-    Compound = "S"
+class Water:
+    Compound = "H20"
     Compound = 0
     
     
