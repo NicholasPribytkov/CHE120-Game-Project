@@ -42,4 +42,22 @@ class Water:
     Compound = "H20"
     Compound = 0
     
-    
+class SodiumChloride:
+    Compound = "NaCl"
+    Quantity = 0
+
+class Ammonia:
+    Compound = "NH3"
+    Quantity = 0
+
+class AmmoniumHydroxide:
+    Compound = "NH4OH"
+    Quantity = 0
+
+class HydrochloricAcid:
+    Compound = "HCl"
+    Quantity = 0
+
+class SodiumHydroxide:
+    Compound = "NaOH"
+    Quantity = 0
