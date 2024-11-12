@@ -18,13 +18,14 @@ LAW = r"C:\Users\liama\OneDrive\Desktop\UNI stuff\CHE 120 Comp\Goose1.png"
 GLIAM = r"C:\Users\liama\OneDrive\Desktop\UNI stuff\CHE 120 Comp\Goose2.png"
 KAMKAR = r"C:\Users\liama\OneDrive\Desktop\UNI stuff\CHE 120 Comp\Goose3.png"
 Speech = r"C:\Users\liama\OneDrive\Desktop\UNI stuff\CHE 120 Comp\Speech-Bubble.png"
+#Need to change the images to the final file location stuff!!!!!!!!!!!
 
 # LAW Initializes Goose Ordering components 
 Pics = [HAM, MAT, PEND, NICK, ZINO, HELMET, KATIE, LAW, GLIAM, KAMKAR]  # LAW List of geese
 a = random.choice(Pics)  # LAW Selects a random goose
 
 Greeting = ['Hello', 'Hows it going', 'Hi']  # LAW List of greetings
-Chem = ['a', 'b', 'c']  # LAW List of chemicals
+Chem = ['NaCl', 'NH3', 'NaOH', 'HCl','NaOH','NH3OH']  # LAW List of chemicals
 Order = random.choice(Greeting) + ' I would like ' + random.choice(Chem)  # LAW Order with random greeting and a random chemical
 
 screen = pygame.display.set_mode((1300, 800))  # LAW Sets the size of the screen
