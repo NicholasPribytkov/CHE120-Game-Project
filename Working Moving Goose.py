@@ -18,16 +18,29 @@ LAW = r"C:\Users\liama\OneDrive\Desktop\UNI stuff\CHE 120 Comp\Goose1.png"
 GLIAM = r"C:\Users\liama\OneDrive\Desktop\UNI stuff\CHE 120 Comp\Goose2.png"
 KAMKAR = r"C:\Users\liama\OneDrive\Desktop\UNI stuff\CHE 120 Comp\Goose3.png"
 Speech = r"C:\Users\liama\OneDrive\Desktop\UNI stuff\CHE 120 Comp\Speech-Bubble.png"
-#Need to change the images to the final file location stuff!!!!!!!!!!!
 
 # LAW Initializes Goose Ordering components 
 Pics = [HAM, MAT, PEND, NICK, ZINO, HELMET, KATIE, LAW, GLIAM, KAMKAR]  # LAW List of geese
 a = random.choice(Pics)  # LAW Selects a random goose
 
 Greeting = ['Hello', 'Hows it going', 'Hi']  # LAW List of greetings
-Chem = ['NaCl', 'NH3', 'NaOH', 'HCl','NaOH','NH3OH']  # LAW List of chemicals
-Order = random.choice(Greeting) + ' I would like ' + random.choice(Chem)  # LAW Order with random greeting and a random chemical
 
+Chemicals = ["H2O (Water)", "CO2 (Carbon Dioxide)", "CH3OH (Methanol)", "C2H5OH (Ethanol)", "HCl (Hydrochloric acid)", "NO2 (Nitrogen dioxide)", "SO2 (Sulfur Dioxide)", "CO (Carbon Monoxide)", "CH2O (Formaldehyde)", "ClO4 (Perchorate)"]
+orderchem = Chemicals[random.randint(0, len(Chemicals) - 1)]
+    
+Units = ["g", "mol"]
+orderunit = Units[random.randint(0, len(Units) - 1)]
+
+ordercapacity = random.randint(1, 10000)
+
+if ordercapacity >= 1000:
+    ordercapacity /= 1000
+    ordercapacity = round(ordercapacity, 2)
+    orderunit = "k" + orderunit
+#NICKOLAS ADD YOUR EXPLANATIONS ABOVE ^
+
+OrderA = random.choice(Greeting)+ " " + "I Need " + str(ordercapacity)   # LAW Order with random greeting and a random chemical
+OrderB= str(orderunit) + " " + str(orderchem)
 screen = pygame.display.set_mode((1300, 800))  # LAW Sets the size of the screen
 clock = pygame.time.Clock()  # LAW Creates a Pygame clock to control frame rates
 
@@ -79,12 +92,11 @@ while running:
     # LAW Displays text and speech bubble after two seconds have passed
     if show_speech_bubble:
         screen.blit(speech_bubble, (700, 10))  #LAW Position the speech bubble
-        display_text(Order, 780, 150)  #LAW Adjusts text position to fit inside the speech bubble
-
+        display_text(OrderA, 760, 150)  #LAW Adjusts text position to fit inside the speech bubble
+        display_text(OrderB, 760, 190)
     # LAW Updates the display with this text
     pygame.display.update()
     clock.tick(10)  #LAW Control the frame rate
 
 pygame.quit()  # LAW Quits Pygame after all the functions have been completed
-
     
