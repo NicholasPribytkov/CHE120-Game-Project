@@ -1,102 +1,118 @@
-import pygame  # LAW main game functions
-import random  # LAW This is used to randomize things
-import pygame.freetype  # LAW This is used for the text on the screen
-import time  # LAW used for text showing up after a certain time has passed
+# WORKING MOVING GOOSE ========================================================
 
-# LAW Initializes the Pygame
-pygame.init()
+# Parent: main ================================================================
+# Author: Liam Westlake =======================================================
+# Editor(s): Nicholas Pribytkov ===============================================
 
-# LAW Define file paths of the geese
-HAM = r"C:\Users\liama\OneDrive\Desktop\UNI stuff\CHE 120 Comp\Goose4.png"
-MAT = r"C:\Users\liama\OneDrive\Desktop\UNI stuff\CHE 120 Comp\Goose5.png"
-PEND = r"C:\Users\liama\OneDrive\Desktop\UNI stuff\CHE 120 Comp\Goose6.png"
-NICK = r"C:\Users\liama\OneDrive\Desktop\UNI stuff\CHE 120 Comp\Goose7.png"
-ZINO = r"C:\Users\liama\OneDrive\Desktop\UNI stuff\CHE 120 Comp\Goose8 (1).png"
-HELMET = r"C:\Users\liama\OneDrive\Desktop\UNI stuff\CHE 120 Comp\Goose8.png"
-KATIE = r"C:\Users\liama\OneDrive\Desktop\UNI stuff\CHE 120 Comp\Goose9.png"
-LAW = r"C:\Users\liama\OneDrive\Desktop\UNI stuff\CHE 120 Comp\Goose1.png"
-GLIAM = r"C:\Users\liama\OneDrive\Desktop\UNI stuff\CHE 120 Comp\Goose2.png"
-KAMKAR = r"C:\Users\liama\OneDrive\Desktop\UNI stuff\CHE 120 Comp\Goose3.png"
-Speech = r"C:\Users\liama\OneDrive\Desktop\UNI stuff\CHE 120 Comp\Speech-Bubble.png"
+# IMPORT PYTHON MODULES =======================================================
 
-# LAW Initializes Goose Ordering components 
-Pics = [HAM, MAT, PEND, NICK, ZINO, HELMET, KATIE, LAW, GLIAM, KAMKAR]  # LAW List of geese
-a = random.choice(Pics)  # LAW Selects a random goose
+import pygame  # [LAW] main game functions
+import random  # [LAW] This is used to randomize things
+import pygame.freetype  # [LAW] This is used for the text on the screen
+import time  # [LAW] used for text showing up after a certain time has passed
+import os # [NP] This is used to obtain the parent (folder) file directory path for the game so we can access files within the folder itself
 
-Greeting = ['Hello', 'Hows it going', 'Hi']  # LAW List of greetings
+# IMPORT PY FILES =============================================================
 
-Chemicals = ["H2O (Water)", "HCl (Hydrochlotic Acid)", "NaOH (Sodium Hydroxide)", "NaCl (Sodium Chloride", "NH3OH (Ammonia Hydroxide)", "NH4 (Ammonium)"]
-orderchem = Chemicals[random.randint(0, len(Chemicals) - 1)]
+from CustomerOrders import CustomerOrder # [NP] This file helps the customers formulte their order
 
-Units = ["g", "mol"]
-orderunit = Units[random.randint(0, len(Units) - 1)]
+# START-UP ======================================================================
 
-ordercapacity = random.randint(1, 10000)
+pygame.init() # [LAW] Initializes the Pygame
+parentfile = os.path.dirname(__file__) # [NP] Find the path for the parent folder
 
-if ordercapacity >= 1000:
-    ordercapacity /= 1000
-    ordercapacity = round(ordercapacity, 2)
-    orderunit = "k" + orderunit
-#NICKOLAS ADD YOUR EXPLANATIONS ABOVE ^
+# ASSET CALL ==================================================================
 
-OrderA = random.choice(Greeting)+ " " + "I Need " + str(ordercapacity)   # LAW Order with random greeting and a random chemical
-OrderB= str(orderunit) + " " + str(orderchem)
-screen = pygame.display.set_mode((1300, 800))  # LAW Sets the size of the screen
-clock = pygame.time.Clock()  # LAW Creates a Pygame clock to control frame rates
+# [LAW] Define file paths of the geese
+# [NP] Use the parent folder's path and add a suffix to build the paths of the geese (this is so it works on all computers regardless of directory)
 
-player = pygame.image.load(a).convert_alpha()  # LAW Loads and converts the goose image
-background = pygame.image.load(r"C:\Users\liama\OneDrive\Desktop\UNI stuff\CHE 120 Comp\R.png").convert_alpha()  # LAW Loads and converts the background image
-speech_bubble = pygame.image.load(Speech).convert_alpha()  # LAW Loads and converts the speech bubble image
-speech_bubble= pygame.transform.scale(speech_bubble, (550,550))# LAW Resizes the speech bubble
+HAM = r"" + parentfile + "\Images\Goose4.png"
+MAT = r"" + parentfile + "\Images\Goose5.png"
+PEND = r"" + parentfile + "\Images\Goose6.png"
+NICK = r"" + parentfile + "\Images\Goose7.png"
+ZINO = r"" + parentfile + "\Images\Goose8 (1).png"
+HELMET = r"" + parentfile + "\Images\Goose8.png"
+KATIE = r"" + parentfile + "\Images\Goose9.png"
+LAW = r"" + parentfile + "\Images\Goose1.png"
+GLIAM = r"" + parentfile + "\Images\Goose2.png"
+KAMKAR = r"" + parentfile + "\Images\Goose3.png"
+Speech = r"" + parentfile + "\Images\Speech-Bubble.png"
+Background = r"" + parentfile + "\Images\R.png"
 
-position = player.get_rect()  # LAW Gets the position of the player
+Pics = [HAM, MAT, PEND, NICK, ZINO, HELMET, KATIE, LAW, GLIAM, KAMKAR] # [LAW] List of geese
 
-# LAW Defines colors
-BLACK = (0, 0, 0)
+# CUSTOMER ORDERS =============================================================
 
-# Set up the font
-font = pygame.freetype.SysFont("Calibri", 40)  # LAW Sets the font and size of the text
+GooseImage = random.choice(Pics) # [LAW] Selects a random goose
+Greeting = ['Hello', 'Hows it going', 'Hi'] # [LAW] List of greetings
 
-# LAW Main display loop
-for x in range(100):# LAW This tells the following the repeat 100 times
-    screen.blit(background, (0, 0))  # LAW Ensures background is drawn before everything else
-    position = position.move(1.5, 0)  # LAW Moves the player
-    screen.blit(player, position)  # LAW Draws the player in the new position
-    pygame.display.update()  # LAW Updates the display
-    clock.tick(30)  # LAW Sets the frame rate
+Order = CustomerOrder() # [NP] Call the Customer Order function, which returns a list containing [Quantity, Unit, Chemical]
 
-# LAW Order text function
+OrderA = random.choice(Greeting)+ " " + "I Need " + Order[0] # [LAW] Order with random greeting and a random chemical
+OrderB = Order[1] + " " + Order[2]
+screen = pygame.display.set_mode((1300, 800)) # [LAW] Sets the size of the screen
+clock = pygame.time.Clock() # [LAW] Creates a Pygame clock to control frame rates
+
+player = pygame.image.load(GooseImage).convert_alpha() # [LAW] Loads and converts the goose image
+background = pygame.image.load(Background).convert_alpha() # [LAW] Loads and converts the background image
+speech_bubble = pygame.image.load(Speech).convert_alpha() # [LAW] Loads and converts the speech bubble image
+speech_bubble= pygame.transform.scale(speech_bubble, (550,550)) # [LAW] Resizes the speech bubble
+
+position = player.get_rect() # [LAW] Gets the position of the player
+
+BLACK = (0, 0, 0) # [LAW] Defines colors
+
+font = pygame.freetype.SysFont("Calibri", 40) # [LAW] Sets the font and size of the text
+
+# DISPLAY LOOP ================================================================
+
+for x in range(100): # [LAW] This tells the following the repeat 100 times
+    screen.blit(background, (0, 0)) # [LAW] Ensures background is drawn before everything else
+    position = position.move(1.5, 0) # [LAW] Moves the player
+    screen.blit(player, position) # [LAW] Draws the player in the new position
+    pygame.display.update() # [LAW] Updates the display
+    clock.tick(30) # [LAW] Sets the frame rate
+
+# ORDER TEXT FUNCTION =========================================================
+
 def display_text(text, x, y):
     font.render_to(screen, (x, y), text, BLACK)
 
-# LAW Initializes timer and control variables
+# INITIALIZATION ==============================================================
+
+# [LAW] Initializes timer and control variables
 start_time = time.time()
 show_text = False
 show_speech_bubble = False
 running = True
 
-# LAW Main text loop
+# MAIN TEXT LOOP ==============================================================
+
 while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
-            running = False  # LAW Allows the window to be closed
+            running = False # [LAW] Allows the window to be closed
 
-    # LAW Checks if 1.25 seconds have elapsed
+    # [LAW] Checks if 1.25 seconds have elapsed
     if not show_text and time.time() - start_time >= 1.25:
         show_text = True
         show_speech_bubble = True
 
-    screen.blit(background, (0, 0))  # LAW Redraws the background
-    screen.blit(player, position)  # LAW Redraws the player at the current position
+    screen.blit(background, (0, 0)) # [LAW] Redraws the background
+    screen.blit(player, position) # [LAW] Redraws the player at the current position
 
-    # LAW Displays text and speech bubble after two seconds have passed
+    # [LAW] Displays text and speech bubble after two seconds have passed
     if show_speech_bubble:
-        screen.blit(speech_bubble, (700, 10))  #LAW Position the speech bubble
-        display_text(OrderA, 760, 150)  #LAW Adjusts text position to fit inside the speech bubble
+        screen.blit(speech_bubble, (700, 10)) # [LAW] Position the speech bubble
+        display_text(OrderA, 760, 150) # [LAW] Adjusts text position to fit inside the speech bubble
         display_text(OrderB, 760, 190)
-    # LAW Updates the display with this text
+    # [LAW] Updates the display with this text
     pygame.display.update()
-    clock.tick(10)  #LAW Control the frame rate
+    clock.tick(10) # [LAW] Control the frame rate
 
-pygame.quit()  # LAW Quits Pygame after all the functions have been completed
+# QUIT ========================================================================
+
+pygame.quit() # [LAW] Quits Pygame after all the functions have been completed
+
+# END =========================================================================
     
