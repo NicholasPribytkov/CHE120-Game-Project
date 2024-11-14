@@ -25,9 +25,9 @@ a = random.choice(Pics)  # LAW Selects a random goose
 
 Greeting = ['Hello', 'Hows it going', 'Hi']  # LAW List of greetings
 
-Chemicals = ["H2O (Water)", "CO2 (Carbon Dioxide)", "CH3OH (Methanol)", "C2H5OH (Ethanol)", "HCl (Hydrochloric acid)", "NO2 (Nitrogen dioxide)", "SO2 (Sulfur Dioxide)", "CO (Carbon Monoxide)", "CH2O (Formaldehyde)", "ClO4 (Perchorate)"]
+Chemicals = ["H2O (Water)", "HCl (Hydrochlotic Acid)", "NaOH (Sodium Hydroxide)", "NaCl (Sodium Chloride", "NH3OH (Ammonia Hydroxide)", "NH4 (Ammonium)"]
 orderchem = Chemicals[random.randint(0, len(Chemicals) - 1)]
-    
+
 Units = ["g", "mol"]
 orderunit = Units[random.randint(0, len(Units) - 1)]
 
