@@ -47,21 +47,25 @@ class H20:
     Name = "Water"
     Ingredients = ['H', 'H', 'O']
     Quantity = 0
+    Difficulty = 10
     
 class NaCl:
     Name = "Sodium Chlorine"
     Ingredients = ['Na', 'Cl']
     Quantity = 0
+    Difficulty = 10
     
 class HCl:
     Name = "Hydrochloric Acid"
     Ingredients = ['H', 'Cl']
     Quantity = 0
+    Difficulty = 20
     
 class NaOH:
     Name = "Sodium Hydroxide"
     Ingredients = ['Na', 'O', 'H']
     Quantity = 0
+    Difficulty = 30
     
 # POLYATOMICS =================================================================
     
@@ -70,11 +74,11 @@ class NaOH:
 class NH3:
     Name = "Ammonia"
     Ingredients = ['N','H', 'H', 'H']
-    Quantity = 0
+    Quantity = 10
 
 class NH4OH:
     Name = "Ammonium Hydroxide"
     Ingredients = ['N', 'H', 'H', 'H', 'H', 'O', 'H']
-    Quantity = 0
+    Quantity = 20
     
 # END =========================================================================
