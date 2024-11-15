@@ -41,26 +41,6 @@ class Calcium:
 class Water:
     Compound = "H20"
     Compound = 0
-    
-class SodiumChloride:
-    Compound = "NaCl"
-    Quantity = 0
-
-class Ammonia:
-    Compound = "NH3"
-    Quantity = 0
-
-class AmmoniumHydroxide:
-    Compound = "NH4OH"
-    Quantity = 0
-
-class HydrochloricAcid:
-    Compound = "HCl"
-    Quantity = 0
-
-class SodiumHydroxide:
-    Compound = "NaOH"
-    Quantity = 0
 
 
 #!/usr/bin/env python3
@@ -77,21 +57,21 @@ Created on Thu Nov 14 12:05:04 2024
 #We need to decide on these things :P
 
 #Basic Recipes
-class NaCl_recipe:
+class SodiumChloride:
     Name = "NaCl (Sodium Chloride)"
     Ingredients = ['Sodium','Chlorine']
     Difficulty = 'E'
     #Quantity = 0
     
     
-class NH3_recipe:
+class Ammonia:
     Name = "NH3 (Ammonia)"
     Ingredients = ['Hydrogen','Nitrogen']
     Difficulty = 'E'
     #Quantity = 0
     
     
-class HCl_recipe:
+class Hydrochloric Acid:
     Name = "HCl (Hydrochloric Acid)"
     Ingredients = ['Hydrogen','Chlorine','Water']
     Difficulty = 'M'
@@ -99,20 +79,17 @@ class HCl_recipe:
     
     
 #Complex Recipes
-class NH4OH_recipe:
+class Ammonium Hydroxide:
     Name = "NH4OH (Ammonium Hydroxide)"
     Ingredients = ['Ammonia','Water']
     Difficulty = 'M'
     #Quantity = 0
 
 
-class NaOH_recipe:
+class Sodium Hydroxide:
     Name = "NaOH (Sodium Hydroxide)"
     Ingredients = ['Sodium Chloride','Water']
     Difficulty = 'H'
     #Quantity = 0
     
-#Backup Recipes
-    
-
 #test: NaCl_recipe().Difficulty
