@@ -10,7 +10,7 @@ from random import * # [NP] This calls the random module, which let's the functi
 # ORDER LIST ===============================================================
 
 # [NP] The chemical list shows all possible chemicals that a customer can order
-Chemicals = ["H2O (Water)", "CO2 (Carbon Dioxide)", "CH3OH (Methanol)", "C2H5OH (Ethanol)", "HCl (Hydrochloric acid)", "NO2 (Nitrogen dioxide)", "SO2 (Sulfur Dioxide)", "CO (Carbon Monoxide)", "CH2O (Formaldehyde)", "ClO4 (Perchorate)"]
+Chemicals = ["NaCl (Sodium Chloride)", "NH3 (Ammonia)", "NH4OH (Ammonium Hydroxide)", "HCl (Hydrochloric acid)", "NaOH (Sodium hydroxide)"]
 Units = ["g", "mol"] # [NP] The customer can decide which unit of measurement they wish to use
 
 # CUSTOMER ORDER ==============================================================
