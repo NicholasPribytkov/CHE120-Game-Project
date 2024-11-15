@@ -1,95 +1,80 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Wed Nov  6 13:32:49 2024
+# MOLECULES ===================================================================
 
-@authors:   Liam Gleason
-            Nicholas Pribytkov
-"""
+# This file is meant to be storage for the quantity of chemicals,
+# allowing other files to call classes (chemicals) and retrieve quantities if
+# need be.
 
-# This script creates classes for each molecule/element and stores information regarding it
-# Quantities can be edited here to store how much of each molecule we have
-# All quantities are in MOLES
+# Parent: main ================================================================
+# Author: Nicholas Pribytkov ==================================================
 
-class Hydrogen:
-    Compound = "H2"
+# ELEMENTS ====================================================================
+
+# [NP] Elements are listed here:
+
+class H:
+    Name = "Hydrogen"
     Quantity = 0
 
-class Carbon:
-    Compound = "C"
+class C:
+    Name = "Carbon"
     Quantity = 0
 
-class Oxygen:
-    Compound = "O2"
+class O:
+    Name = "Oxygen"
     Quantity = 0
     
-class Nitrogen:
-    Compound = "N2"
+class N:
+    Name = "Nitrogen"
     Quantity = 0
 
-class Sodium:
-    Compound = "Na"
+class Na:
+    Name = "Sodium"
     Quantity = 0
 
-class Chlorine:
-    Compound = "Cl"
-    Compound = 0
+class Cl:
+    Name = "Chlorine"
+    Quantity = 0
     
-class Calcium:
-    Compound = "Ca"
-    Compound = 0
+class Ca:
+    Name = "Calcium"
+    Quantity = 0
 
-class Water:
-    Compound = "H20"
-    Compound = 0
+# COMPOUNDS ===================================================================
 
+# [NP] Compounds are listed here:
 
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-Created on Thu Nov 14 12:05:04 2024
-
-@authors: Katie Yu
-"""
-
-#RECIPE CLASSES
-#Quantity is only required if we want to use chemicals produced in other recipes
-#Difficulty is not required if our only difficulty measure is the waiting time of geese
-#We need to decide on these things :P
-
-#Basic Recipes
-class SodiumChloride:
-    Name = "NaCl (Sodium Chloride)"
-    Ingredients = ['Sodium','Chlorine']
-    Difficulty = 'E'
-    #Quantity = 0
+class H20:
+    Name = "Water"
+    Ingredients = ['H', 'H', 'O']
+    Quantity = 0
     
+class NaCl:
+    Name = "Sodium Chlorine"
+    Ingredients = ['Na', 'Cl']
+    Quantity = 0
     
-class Ammonia:
-    Name = "NH3 (Ammonia)"
-    Ingredients = ['Hydrogen','Nitrogen']
-    Difficulty = 'E'
-    #Quantity = 0
+class HCl:
+    Name = "Hydrochloric Acid"
+    Ingredients = ['H', 'Cl']
+    Quantity = 0
     
+class NaOH:
+    Name = "Sodium Hydroxide"
+    Ingredients = ['Na', 'O', 'H']
+    Quantity = 0
     
-class Hydrochloric Acid:
-    Name = "HCl (Hydrochloric Acid)"
-    Ingredients = ['Hydrogen','Chlorine','Water']
-    Difficulty = 'M'
-    #Quantity = 0
+# POLYATOMICS =================================================================
     
-    
-#Complex Recipes
-class Ammonium Hydroxide:
-    Name = "NH4OH (Ammonium Hydroxide)"
-    Ingredients = ['Ammonia','Water']
-    Difficulty = 'M'
-    #Quantity = 0
+# [NP] Polyatomics are listed here:
 
+class NH3:
+    Name = "Ammonia"
+    Ingredients = ['N','H', 'H', 'H']
+    Quantity = 0
 
-class Sodium Hydroxide:
-    Name = "NaOH (Sodium Hydroxide)"
-    Ingredients = ['Sodium Chloride','Water']
-    Difficulty = 'H'
-    #Quantity = 0
+class NH4OH:
+    Name = "Ammonium Hydroxide"
+    Ingredients = ['N', 'H', 'H', 'H', 'H', 'O', 'H']
+    Quantity = 0
     
-#test: NaCl_recipe().Difficulty
+# END =========================================================================
