@@ -9,6 +9,7 @@ Created on Thu Nov 14 12:05:04 2024
 #RECIPE CLASSES
 #Quantity is only required if we want to use chemicals produced in other recipes
 #Difficulty is not required if our only difficulty measure is the waiting time of geese
+#We need to decide on these things :P
 
 #Basic Recipes
 class NaCl_recipe:
