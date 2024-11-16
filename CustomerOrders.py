@@ -33,6 +33,6 @@ def CustomerOrder(): # [NP] Generates a Customer Order
         ordercapacity /= 1000
         ordercapacity = round(ordercapacity, 2)
         #orderunit = "k" + orderunit
-    return [str(ordercapacity), str(orderchem)] # [NP] Return the customer order details back
+    return [str(ordercapacity), "mol", str(orderchem)] # [NP] Return the customer order details back
 
 # END =========================================================================
