@@ -4,6 +4,7 @@
 Created on Thu Nov 14 12:05:04 2024
 
 @authors: Katie Yu
+#this file has been combined with molecules.py for now
 """
 
 #RECIPE CLASSES
