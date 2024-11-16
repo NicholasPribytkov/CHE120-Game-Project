@@ -38,6 +38,7 @@ GLIAM = r"" + parentfile + "\Images\Goose2.png"
 KAMKAR = r"" + parentfile + "\Images\Goose3.png"
 Speech = r"" + parentfile + "\Images\Speech-Bubble.png"
 Background = r"" + parentfile + "\Images\R.png"
+MachineIMG= r"" + parentfile + "\Images\Machine.png"
 
 Pics = [HAM, MAT, PEND, NICK, ZINO, HELMET, KATIE, LAW, GLIAM, KAMKAR] # [LAW] List of geese
 
@@ -58,11 +59,17 @@ background = pygame.image.load(Background).convert_alpha() # [LAW] Loads and con
 speech_bubble = pygame.image.load(Speech).convert_alpha() # [LAW] Loads and converts the speech bubble image
 speech_bubble= pygame.transform.scale(speech_bubble, (550,550)) # [LAW] Resizes the speech bubble
 
+Machine = pygame.image.load(MachineIMG).convert()
+Machine = pygame.transform.scale(Machine, (1300, 800))  # [LAW] Scale the second Background to fit
+
 position = player.get_rect() # [LAW] Gets the position of the player
 
 BLACK = (0, 0, 0) # [LAW] Defines colors
 
 font = pygame.freetype.SysFont("Calibri", 40) # [LAW] Sets the font and size of the text
+
+click_area = pygame.Rect(700, 400, 50, 50)# [LAW] Defines the clickable area for the mouse interactions with buttons
+click_area2 = pygame.Rect(700, 50, 50, 50)
 
 # DISPLAY LOOP ================================================================
 
@@ -78,13 +85,23 @@ for x in range(100): # [LAW] This tells the following the repeat 100 times
 def display_text(text, x, y):
     font.render_to(screen, (x, y), text, BLACK)
 
+# BUTTON SIZING ===============================================================
+
+button_rect = pygame.Rect(1000, 750, 250, 60)  # [LAW] Position the first button
+button_rect2 = pygame.Rect(1000, 650, 250, 60)  # [LAW] Position the second button
+
 # INITIALIZATION ==============================================================
 
 # [LAW] Initializes timer and control variables
 start_time = time.time()
 show_text = False
 show_speech_bubble = False
+show_goose = True
+show_background = True
+show_machine = False
+show_things = False
 running = True
+
 
 # MAIN TEXT LOOP ==============================================================
 
@@ -92,11 +109,23 @@ while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False # [LAW] Allows the window to be closed
+        elif event.type == pygame.MOUSEBUTTONDOWN:
+            mouse_pos = pygame.mouse.get_pos()
+            if button_rect.collidepoint(mouse_pos): # [LAW] Checks if click is on the first button
+                show_things = True
+            elif button_rect2.collidepoint(mouse_pos): # [LAW] Checks if click is on the second button
+                running = False
 
     # [LAW] Checks if 1.25 seconds have elapsed
     if not show_text and time.time() - start_time >= 1.25:
         show_text = True
         show_speech_bubble = True
+
+    # [LAW] This goes to the machine after the player clicks the first button
+    if show_things: 
+        show_text = False
+        show_speech_bubble = False
+        show_machine = True
 
     screen.blit(background, (0, 0)) # [LAW] Redraws the background
     screen.blit(player, position) # [LAW] Redraws the player at the current position
@@ -106,6 +135,20 @@ while running:
         screen.blit(speech_bubble, (700, 10)) # [LAW] Position the speech bubble
         display_text(OrderA, 760, 150) # [LAW] Adjusts text position to fit inside the speech bubble
         display_text(OrderB, 760, 190)
+        
+    # [LAW] Draw the first button
+    pygame.draw.rect(screen, (0, 0, 225), button_rect)  # Blue button
+    font = pygame.freetype.SysFont(None, 36)
+    font.render_to(screen, (1010, 760), "Accept Order", (225, 255, 255))  # White text
+
+    # [LAW]  Draw the second button
+    pygame.draw.rect(screen, (225, 0, 0), button_rect2)  # Red button
+    font.render_to(screen, (1010, 660), "Reject Order", (225, 255, 255))  # White text
+
+    # [LAW] Renders the machine ontop of the old background
+    if show_machine:
+        screen.blit(Machine, (0, 0))
+
     # [LAW] Updates the display with this text
     pygame.display.update()
     clock.tick(10) # [LAW] Control the frame rate
