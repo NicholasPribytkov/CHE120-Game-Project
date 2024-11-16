@@ -53,18 +53,21 @@ class NaCl:
     Ingredients = ['Na', 'Cl']
     Quantity = 0
     Difficulty = 10
+    Ingredient_ratios = [1]
     
 class HCl:
     Name = "Hydrochloric Acid"
     Ingredients = ['H', 'Cl']
     Quantity = 0
     Difficulty = 20
+    Ingredient_ratios = [1]
     
 class NaOH:
     Name = "Sodium Hydroxide"
     Ingredients = ['NaCl', 'H20']
     Quantity = 0
     Difficulty = 30
+    Ingredient_ratios = [1]
     
 # POLYATOMICS =================================================================
     
@@ -74,10 +77,12 @@ class NH3:
     Name = "Ammonia"
     Ingredients = ['N', 'H']
     Quantity = 10
+    Ingredient_ratios = [3, 1/3]
 
 class NH4OH:
     Name = "Ammonium Hydroxide"
     Ingredients = ['NH3', 'H2O']
     Quantity = 20
+    Ingredient_ratios = [1]
     
 # END =========================================================================
