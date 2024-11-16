@@ -29,7 +29,7 @@ def order_match(chem_produced, chem_ordered):
             order_complete = True
         
     else:
-        chem_match == False
+        chem_match = False
             
         if order_complete == True:
             #make goose leave here
