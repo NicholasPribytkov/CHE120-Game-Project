@@ -39,15 +39,14 @@ class Ca:
     Name = "Calcium"
     Quantity = 0
 
+class H20:
+    Name = "Water"
+    Quantity = 0
+    Difficulty = 10
+
 # COMPOUNDS ===================================================================
 
 # [NP] Compounds are listed here:
-
-class H20:
-    Name = "Water"
-    Ingredients = ['H', 'H', 'O']
-    Quantity = 0
-    Difficulty = 10
     
 class NaCl:
     Name = "Sodium Chlorine"
@@ -63,7 +62,7 @@ class HCl:
     
 class NaOH:
     Name = "Sodium Hydroxide"
-    Ingredients = ['Na', 'O', 'H']
+    Ingredients = ['NaCl', 'H20']
     Quantity = 0
     Difficulty = 30
     
@@ -73,12 +72,12 @@ class NaOH:
 
 class NH3:
     Name = "Ammonia"
-    Ingredients = ['N','H', 'H', 'H']
+    Ingredients = ['N', 'H']
     Quantity = 10
 
 class NH4OH:
     Name = "Ammonium Hydroxide"
-    Ingredients = ['N', 'H', 'H', 'H', 'H', 'O', 'H']
+    Ingredients = ['NH3', 'H2O']
     Quantity = 20
     
 # END =========================================================================
