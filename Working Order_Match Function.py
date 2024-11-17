@@ -1,25 +1,36 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Created on Sat Nov 16 02:41:06 2024
+Created on Sun Nov 17 15:10:42 2024
 
 @author: Katie1
 """
-#Required = chemical_produced, customer_orders, and molecules
-#import all here
+#need chem_produced and chem_ordered from previous two functions
+#default arguments
+#ensure that it takes the correct input
+#this version of order match compares the types 
+#chem_in must be connected to the recipes in order to use the recipe difficulty value
+#bring up max point system
+#upload new order match function
 
-recipe_points = recipe.difficulty
+recipe_points = chem_in.difficulty
 time_points = 2 
 #start with a low value for time_points since the player will have the most time to make the recipe
 
-def order_match(a=chem_produced, b=chem_ordered):
+def order_match(chem_in=chem_produced, chem_desired=chem_ordered):
 #default arguments allow us to compare the variables from the previous two functions
+#variables from previous two functions are chem_produced and chem_ordered
     
-    if a[1] == b[1]:
+    if type(chem_in) == type(chem_desired):
         #this compares the names of the chemical produced and the chemical ordered
         
-            accuracy = (a[0]/b[0])
-            #this compares the quantities of the chemical produced and the chemical ordered
+        if chem_in.quantity <= chem_desired.quantity:
+            accuracy = (chem_in.quantity/chem_desired.quantity)
+            #if customer orders 2 mol and you make 1.75, accuracy = 0.875
+            
+        if chem_in.quantity > chem_desired.quantity:
+            accuracy = ((2*chem_desired.quantity - chem_in.quantity)/chem_desired.quantity)
+            #if customer orders 2 mol and you make 2.25, accuracy = 0.875
             
             points_per_order = (recipe_points + time_points)*accuracy
             #sample points_per_order = (10 + 2)*0.8 = 9.6
@@ -31,6 +42,8 @@ def order_match(a=chem_produced, b=chem_ordered):
         
     else:
         chem_match = False
+        points_per_order = 0
+        
         #if the player makes the completely wrong chemical
             
         if chem_match == True:
@@ -38,7 +51,6 @@ def order_match(a=chem_produced, b=chem_ordered):
             #allow player to play again?
 
         if chem_match == False:
-            points_per_order = 0
 
 #put in main file
             total_points = order_match() + total_points
