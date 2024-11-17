@@ -12,6 +12,7 @@ from random import * # [NP] This calls the random module, which let's the functi
 # [NP] The chemical list shows all possible chemicals that a customer can order
 Chemicals = ["NaCl (Sodium Chloride)", "NH3 (Ammonia)", "NH4OH (Ammonium Hydroxide)", "HCl (Hydrochloric Acid)", "NaOH (Sodium Hydroxide)"]
 Units = ["g", "mol"] # [NP] The customer can decide which unit of measurement they wish to use
+#get rid of units option
 
 # CUSTOMER ORDER ==============================================================
    
