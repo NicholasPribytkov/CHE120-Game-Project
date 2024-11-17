@@ -5,10 +5,9 @@ Created on Sun Nov 17 15:10:42 2024
 
 @author: Katie1
 """
+#this version of order match compares the types of the objects
 #need chem_produced and chem_ordered from previous two functions
-#default arguments
-#ensure that it takes the correct input
-#this version of order match compares the types 
+#ensure that it takes the correct input - default arguments
 #chem_in must be connected to the recipes in order to use the recipe difficulty value
 #bring up max point system
 #upload new order match function
