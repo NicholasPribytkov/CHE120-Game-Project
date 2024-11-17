@@ -76,13 +76,13 @@ class NaOH:
 class NH3:
     Name = "Ammonia"
     Ingredients = ['N', 'H']
-    Quantity = 10
+    Quantity = 0
     Ingredient_ratios = [3, 1/3]
 
 class NH4OH:
     Name = "Ammonium Hydroxide"
     Ingredients = ['NH3', 'H2O']
-    Quantity = 20
+    Quantity = 0
     Ingredient_ratios = [1]
     
 # END =========================================================================
