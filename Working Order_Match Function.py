@@ -32,6 +32,7 @@ def order_match(chem_in=chem_produced, chem_desired=chem_ordered):
             #second sample points_per_order = (20 + 6)*1 = 25
 
             return points_per_order
+            return accuracy*100
         
             chem_match = True
         
