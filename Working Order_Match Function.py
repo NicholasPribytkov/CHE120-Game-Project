@@ -23,15 +23,10 @@ def order_match(chem_in=chem_produced, chem_desired=chem_ordered):
     
     if type(chem_in) == type(chem_desired):
         #this compares the names of the chemical produced and the chemical ordered
-        
-        if chem_in.quantity <= chem_desired.quantity:
-            accuracy = (chem_in.quantity/chem_desired.quantity)
+
+        #take abs value of error
+            accuracy = abs((chem_in.quantity - chem_desired.quantity)/chem_desired.quantity)
             #if customer orders 2 mol and you make 1.75, accuracy = 0.875
-            
-        if chem_in.quantity > chem_desired.quantity:
-            accuracy = ((2*chem_desired.quantity - chem_in.quantity)/chem_desired.quantity)
-            #if customer orders 2 mol and you make 2.25, accuracy = 0.875
-            #this way accuracy will never exceed 1 and inflate the points
             
             points_per_order = (recipe_points + time_points)*accuracy
             #sample points_per_order = (10 + 2)*0.8 = 9.6
