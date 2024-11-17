@@ -77,12 +77,14 @@ class NH3:
     Name = "Ammonia"
     Ingredients = ['N', 'H']
     Quantity = 0
+    Difficulty = 10
     Ingredient_ratios = [3, 1/3]
 
 class NH4OH:
     Name = "Ammonium Hydroxide"
     Ingredients = ['NH3', 'H2O']
     Quantity = 0
+    Difficulty = 30
     Ingredient_ratios = [1]
     
 # END =========================================================================
