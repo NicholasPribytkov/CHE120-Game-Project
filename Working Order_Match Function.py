@@ -33,6 +33,7 @@ def order_match(chem_in=chem_produced, chem_desired=chem_ordered):
 
             return points_per_order
             return accuracy*100
+            #accuracy should be very low for a fail to occur
         
             chem_match = True
         
