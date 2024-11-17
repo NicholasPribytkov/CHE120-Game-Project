@@ -15,10 +15,8 @@ time_points = 2
 def order_match(chem_produced, chem_ordered):
     
     if chem_produced == chem_ordered[3]:
-        chem_match = True 
         #this compares the names of the chemical produced and the chemical ordered
         
-        if chem_match == True:
             accuracy = (chem_produced_quantity/chem_ordered[1])
             #this compares the quantities of the chemical produced and the chemical ordered
             
@@ -28,14 +26,18 @@ def order_match(chem_produced, chem_ordered):
 
             return points_per_order
         
-            order_complete = True
+            chem_match = True
         
     else:
         chem_match = False
+        #if the player makes the completely wrong chemical
             
-        if order_complete == True:
+        if chem_match == True:
             #make goose leave here
             #allow player to play again?
+
+        if chem_match == False:
+            points_per_order = 0
 
 #put in main file
             total_points = order_match() + total_points
