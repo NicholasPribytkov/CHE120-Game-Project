@@ -5,7 +5,7 @@ Created on Sat Nov 16 02:41:06 2024
 
 @author: Katie1
 """
-#Required = chemical_produced (non-existent rn), customer_orders, and molecules
+#Required = chemical_produced, customer_orders, and molecules
 #import all here
 
 recipe_points = recipe.difficulty
