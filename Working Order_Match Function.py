@@ -12,12 +12,13 @@ recipe_points = recipe.difficulty
 time_points = 2 
 #start with a low value for time_points since the player will have the most time to make the recipe
 
-def order_match(chem_produced, chem_ordered):
+def order_match(a=chem_produced, b=chem_ordered):
+#default arguments allow us to compare the variables from the previous two functions
     
-    if chem_produced == chem_ordered[3]:
+    if a[1] == b[1]:
         #this compares the names of the chemical produced and the chemical ordered
         
-            accuracy = (chem_produced_quantity/chem_ordered[1])
+            accuracy = (a[0]/b[0])
             #this compares the quantities of the chemical produced and the chemical ordered
             
             points_per_order = (recipe_points + time_points)*accuracy
