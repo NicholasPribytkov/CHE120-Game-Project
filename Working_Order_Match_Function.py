@@ -14,7 +14,7 @@ recipe_points = chem_in.difficulty
 time_points = 2 
 # [KY] Start with a low value for time_points since the player will have the most time to make the recipe
 
-def order_match(chem_in=chem_produced, chem_desired=chem_ordered):
+def order_match(chem_in, chem_desired):
 # [KY] Default arguments allow us to compare the variables from the previous two functions
 # [KY] Variables from previous two functions are chem_produced and chem_ordered
     
@@ -22,16 +22,16 @@ def order_match(chem_in=chem_produced, chem_desired=chem_ordered):
         # [KY] This compares the names of the chemical produced and the chemical ordered
 
         # [KY] Take abs value of error
-            accuracy = abs((chem_in.quantity - chem_desired.quantity)/chem_desired.quantity)
-            # [KY] If customer orders 2 mol and you make 1.75, accuracy = 0.875
+        accuracy = abs((chem_in.quantity - chem_desired.quantity)/chem_desired.quantity)
+        # [KY] If customer orders 2 mol and you make 1.75, accuracy = 0.875
             
-            points_per_order = (recipe_points + time_points)*accuracy
-            # [KY] Sample points_per_order = (10 + 2)*0.8 = 9.6
-            # [KY] Second sample points_per_order = (20 + 6)*1 = 25
+        points_per_order = (recipe_points + time_points)*accuracy
+        # [KY] Sample points_per_order = (10 + 2)*0.8 = 9.6
+        # [KY] Second sample points_per_order = (20 + 6)*1 = 25
 
-            return points_per_order
-            return accuracy*100
-            # [KY] Accuracy should be very low for a fail to occur
+        return points_per_order
+        return accuracy*100
+        # [KY] Accuracy should be very low for a fail to occur
         
             chem_match = True
         
