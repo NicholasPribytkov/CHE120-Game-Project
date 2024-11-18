@@ -39,5 +39,6 @@ player, position, OrderA, OrderB, Order1, Order2 = WorkingMovingGoose.Customer()
 b = WorkingMovingGoose.Runtime(player, position, OrderA, OrderB, True, Order1, Order2)
 print(b)
 WorkingMovingGoose.Runtime(player, position, OrderA, OrderB, False, Order1, Order2)
-                           
-                           
+
+#run order_match
+order_match(orderchem, producedchem)
