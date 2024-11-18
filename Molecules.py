@@ -6,6 +6,13 @@
 
 # Parent: main ================================================================
 # Author: Nicholas Pribytkov ==================================================
+# Editor(s): Liam Gleason, Katie Yu ===========================================
+
+# [NP] Name: The name of the chemical
+# [NP] Ingredients: The chemicals needed to make this product
+# [NP] Quantity: Stores the quantity of each chemical
+# [NP] Difficulty: How much the chemical is valued
+# [NP] Ingredient_Ratios: How much of each ingredient is needed
 
 # ELEMENTS ====================================================================
 

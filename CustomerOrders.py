@@ -1,5 +1,8 @@
 # CUSTOMER ORDERS =============================================================
 
+# The purpose of this file to generate orders for customers for the player
+# to fulfill.
+
 # Parent: Working Moving Goose ================================================
 # Author: Nicholas Pribytkov ==================================================
 
@@ -11,8 +14,6 @@ from random import * # [NP] This calls the random module, which let's the functi
 
 # [NP] The chemical list shows all possible chemicals that a customer can order
 Chemicals = ["NaCl (Sodium Chloride)", "NH3 (Ammonia)", "NH4OH (Ammonium Hydroxide)", "HCl (Hydrochloric Acid)", "NaOH (Sodium Hydroxide)"]
-Units = ["g", "mol"] # [NP] The customer can decide which unit of measurement they wish to use
-#get rid of units option
 
 # CUSTOMER ORDER ==============================================================
    
@@ -24,16 +25,13 @@ def CustomerOrder(): # [NP] Generates a Customer Order
     Returns
     -------
     list
-        [Quantity, Unit, Chemical]
+        [Quantity, Chemical]
 
     '''
+    
     orderchem = Chemicals[randint(0, len(Chemicals) - 1)] # [NP] Picks a random chemical from the chemical list
-    #orderunit = Units[randint(0, len(Units) - 1)] # [NP] Picks a random unit of measurement to use
-    ordercapacity = randint(1, 10000) # [NP] Picks a random quantity of the chemical
-    if ordercapacity >= 1000: # [NP] If the quantity exceeds 1000, the function will shorten it down by converting to kilos, which divides the value by 1000 (ex. 1200g --> 1.2kg)
-        ordercapacity /= 1000
-        ordercapacity = round(ordercapacity, 2)
-        #orderunit = "k" + orderunit
-    return [str(ordercapacity), "mol", str(orderchem)] # [NP] Return the customer order details back
+    ordercapacity = randint(1, 999) # [NP] Picks a random quantity of the chemical
+    
+    return [str(ordercapacity), str(orderchem)] # [NP] Return the customer order details back
 
 # END =========================================================================
