@@ -45,3 +45,4 @@ WorkingMovingGoose.Runtime(player, position, OrderA, OrderB, False, Order1, Orde
 order_match(orderchem, producedchem)
 if accuracy < 10
 gameisDone = True
+#do three strikes
