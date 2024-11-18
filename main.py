@@ -40,5 +40,8 @@ b = WorkingMovingGoose.Runtime(player, position, OrderA, OrderB, True, Order1, O
 print(b)
 WorkingMovingGoose.Runtime(player, position, OrderA, OrderB, False, Order1, Order2)
 
+#Katie's stuff
 #run order_match
 order_match(orderchem, producedchem)
+if accuracy < 10
+gameisDone = True
