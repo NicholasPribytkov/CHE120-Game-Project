@@ -1,3 +1,4 @@
+
 # WORKING ORDER MATCH FUNCTION ================================================
 
 # This file compares the types of objects, which checks how much chemicals are
@@ -32,6 +33,7 @@ def order_match(chem_in, chem_desired):
         return points_per_order
         return accuracy*100
         # [KY] Accuracy should be very low for a fail to occur
+        # Use accuracy to determine fail
         
             chem_match = True
         
@@ -51,5 +53,6 @@ def order_match(chem_in, chem_desired):
             total_points = order_match() + total_points
             print(total_points)
             time_points += 2 
-# [KY] This accounts for the fact that each customer is willing to wait for less time (you must make recipes faster, so you earn more points as a result) 
+# [KY] This accounts for the fact that each customer is willing to wait for less time (you must make recipes faster, so you earn more points as a result)
+# can change to time_elapsed/wait time 
             wait_time -= 2
