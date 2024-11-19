@@ -11,6 +11,8 @@
 # Author: Katie Yu ============================================================
 # Editor(s): Nicholas Pribytkov ===============================================
 
+accuracies_below_30 = 0
+
 def order_match(chem_in, chem_desired):
 # [KY] Default arguments allow us to compare the variables from the previous two functions
 # [KY] Variables from previous two functions are chem_produced and chem_ordered
@@ -46,10 +48,10 @@ def order_match(chem_in, chem_desired):
         # [KY] If the player makes the completely wrong chemical
             
         if chem_match == True:
-            # [KY] Make goose leave here
-            # [KY] Allow player to play again?
+            # [KY] Make goose leave here (happy)
 
         if chem_match == False:
+            # [KY] Make goose leave here (sad)
 
 # [KY] Put in main file
             time_points = 2 
