@@ -1,8 +1,8 @@
 
 # WORKING ORDER MATCH FUNCTION ================================================
 
-# This file compares the types of objects, which checks how much chemicals are
-# produced, and how much chemicals the customer ordered. This file checks 
+# This file compares the types of objects, which checks the amount of chemicals 
+# produced and the amount of chemicals ordered. This file checks 
 # to make sure the correct quantity and type are given. This file is also
 # responsible for giving out failure penalties and tracks customer wait
 # time.
