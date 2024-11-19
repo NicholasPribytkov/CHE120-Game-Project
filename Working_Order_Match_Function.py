@@ -41,6 +41,7 @@ def order_match(chem_in, chem_desired):
     else:
         chem_match = False
         points_per_order = 0
+        accuracies_below_30 += 1
         
         # [KY] If the player makes the completely wrong chemical
             
