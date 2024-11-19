@@ -26,9 +26,8 @@ def order_match(chem_in, chem_desired):
 
         accuracy_percent = accuracy*100
             
-        points_per_order = int(chem_desired.difficulty + time_points)*accuracy
-        # [KY] Sample points_per_order = (10 + 2)*0.8 = 9.6
-        # [KY] Second sample points_per_order = (20 + 6)*1 = 25
+        points_per_order = int(chem_desired.difficulty + time_difference)*accuracy
+        # [KY] Sample points_per_order = (20 + (20-10))*0.8 = 24
         
         chem_match = True
         return points_per_order
@@ -55,8 +54,9 @@ def order_match(chem_in, chem_desired):
             # [KY] Start with a low value for time_points since the player will have the most time to make the recipe
             
             total_points += points_per_order
+            return total_points
             
-            time_points += 2 
 # [KY] This accounts for the fact that each customer is willing to wait for less time (you must make recipes faster, so you earn more points as a result)
 # can change to time_elapsed/wait time 
             wait_time -= 2
+            time_points += 2 
