@@ -21,6 +21,8 @@ def order_match(chem_in, chem_desired):
         # [KY] Take abs value of error
         accuracy = abs((chem_in.quantity - chem_desired.quantity)/chem_desired.quantity)
         # [KY] If customer orders 2 mol and you make 1.75, accuracy = 0.875
+
+        accuracy_percent = accuracy*100
             
         points_per_order = int(chem_desired.difficulty + time_points)*accuracy
         # [KY] Sample points_per_order = (10 + 2)*0.8 = 9.6
@@ -31,6 +33,10 @@ def order_match(chem_in, chem_desired):
         return accuracy*100
         # [KY] Accuracy should be very low for a fail to occur
         # Use accuracy to determine fail
+
+    if accuracy < 30:
+        accuracies_below_30 += 1
+        #accuracies_below_30 must be initialized in main
         
     else:
         chem_match = False
