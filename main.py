@@ -40,10 +40,11 @@ b = WorkingMovingGoose.Runtime(player, position, OrderA, OrderB, True, Order1, O
 print(b)
 WorkingMovingGoose.Runtime(player, position, OrderA, OrderB, False, Order1, Order2)
 
-#Katie's stuff
-#run order_match
+#[KY] run order_match
 order_match(orderchem, producedchem)
-#end stopwatch that begins when player accepts order and initialize variable time_elapsed
-if accuracy < 10
-gameisDone = True
-#do three strikes
+
+#Things that happen at the end of the game
+#repeat all function calls here
+
+#once player gives the order to the goose, end stopwatch that begins when player accepts order and initialize variable time_elapsed
+#write checks to determine if the game is over
