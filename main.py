@@ -43,6 +43,7 @@ WorkingMovingGoose.Runtime(player, position, OrderA, OrderB, False, Order1, Orde
 #Katie's stuff
 #run order_match
 order_match(orderchem, producedchem)
+#end stopwatch here
 if accuracy < 10
 gameisDone = True
 #do three strikes
