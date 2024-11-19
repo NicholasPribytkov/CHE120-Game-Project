@@ -11,21 +11,14 @@
 # Author: Katie Yu ============================================================
 # Editor(s): Nicholas Pribytkov ===============================================
 
-wait_time = #placeholder, store timer value here
-time_taken = #placeholder, store time elapsed from accepting an order to finishing the order here
-time_difference = wait_time - time_taken #must be edited once wait_time and time_taken are defined
-
-#[KY] the below variables are adjusted by order_match as the game progresses
-accuracies_below_30 = 0
-total_points = 0
-
 def order_match(chem_in, chem_desired):
 # [KY] Default arguments allow us to compare the variables from the previous two functions
 # [KY] Variables from previous two functions are chem_produced and chem_ordered
     
     if type(chem_in) == type(chem_desired):
         # [KY] This compares the names of the chemical produced and the chemical ordered
-
+        
+        chem_match = True
         # [KY] Take abs value of error
         accuracy = abs((chem_in.quantity - chem_desired.quantity)/chem_desired.quantity)
         # [KY] If customer orders 2 mol and you make 1.75, accuracy = 0.875
@@ -35,7 +28,6 @@ def order_match(chem_in, chem_desired):
         points_per_order = int(chem_desired.difficulty + time_difference)*accuracy
         # [KY] Sample points_per_order = (20 + (20-10))*0.8 = 24
         
-        chem_match = True
         return points_per_order
         return accuracy_percent
         # [KY] Accuracy should be very low for a fail to occur
@@ -44,6 +36,7 @@ def order_match(chem_in, chem_desired):
     else:
         chem_match = False
         points_per_order = 0
+        accuracy_percent = 0
         accuracies_below_30 += 1
         
         # [KY] If the player makes the completely wrong chemical
@@ -55,7 +48,7 @@ def order_match(chem_in, chem_desired):
             # [KY] Make goose leave here (sad)
 
 # [KY] Put in main file
-            time_points = 2 
+            # time_points = 2 
             # [KY] initialize time_points (if this is what we want)
             # [KY] Start with a low value for time_points since the player will have the most time to make the recipe
             
