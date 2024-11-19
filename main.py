@@ -36,6 +36,7 @@
 
 # IMPORT PY FILES =============================================================
 
+#import rest of files
 import WorkingMovingGoose # [NP] WorkingMovingGoose outputs visuals of the Customers and Orders.
 #import TheMachine # [NP] TheMachine outputs visuals of the Machine at work, allowing the player to interface with it in order to mix chemicals together.
 
@@ -57,10 +58,11 @@ accuracies_below_30 = 0
 total_points = 0
 
 # [KY] Call Customer Orders function
+CustomerOrder()
 
 
 ---------------------------------------------------------------------------------------------------------
-# [KY] Call Order Match function
+# [KY] Call Order Match function once done button is pressed
 
 order_match(chem_in, chem_desired)
 if accuracy_percent < 30 or chem_match == False:
@@ -68,7 +70,8 @@ if accuracy_percent < 30 or chem_match == False:
          #display 'X' to indicate that the player has less strikes left
 
 # [KY] game ends if accuracy (for amount produced) is below 30 for three non-consecutive orders or if time taken to complete order is greater than or equal to customer wait time
-# 30 can be adjusted once we test our game, not crucial for our game to end within a reasonable amount of time
+# 2 fail checks are implemented in case one of the checks does take forever to reach
+# 30 can be adjusted once we test our game, not crucial to have a reasonable number for our game to work
 # accuracies_below_30 is initialized by main
 
 if accuracies_below_30 == 3 or time_taken >= wait_time:
@@ -78,7 +81,6 @@ if accuracies_below_30 == 3 or time_taken >= wait_time:
 else:
          #repeat code for another order
          #decrease timer value
-         #how easy is it to get correct accuracy
          #display strikes
 
 
