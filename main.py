@@ -53,6 +53,7 @@ wait_time = #placeholder, store timer value here (@ppl working on timers)
 time_taken = #placeholder, store time elapsed from accepting an order to finishing the order here
 time_difference = wait_time - time_taken
 accuracies_below_30 = 0
+total_points = 0
 
 ---------------------------------------------------------------------------------------------------------
 
@@ -65,6 +66,7 @@ if accuracy_percent < 30 or chem_match == False:
 # [KY] game ends if accuracy (for amount produced) is below 30 for three non-consecutive orders or if time taken to complete order is greater than or equal to customer wait time
 # 30 can be adjusted once we test our game, not crucial for our game to end within a reasonable amount of time
 if accuracies_below_30 == 3 or time_taken >= wait_time:
+         #display (total_points)
          #end game here (break)
 
 else:
