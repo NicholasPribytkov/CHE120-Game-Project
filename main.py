@@ -40,25 +40,30 @@ b = WorkingMovingGoose.Runtime(player, position, OrderA, OrderB, True, Order1, O
 print(b)
 WorkingMovingGoose.Runtime(player, position, OrderA, OrderB, False, Order1, Order2)
 
-#[KY] run order_match
+---------------------------------------------------------------------------------------------------------
+#[KY] run order_match here with objects returned by customer orders and chemical produced functions
 order_match(orderchem, producedchem)
 
-#variables required for order_match to work
-accuracies_below_30 = 0
-
-#Refer order match function to see how the below variables are defined
-if accuracy_percent < 30 or chem_match == False:
-         accuracies_below_30 += 1
+#initialize variables required for order_match to work
+#once player presses "done" on the machine, end stopwatch that begins when player accepts order and store time_taken as a variable
 
 wait_time = #set equal to timer value
 time_taken = #set equal to stopwatch value
-         
 time_difference = wait_time - time_taken
+accuracies_below_30 = 0
 
-#Things that happen at the end of the game
-#repeat all function calls here
-if accuracies_below_30 == 3
+#Refer to order match function to see how the below variables are defined
+if accuracy_percent < 30 or chem_match == False:
+         accuracies_below_30 += 1
+
+#Check to see if game has ended 
+#repeat all function calls here or time_taken >= wait_time
+if accuracies_below_30 == 3 or time_taken >= wait_time:
          #end game here
+         break
 
-#once player gives the order to the goose, end stopwatch that begins when player accepts order and initialize variable time_elapsed
-#write checks to determine if the game is over
+else:
+         #repeat code for another order
+
+
+
