@@ -43,6 +43,13 @@ WorkingMovingGoose.Runtime(player, position, OrderA, OrderB, False, Order1, Orde
 #[KY] run order_match
 order_match(orderchem, producedchem)
 
+#variables required for order_match to work
+accuracies_below_30 = 0
+wait_time =
+time_taken =
+         
+time_difference = wait_time - time_taken
+
 #Things that happen at the end of the game
 #repeat all function calls here
 
