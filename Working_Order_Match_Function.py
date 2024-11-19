@@ -11,7 +11,13 @@
 # Author: Katie Yu ============================================================
 # Editor(s): Nicholas Pribytkov ===============================================
 
+wait_time = #placeholder, store timer value here
+time_taken = #placeholder, store time elapsed from accepting an order to finishing the order here
+time_difference = wait_time - time_taken
+
+#[KY] the below variables are adjusted by order_match as the game progresses
 accuracies_below_30 = 0
+total_points = 0
 
 def order_match(chem_in, chem_desired):
 # [KY] Default arguments allow us to compare the variables from the previous two functions
