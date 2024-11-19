@@ -60,11 +60,8 @@ total_points = 0
 # [KY] Check to see if game has ended (fail check)
 # [KY] Refer to order match function to see how the below variables are defined
 
-if chem_match == True:
-         #
-if chem_match == False:
-         #
-if accuracy_percent < 30:
+if accuracy_percent < 30 or chem_match == False:
+         accuracies_below_30 += 1
          #display 'X' to indicate that the player has less strikes left
 
 # [KY] game ends if accuracy (for amount produced) is below 30 for three non-consecutive orders or if time taken to complete order is greater than or equal to customer wait time
