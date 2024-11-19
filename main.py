@@ -43,7 +43,7 @@ WorkingMovingGoose.Runtime(player, position, OrderA, OrderB, False, Order1, Orde
 
 ---------------------------------------------------------------------------------------------------------
 
-[KY] #initialize variables required for order_match and fail check to work
+[KY] #initialize variables required for order_match and fail check to work (put this here for now)
 [KY] #once player presses "done" on the machine, end stopwatch that begins when player accepts order and store time_taken as a variable
 
 wait_time = #placeholder, store timer value here
@@ -53,7 +53,7 @@ accuracies_below_30 = 0
 
 ---------------------------------------------------------------------------------------------------------
 
-# [KY] Check to see if game has ended (fail check)(put in its own file?)
+# [KY] Check to see if game has ended (fail check)
 # [KY] Refer to order match function to see how the below variables are defined
 if accuracy_percent < 30 or chem_match == False:
          accuracies_below_30 += 1
