@@ -26,7 +26,7 @@ def order_match(chem_in, chem_desired):
         accuracy = abs((chem_in.quantity - chem_desired.quantity)/chem_desired.quantity)
         # [KY] If customer orders 2 mol and you make 1.75, accuracy = 0.875
             
-        points_per_order = (recipe_points + time_points)*accuracy
+        points_per_order = int(recipe_points + time_points)*accuracy
         # [KY] Sample points_per_order = (10 + 2)*0.8 = 9.6
         # [KY] Second sample points_per_order = (20 + 6)*1 = 25
 
