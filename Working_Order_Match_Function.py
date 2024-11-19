@@ -16,7 +16,7 @@ def order_match(chem_in, chem_desired):
     if type(chem_in) == type(chem_desired):
         # [KY] This compares the names of the chemical produced and the chemical ordered
         
-        chem_match = True
+        chem_match = True #necessary?
         # [KY] Take abs value of error
         accuracy = abs((chem_in.quantity - chem_desired.quantity)/chem_desired.quantity)
         # [KY] Sample accuracy: if customer orders 2 mol and you make 1.75, accuracy = 0.875
@@ -28,7 +28,7 @@ def order_match(chem_in, chem_desired):
         
     else:
         # [KY] If the player makes the completely wrong chemical
-        chem_match = False
+        chem_match = False #necessary?
         points_per_order = 0
         accuracy_percent = 0
 
