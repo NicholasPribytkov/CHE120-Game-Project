@@ -20,6 +20,8 @@
 # 
 # Work carefully but vigilantly to give customers their desired chemicals and
 # recieve $$$$$ the bag $$$$$$.
+#
+# The game ends if the accuracy of the amount produced is below 30% for three non consecutive orders or if the time taken to complete one order exceeds the customer wait time, whichever comes first
 
 
 # MAIN ========================================================================
@@ -57,6 +59,7 @@ accuracies_below_30 = 0
 # [KY] Refer to order match function to see how the below variables are defined
 if accuracy_percent < 30 or chem_match == False:
          accuracies_below_30 += 1
+         #display 'X' to indicate that the player has less strikes left
 
 # [KY] game ends if accuracy (for amount produced) is below 30 for three non-consecutive orders or if time taken to complete order is greater than or equal to customer wait time
 # 30 can be adjusted once we test our game, not crucial for our game to end within a reasonable amount of time
