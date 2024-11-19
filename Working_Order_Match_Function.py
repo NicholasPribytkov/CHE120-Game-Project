@@ -13,7 +13,7 @@
 
 wait_time = #placeholder, store timer value here
 time_taken = #placeholder, store time elapsed from accepting an order to finishing the order here
-time_difference = wait_time - time_taken
+time_difference = wait_time - time_taken #must be edited once wait_time and time_taken are defined
 
 #[KY] the below variables are adjusted by order_match as the game progresses
 accuracies_below_30 = 0
@@ -61,8 +61,3 @@ def order_match(chem_in, chem_desired):
             
             total_points += points_per_order
             return total_points
-            
-# [KY] This accounts for the fact that each customer is willing to wait for less time (you must make recipes faster, so you earn more points as a result)
-# can change to time_elapsed/wait time 
-            wait_time -= 2
-            time_points += 2 
