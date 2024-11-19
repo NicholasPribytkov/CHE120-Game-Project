@@ -32,13 +32,9 @@ def order_match(chem_in, chem_desired):
         
         chem_match = True
         return points_per_order
-        return accuracy*100
+        return accuracy_percent
         # [KY] Accuracy should be very low for a fail to occur
         # Use accuracy to determine fail
-
-    if accuracy < 30:
-        accuracies_below_30 += 1
-        #accuracies_below_30 must be initialized in main
         
     else:
         chem_match = False
