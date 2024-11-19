@@ -45,20 +45,15 @@ print(b)
 WorkingMovingGoose.Runtime(player, position, OrderA, OrderB, False, Order1, Order2)
 
 ---------------------------------------------------------------------------------------------------------
-
-[KY] #initialize variables required for order_match and fail check to work (put this here for now)
+#Priority 2
+[KY] #initialize variables required for order_match and fail check to work (these can go in the order match function right)
 [KY] #once player presses "done" on the machine, end stopwatch that begins when player accepts order and store time_taken as a variable
 
 wait_time = #placeholder, store timer value here (@ppl working on timers)
 time_taken = #placeholder, store time elapsed from accepting an order to finishing the order here
-time_difference = wait_time - time_taken
-
-#[KY] the below variables are adjusted by order_match as the game progresses
-accuracies_below_30 = 0
-total_points = 0
 
 ---------------------------------------------------------------------------------------------------------
-
+#Priority 1
 # [KY] Check to see if game has ended (fail check)
 # [KY] Refer to order match function to see how the below variables are defined
 if accuracy_percent < 30 or chem_match == False:
@@ -68,7 +63,7 @@ if accuracy_percent < 30 or chem_match == False:
 # [KY] game ends if accuracy (for amount produced) is below 30 for three non-consecutive orders or if time taken to complete order is greater than or equal to customer wait time
 # 30 can be adjusted once we test our game, not crucial for our game to end within a reasonable amount of time
 if accuracies_below_30 == 3 or time_taken >= wait_time:
-         #display (total_points)
+         #display (total_points) and message for the player
          #end game here (break)
 
 else:
