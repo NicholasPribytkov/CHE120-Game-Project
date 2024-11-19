@@ -57,11 +57,11 @@ time_taken = #placeholder, store time elapsed from accepting an order to finishi
 # [KY] Check to see if game has ended (fail check)
 # [KY] Refer to order match function to see how the below variables are defined
 if accuracy_percent < 30 or chem_match == False:
-         accuracies_below_30 += 1
          #display 'X' to indicate that the player has less strikes left
 
 # [KY] game ends if accuracy (for amount produced) is below 30 for three non-consecutive orders or if time taken to complete order is greater than or equal to customer wait time
 # 30 can be adjusted once we test our game, not crucial for our game to end within a reasonable amount of time
+# accuracies_below_30 is initialized by order match
 if accuracies_below_30 == 3 or time_taken >= wait_time:
          #display (total_points) and message for the player
          #end game here (break)
