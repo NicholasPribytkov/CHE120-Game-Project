@@ -11,8 +11,6 @@
 # Author: Katie Yu ============================================================
 # Editor(s): Nicholas Pribytkov ===============================================
 
-recipe_points = chem_in.difficulty
-time_points = 2 
 # [KY] Start with a low value for time_points since the player will have the most time to make the recipe
 
 def order_match(chem_in, chem_desired):
@@ -26,7 +24,7 @@ def order_match(chem_in, chem_desired):
         accuracy = abs((chem_in.quantity - chem_desired.quantity)/chem_desired.quantity)
         # [KY] If customer orders 2 mol and you make 1.75, accuracy = 0.875
             
-        points_per_order = int(recipe_points + time_points)*accuracy
+        points_per_order = int(chem_desired.difficulty + time_points)*accuracy
         # [KY] Sample points_per_order = (10 + 2)*0.8 = 9.6
         # [KY] Second sample points_per_order = (20 + 6)*1 = 25
 
@@ -50,6 +48,9 @@ def order_match(chem_in, chem_desired):
         if chem_match == False:
 
 # [KY] Put in main file
+            time_points = 2 
+            #initialize time_points (if this is what we want)
+            
             total_points = order_match() + total_points
             print(total_points)
             time_points += 2 
