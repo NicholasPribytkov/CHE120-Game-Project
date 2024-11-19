@@ -11,8 +11,6 @@
 # Author: Katie Yu ============================================================
 # Editor(s): Nicholas Pribytkov ===============================================
 
-# [KY] Start with a low value for time_points since the player will have the most time to make the recipe
-
 def order_match(chem_in, chem_desired):
 # [KY] Default arguments allow us to compare the variables from the previous two functions
 # [KY] Variables from previous two functions are chem_produced and chem_ordered
@@ -48,7 +46,8 @@ def order_match(chem_in, chem_desired):
 
 # [KY] Put in main file
             time_points = 2 
-            #initialize time_points (if this is what we want)
+            # [KY] initialize time_points (if this is what we want)
+            # [KY] Start with a low value for time_points since the player will have the most time to make the recipe
             
             total_points = order_match() + total_points
             print(total_points)
