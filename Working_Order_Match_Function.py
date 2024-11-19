@@ -54,8 +54,8 @@ def order_match(chem_in, chem_desired):
             # [KY] initialize time_points (if this is what we want)
             # [KY] Start with a low value for time_points since the player will have the most time to make the recipe
             
-            total_points = order_match() + total_points
-            print(total_points)
+            total_points += points_per_order
+            
             time_points += 2 
 # [KY] This accounts for the fact that each customer is willing to wait for less time (you must make recipes faster, so you earn more points as a result)
 # can change to time_elapsed/wait time 
