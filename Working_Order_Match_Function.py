@@ -27,13 +27,12 @@ def order_match(chem_in, chem_desired):
         points_per_order = int(chem_desired.difficulty + time_points)*accuracy
         # [KY] Sample points_per_order = (10 + 2)*0.8 = 9.6
         # [KY] Second sample points_per_order = (20 + 6)*1 = 25
-
+        
+        chem_match = True
         return points_per_order
         return accuracy*100
         # [KY] Accuracy should be very low for a fail to occur
         # Use accuracy to determine fail
-        
-            chem_match = True
         
     else:
         chem_match = False
