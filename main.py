@@ -52,6 +52,8 @@ WorkingMovingGoose.Runtime(player, position, OrderA, OrderB, False, Order1, Orde
 wait_time = #placeholder, store timer value here (@ppl working on timers)
 time_taken = #placeholder, store time elapsed from accepting an order to finishing the order here
 time_difference = wait_time - time_taken
+
+#[KY] the below variables are adjusted by order_match as the game progresses
 accuracies_below_30 = 0
 total_points = 0
 
