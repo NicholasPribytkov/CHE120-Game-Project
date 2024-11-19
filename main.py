@@ -43,7 +43,7 @@ WorkingMovingGoose.Runtime(player, position, OrderA, OrderB, False, Order1, Orde
 #Katie's stuff
 #run order_match
 order_match(orderchem, producedchem)
-#end stopwatch here
+#end stopwatch that begins when player accepts order and initialize variable time_elapsed
 if accuracy < 10
 gameisDone = True
 #do three strikes
