@@ -71,6 +71,7 @@ if accuracies_below_30 == 3 or time_taken >= wait_time:
 
 else:
          #repeat code for another order
+         #decrease timer value
 
 
 
