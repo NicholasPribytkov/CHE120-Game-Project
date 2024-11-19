@@ -60,6 +60,7 @@ total_points = 0
 # [KY] Check to see if game has ended (fail check)
 # [KY] Refer to order match function to see how the below variables are defined
 
+order_match(chem_in, chem_desired)
 if accuracy_percent < 30 or chem_match == False:
          accuracies_below_30 += 1
          #display 'X' to indicate that the player has less strikes left
@@ -68,6 +69,7 @@ if accuracy_percent < 30 or chem_match == False:
 # 30 can be adjusted once we test our game, not crucial for our game to end within a reasonable amount of time
 # accuracies_below_30 is initialized by order match
 
+total_points += points_per_order
 if accuracies_below_30 == 3 or time_taken >= wait_time:
          #display (total_points) and message for the player
          #end game here (break)
