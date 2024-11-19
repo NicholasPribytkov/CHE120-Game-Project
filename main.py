@@ -45,8 +45,8 @@ order_match(orderchem, producedchem)
 
 #variables required for order_match to work
 accuracies_below_30 = 0
-wait_time =
-time_taken =
+wait_time = #set equal to timer value
+time_taken = #set equal to stopwatch value
          
 time_difference = wait_time - time_taken
 
