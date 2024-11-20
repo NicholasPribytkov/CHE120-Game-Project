@@ -67,7 +67,7 @@ CustomerOrder()
 order_match(chem_in, chem_desired)
 #display points per order here if we want
 
-if accuracy_percent < 30 or chem_match == False:
+if accuracy_percent < 30:
          accuracies_below_30 += 1
          #display 'X' to indicate that the player has less strikes left
 
