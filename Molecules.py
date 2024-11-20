@@ -6,75 +6,71 @@
 
 # Parent: main ================================================================
 # Author: Nicholas Pribytkov ==================================================
-# Editor(s): Liam Gleason, Katie Yu ===========================================
-
-# [NP] Name: The name of the chemical
-# [NP] Ingredients: The chemicals needed to make this product
-# [NP] Quantity: Stores the quantity of each chemical
-# [NP] Difficulty: How much the chemical is valued
-# [NP] Ingredient_Ratios: How much of each ingredient is needed
 
 # ELEMENTS ====================================================================
 
 # [NP] Elements are listed here:
 
 class H:
-    Name = "Hydrogen"
+    Name = "H"
     Quantity = 0
 
 class C:
-    Name = "Carbon"
+    Name = "C"
     Quantity = 0
 
 class O:
-    Name = "Oxygen"
+    Name = "O"
     Quantity = 0
     
 class N:
-    Name = "Nitrogen"
+    Name = "N"
     Quantity = 0
 
 class Na:
-    Name = "Sodium"
+    Name = "Na"
     Quantity = 0
 
 class Cl:
-    Name = "Chlorine"
+    Name = "Cl"
     Quantity = 0
     
 class Ca:
-    Name = "Calcium"
+    Name = "Ca"
     Quantity = 0
 
-class H20:
-    Name = "Water"
-    Quantity = 0
-    Difficulty = 10
+
 
 # COMPOUNDS ===================================================================
 
 # [NP] Compounds are listed here:
+class H20:
+    Name = "H2O"
+    Ingredients = ["H", "O"]
+    Quantity = 0
+    Difficulty = 10
+    Ingredients_ratios = [1,1/2]
     
 class NaCl:
     Name = "Sodium Chlorine"
     Ingredients = ['Na', 'Cl']
     Quantity = 0
     Difficulty = 10
-    Ingredient_ratios = [1]
+    Ingredient_ratios = [1, 1]
     
 class HCl:
     Name = "Hydrochloric Acid"
     Ingredients = ['H', 'Cl']
     Quantity = 0
     Difficulty = 20
-    Ingredient_ratios = [1]
+    Ingredient_ratios = [1, 1]
     
 class NaOH:
     Name = "Sodium Hydroxide"
-    Ingredients = ['NaCl', 'H20']
+    Ingredients = ['NaCl', 'H', "O"]
     Quantity = 0
     Difficulty = 30
-    Ingredient_ratios = [1]
+    Ingredient_ratios = [1, 2, 1]
     
 # POLYATOMICS =================================================================
     
@@ -84,14 +80,12 @@ class NH3:
     Name = "Ammonia"
     Ingredients = ['N', 'H']
     Quantity = 0
-    Difficulty = 10
     Ingredient_ratios = [3, 1/3]
 
 class NH4OH:
     Name = "Ammonium Hydroxide"
-    Ingredients = ['NH3', 'H2O']
+    Ingredients = ['NH3', 'H', "O"]
     Quantity = 0
-    Difficulty = 30
-    Ingredient_ratios = [1]
+    Ingredient_ratios = [1, 2, 1]
     
 # END =========================================================================
