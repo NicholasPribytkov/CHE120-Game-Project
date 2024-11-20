@@ -79,11 +79,13 @@ if accuracy_percent < 30:
 if accuracies_below_30 == 3 or time_taken >= wait_time:
          #display total_points and message for the player here
          #end game here (break)
+         #allow player to play again?
 
 else:
          #repeat code for another order
          #decrease timer value
          #display strikes
+         
 
 
 
