@@ -60,12 +60,14 @@ total_points = 0
 # [KY] Call Customer Orders function
 CustomerOrder()
 
+orderchem = 0
 
 ---------------------------------------------------------------------------------------------------------
-# [KY] Call Order Match function once done button is pressed with output (returned by Mixing Function) and orderchem, returned by (CustomerOrders)
+# [KY] Call Order Match function once done button is pressed
 
 order_match(output, orderchem)
-#display points per order here if we want
+#[KY] output and orderchem are the variables returned by Mixing Function and CustomerOrders, respectively
+#[KY] display points per order here if we want
 
 if accuracy_percent < 30:
          accuracies_below_30 += 1
