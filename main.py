@@ -64,7 +64,7 @@ CustomerOrder()
 ---------------------------------------------------------------------------------------------------------
 # [KY] Call Order Match function once done button is pressed
 
-order_match(chem_in, chem_desired)
+order_match(output, orderchem)
 #display points per order here if we want
 
 if accuracy_percent < 30:
