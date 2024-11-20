@@ -68,6 +68,12 @@ CustomerOrder()
 orderchem = 0
 
 ---------------------------------------------------------------------------------------------------------
+# [KY] Call Mixing function
+Mixing (mix1,mix2,mix3)
+#call function properly here
+
+
+---------------------------------------------------------------------------------------------------------
 # [KY] Call Order Match function once done button is pressed
 
 order_match(output, orderchem)
