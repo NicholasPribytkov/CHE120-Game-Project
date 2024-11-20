@@ -62,7 +62,7 @@ CustomerOrder()
 
 
 ---------------------------------------------------------------------------------------------------------
-# [KY] Call Order Match function once done button is pressed
+# [KY] Call Order Match function once done button is pressed with output (returned by Mixing Function) and orderchem, returned by (CustomerOrders)
 
 order_match(output, orderchem)
 #display points per order here if we want
