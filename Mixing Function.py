@@ -19,16 +19,16 @@ def Mixing (mix1,mix2,mix3):
     HCl = mol.HCl()
     NaOH = mol.NaOH()
 
-    if mix3 == None and not type(mix1) == None and not type(mix2) == None: # [LG] Identifies if there are two or three ingridents
+    if mix3 == None and not type(mix1) == None and not type(mix2) == None: # [LG] Identifies if there are two or three ingredients
 
         mixture = [mix1.Name, mix2.Name] # [LG] Makes a list of the names of the ingridents
-        mixture_set = set[mix1.Name, mix2.Name] # [LG] Makes a set to allow for checking against other ingreident sets regardless of order
-        if mixture_set == set(NaCl.Ingredients): # [LG] checks if the ingridents of the product are the same as the provided ingridents
+        mixture_set = set[mix1.Name, mix2.Name] # [LG] Makes a set to allow for checking against other ingredient sets regardless of order
+        if mixture_set == set(NaCl.Ingredients): # [LG] checks if the ingredients of the product are the same as the provided ingredients
             for i in range (len(NaCl.Ingredients)):
                 if NaCl.Ingredients[i]==mix1.Name:
                     mix1ratio = NaCl.Ingredient_ratios[i]
             for i in range (len(NaCl.Ingredients)):
-                if NaCl.Ingredients[i]==mix2.Name: # [LG] checks if the ingridents of the product are the same as the provided ingridents
+                if NaCl.Ingredients[i]==mix2.Name: # [LG] checks if the ingredients of the product are the same as the provided ingredients
                     mix2ratio = NaCl.Ingredient_ratios[i]
             mix1Stoich = mix1.Quantity / mix1ratio
             mix2Stoich = mix2.Quantity / mix2ratio
@@ -40,12 +40,12 @@ def Mixing (mix1,mix2,mix3):
                 output = mol.NaCl()
                 output.Quantity =+ mix1Stoich
                 return output
-        elif mixture_set == set(NH3.Ingredients): # [LG] checks if the ingridents of the product are the same as the provided ingridents
+        elif mixture_set == set(NH3.Ingredients): # [LG] checks if the ingredients of the product are the same as the provided ingredients
             for i in range (len(NH3.Ingredients)):
                 if NH3.Ingredients[i]==mix1.Name:
                     mix1ratio = NH3.Ingredient_ratios[i]
             for i in range (len(NH3.Ingredients)):
-                if NH3.Ingredients[i]==mix2.Name: # [LG] checks if the ingridents of the product are the same as the provided ingridents
+                if NH3.Ingredients[i]==mix2.Name: # [LG] checks if the ingredients of the product are the same as the provided ingredients
                     mix2ratio = NH3.Ingredient_ratios[i]
             mix1Stoich = mix1.Quantity / mix1ratio
             mix2Stoich = mix2.Quantity / mix2ratio
@@ -57,12 +57,12 @@ def Mixing (mix1,mix2,mix3):
                 output = mol.NaCl()
                 output.Quantity =+ mix1Stoich
                 return output
-        elif mixture_set == set(HCl.Ingredients): # [LG] checks if the ingridents of the product are the same as the provided ingridents
+        elif mixture_set == set(HCl.Ingredients): # [LG] checks if the ingredients of the product are the same as the provided ingredients
             for i in range (len(HCl.Ingredients)):
                 if HCl.Ingredients[i]==mix1.Name:
                     mix1ratio = HCl.Ingredient_ratios[i]
             for i in range (len(HCl.Ingredients)):
-                if HCl.Ingredients[i]==mix2.Name: # [LG] checks if the ingridents of the product are the same as the provided ingridents
+                if HCl.Ingredients[i]==mix2.Name: # [LG] checks if the ingredients of the product are the same as the provided ingredients
                     mix2ratio = HCl.Ingredient_ratios[i]
             mix1Stoich = mix1.Quantity / mix1ratio
             mix2Stoich = mix2.Quantity / mix2ratio
