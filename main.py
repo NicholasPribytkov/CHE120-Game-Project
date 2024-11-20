@@ -37,6 +37,11 @@
 # IMPORT PY FILES =============================================================
 
 #import rest of files
+import CustomerOrders
+import Mixing Function
+import Molecules
+import TheMachine
+import Working_Order_Match_Function
 import WorkingMovingGoose # [NP] WorkingMovingGoose outputs visuals of the Customers and Orders.
 #import TheMachine # [NP] TheMachine outputs visuals of the Machine at work, allowing the player to interface with it in order to mix chemicals together.
 
