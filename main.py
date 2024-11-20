@@ -46,9 +46,9 @@ print(b)
 WorkingMovingGoose.Runtime(player, position, OrderA, OrderB, False, Order1, Order2)
 
 ---------------------------------------------------------------------------------------------------------
-#Priority 2
-[KY] #initialize variables required for order_match and fail check to work (these can go in the order match function right)
-[KY] #once player presses "done" on the machine, end stopwatch that begins when player accepts order and store time_taken as a variable
+#Initialize loop that runs game here
+#[KY] initialize variables required for order_match and fail check to work (these can go in the order match function right)
+#[KY] once player presses "done" on the machine, end stopwatch that begins when player accepts order and store time_taken as a variable
 
 wait_time = #placeholder, store timer value here (@ppl working on timers)
 time_taken = #placeholder, store time elapsed from accepting an order to finishing the order here
