@@ -65,6 +65,8 @@ CustomerOrder()
 # [KY] Call Order Match function once done button is pressed
 
 order_match(chem_in, chem_desired)
+#display points per order here if we want
+
 if accuracy_percent < 30 or chem_match == False:
          accuracies_below_30 += 1
          #display 'X' to indicate that the player has less strikes left
@@ -75,7 +77,7 @@ if accuracy_percent < 30 or chem_match == False:
 # accuracies_below_30 is initialized by main
 
 if accuracies_below_30 == 3 or time_taken >= wait_time:
-         print(total_points) #display total_points and message for the player
+         #display total_points and message for the player here
          #end game here (break)
 
 else:
