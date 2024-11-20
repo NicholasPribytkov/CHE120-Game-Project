@@ -16,7 +16,7 @@ def order_match(chem_in, chem_desired):
     if type(chem_in) == type(chem_desired):
         # [KY] This compares the names of the chemical produced and the chemical ordered
         
-        chem_match = True #necessary?
+        #chem_match = True variable assignment isn't necessary since this case is unlikely, unless we want to use it for something
         # [KY] Take abs value of error
         accuracy = abs((chem_in.quantity - chem_desired.quantity)/chem_desired.quantity)
         # [KY] Sample accuracy: if customer orders 2 mol and you make 1.75, accuracy = 0.875
@@ -28,22 +28,15 @@ def order_match(chem_in, chem_desired):
         
     else:
         # [KY] If the player makes the completely wrong chemical
-        chem_match = False #necessary?
+        #chem_match = False same comment as above
         points_per_order = 0
         accuracy_percent = 0
 
+        total_points += points_per_order
+        
         return points_per_order
         return accuracy_percent
+        return total_points
 
         # [KY] Accuracy should be very low for a fail to occur
         # Use accuracy to determine fail
-            
-        if chem_match == True:
-            # [KY] Make goose leave here (happy)
-            total_points += points_per_order
-            return total_points
-
-        if chem_match == False:
-            # [KY] Make goose leave here (sad)
-            total_points += points_per_order
-            return total_points
