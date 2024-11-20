@@ -84,6 +84,7 @@ if accuracies_below_30 == 3 or time_taken >= wait_time:
          #allow player to play again?
 
 else:
+         OrderComplete = True
          #repeat code for another order
          #decrease timer value
          #display strikes
