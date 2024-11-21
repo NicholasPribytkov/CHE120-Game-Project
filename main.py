@@ -97,6 +97,7 @@ while True
          total_points += points_per_order
 
 def playAgain():
+         #add graphics
          
 ---------------------------------------------------------------------------------------------------------
 
@@ -129,6 +130,7 @@ def playAgain():
                   PlayerFail = True
 
 if PlayerFail:
+         playAgain():
          #allow player to play again?
          accuracies_below_30 = 0
          total_points = 0
