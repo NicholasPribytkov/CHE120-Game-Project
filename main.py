@@ -14,7 +14,7 @@
 # Liam Andrew Westlake
 # Katie Yu
 
-# Welcome to Goose Lab. You are asked to work at a
+# Welcome to Geese Lab. You are asked to work at a
 # chemical facility, where you talk to customers who wish to buy chemicals,
 # track their orders, mix chemicals up and give them the chemicals they want!
 # 
