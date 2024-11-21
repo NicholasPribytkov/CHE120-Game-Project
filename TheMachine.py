@@ -9,11 +9,31 @@
 
 # INSTRUCTIONS FOR EACH ORDER ===================================================
 
-NaClin= 'You are making Sodium Chloride'
-NH3in= 'You are making Ammonia'
-NH4OHin= 'You are making Ammonium Hydroxide'
-HClin= 'You are making Hydrochloric Acid'
-NaOHin= 'You are making Sodium Hydroxide'
+NaClin = '''You are making Sodium Chloride:
+            - Step 1
+            - Step 2
+            - Step 3
+            - Step 4'''
+NH3in = '''You are making Ammonia:
+            - Step 1
+            - Step 2
+            - Step 3
+            - Step 4'''
+NH4OHin = '''You are making Ammonium Hydroxide:
+            - Step 1
+            - Step 2
+            - Step 3
+            - Step 4'''
+HClin = '''You are making Hydrochloric Acid:
+            - Step 1
+            - Step 2
+            - Step 3
+            - Step 4'''
+NaOHin = '''You are making Sodium Hydroxide:
+            - Step 1
+            - Step 2
+            - Step 3
+            - Step 4'''
 instruction_list=[NaClin,NH3in,NH4OHin,HClin,NaOHin]
 
 # IMPORT PYTHON MODULES =======================================================
@@ -62,8 +82,10 @@ background = pygame.transform.scale(background, (1300, 800)) # [LAW] Scale the b
 
 # INSTRUCTION LOADER ==========================================================
 
-def display_text2(text,x,y):# [LAW] This positions and the instructions and gives it its characteristics
-    font2.render_to(screen, (x,y), text, BLACK)
+def display_text2(text, x, y):# [LAW] sets up the font of the text and allows there to be a proper list
+    lines = text.split('\n')
+    for i, line in enumerate(lines):
+        font2.render_to(screen, (x, y + i * 30), line.strip(), BLACK)
     
 for i in range(len(Chemicals)): # [LAW] Finds what Chemical has been ordered and asigns the instructions to the instructions variable
     if Chemicals[i] in orderchem:
