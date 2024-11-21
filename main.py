@@ -78,7 +78,8 @@ Mixing (mix1,mix2,mix3)
 # [KY] Call Order Match function once done button is pressed
 
 order_match(output, orderchem)
-#[KY] output and orderchem are the variables returned by Mixing Function and CustomerOrders, respectively
+#[KY] output and orderchem are the variables returned by Mixing Function and CustomerOrders, respectivel
+# check this is true
 #[KY] display points per order here if we want
 
 if accuracy_percent < 30:
