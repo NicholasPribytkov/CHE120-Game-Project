@@ -70,11 +70,11 @@ total_points = 0
 while True 
 
 # [KY] Call Customer Orders function
-         orderchem = CustomerOrder()
+         orderchem = CustomerOrders.CustomerOrder()
          #call function properly here
          
-# [KY] Call Mixing function (confirm this is correct)
-         output = Mixing(mix1,mix2,mix3)
+# [KY] Call Mixing function (confirm inputs)
+         output = Mixing_Function.Mixing(mix1,mix2,mix3)
          #call function properly here
 
 # [KY] Call Order Match and accuracy functions once done button is pressed
@@ -87,6 +87,9 @@ while True
          if accuracy < 30:
                   accuracies_below_30 += 1
                   #display 'X' to indicate that the player has less strikes left
+
+# [KY] Add points earned from current order to total points
+         total_points += points_per_order
 
 ---------------------------------------------------------------------------------------------------------
 
