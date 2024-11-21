@@ -80,10 +80,10 @@ def Customer():
     GooseImage = random.choice(Pics) # [LAW] Selects a random goose
     Greeting = ['Hello', 'Hows it going', 'Hi'] # [LAW] List of greetings
     
-    Order = CustomerOrder() # [NP] Call the Customer Order function, which returns a list containing [Quantity, Chemical]
+    Order = CustomerOrder() # [NP] Call the Customer Order function, which returns an object with quantity as a property
     
-    OrderA = random.choice(Greeting)+ " " + "I Need " + Order[0] # [LAW] Order with random greeting and a random chemical
-    OrderB = "mol " + Order[1]
+    OrderA = random.choice(Greeting)+ " " + "I Need " + Order # [LAW] Order with random greeting and a random chemical
+    OrderB = "mol " + Order.Quantity
     
     player = pygame.image.load(GooseImage).convert_alpha() # [LAW] Loads and converts the goose image   
     position = player.get_rect() # [LAW] Gets the position of the player
