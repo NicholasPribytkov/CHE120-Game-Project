@@ -7,6 +7,15 @@
 # Author: Liam Andrew Westlake =======================================================
 # Editor: Nicholas Pribytkov ==================================================
 
+# INSTRUCTIONS FOR EACH ORDER ===================================================
+
+NaClin= 'You are making Sodium Chloride'
+NH3in= 'You are making Ammonia'
+NH4OHin= 'You are making Ammonium Hydroxide'
+HClin= 'You are making Hydrochloric Acid'
+NaOHin= 'You are making Sodium Hydroxide'
+instruction_list=[NaClin,NH3in,NH4OHin,HClin,NaOHin]
+
 # IMPORT PYTHON MODULES =======================================================
     
 import pygame  # [LAW] main game functions
@@ -24,6 +33,11 @@ clock = pygame.time.Clock() # [LAW] Create a Pygame clock to control frame rates
 
 Chemicals = ["H2O (Water)", "HCl (Hydrochloric Acid)", "NaOH (Sodium Hydroxide)", "NaCl (Sodium Chloride)", "NH3OH (Ammonia Hydroxide)", "NH4 (Ammonium)"]
 orderchem = Chemicals[random.randint(0, len(Chemicals) - 1)]
+
+# FONT FOR INSTRUCTIONS ======================================================
+
+BLACK = (0, 0, 0)
+font2 = pygame.freetype.SysFont("Calibri",25)
 
 # FLASK LOADER ================================================================
 
@@ -46,6 +60,15 @@ FlaskB = pygame.transform.scale(FlaskB, (200, 250)) # [LAW] Make FlaskB smaller
 background = pygame.image.load(r"" + parentfile + "\Images\Machine.png").convert_alpha() # [LAW] Load and convert the background image with alpha
 background = pygame.transform.scale(background, (1300, 800)) # [LAW] Scale the background to fit the screen
 
+# INSTRUCTION LOADER ==========================================================
+
+def display_text2(text,x,y):# [LAW] This positions and the instructions and gives it its characteristics
+    font2.render_to(screen, (x,y), text, BLACK)
+    
+for i in range(len(Chemicals)): # [LAW] Finds what Chemical has been ordered and asigns the instructions to the instructions variable
+    if Chemicals[i] in orderchem:
+        instructions= instruction_list[i]
+
 # INITIALIZATION ==============================================================
 
 # [LAW] Set the starting position of the Flask
@@ -55,6 +78,7 @@ position.topleft = (1000, 90)
 running = True
 Show_FlaskB = True
 Move_Flask = False
+show_instructions = True
 
 # [LAW] Define the clickable area
 click_area = pygame.Rect(700, 400, 50, 50)
@@ -89,6 +113,9 @@ while running:
     if Move_Flask:
         position.move_ip(3, 0) # [LAW] Move the Flask
         screen.blit(Flask, position) # [LAW] Draw Flask in the new position
+
+    if show_instructions:# [LAW] Displays the instructions when the variable is true
+        display_text2(instructions, 30, 250)
 
     # Optionally, draw the clickable area for debugging (you can comment this out later)
     # pygame.draw.rect(screen, (255, 0, 0), click_area, 2)
