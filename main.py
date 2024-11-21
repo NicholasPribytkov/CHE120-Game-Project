@@ -38,10 +38,10 @@
 
 #import rest of files
 import CustomerOrders
-import Mixing Function
+import Mixing_Function
 import Molecules
 import TheMachine
-import Working_Order_Match_Function
+import Order_Match_Function
 import WorkingMovingGoose # [NP] WorkingMovingGoose outputs visuals of the Customers and Orders.
 #import TheMachine # [NP] TheMachine outputs visuals of the Machine at work, allowing the player to interface with it in order to mix chemicals together.
 
@@ -78,7 +78,7 @@ while True
          #call function properly here
 
 # [KY] Call Order Match and accuracy functions once done button is pressed
-         points_per_order = order_match(output, orderchem)
+         points_per_order = Order_Match_Function.order_match(output, orderchem)
          # [KY] output and orderchem are the variables assigned to the variables returned by 
          # Mixing Function and CustomerOrders, respectively
          # confirm function call
