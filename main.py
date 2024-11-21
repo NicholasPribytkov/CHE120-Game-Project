@@ -64,6 +64,7 @@ total_points = 0
 
 # [KY] Call Customer Orders function
 CustomerOrder()
+#call function properly here
 
 orderchem = 0
 
