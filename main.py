@@ -55,7 +55,9 @@ WorkingMovingGoose.Runtime(player, position, OrderA, OrderB, False, Order1, Orde
 # [KY] initialize variables required for order_match and fail check to work
 # [KY] once player presses "done" on the machine, end stopwatch that begins when player accepts order and store time_taken as a variable
 
-wait_time = #placeholder, store timer value here (@ppl working on timers)
+# Order_Match must be able to access the below variables somehow as they are used in the point system
+
+wait_time = #placeholder, store customer wait time
 time_taken = #placeholder, store time elapsed from accepting an order to finishing the order here
 
 # [KY] the below variables are adjusted by order_match until the game ends
