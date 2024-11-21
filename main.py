@@ -83,6 +83,7 @@ while True
          #call function properly here
 
 # [KY] Call Order Match and accuracy functions once done button is pressed
+# Assign value returned by Order Match to points_per_order
          points_per_order = Order_Match_Function.order_match(output, orderchem)
          # [KY] output and orderchem are the variables assigned to the variables returned by 
          # Mixing Function and CustomerOrders, respectively
@@ -113,7 +114,8 @@ def playAgain():
                   
                   # [KY] display total points (check this is correct)
                   screen.fill((0,0,0))
-                  screen.blit(total_points)
+                  font2 = pygame.freetype.SysFont(None, 36)
+                  font.render_to(screen, (1010, 760), "Total points = " + str(total_points), (225, 255, 255))
                   
                   # [KY] use PlayerFail condition if we want to allow the player to play again 
                   # (not totally sure if this is the best way to do it)
