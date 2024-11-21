@@ -71,9 +71,9 @@ total_points = 0
 #[KY] Initialize loop that runs game and call functions
 while True 
 
-# [KY] Call Customer Orders function
-         orderchem = CustomerOrders.CustomerOrder()
-         #call function properly here
+# [KY] Get value returned by Customer Order function in WorkingMovingGoose (since WorkingMovingGoose calls it first)
+         orderchem = WorkingMovingGoose.Order
+         
          
 # [KY] Call Mixing function (confirm inputs)
          output = Mixing_Function.Mixing(mix1,mix2,mix3)
