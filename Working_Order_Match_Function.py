@@ -12,6 +12,7 @@
 # Editor(s): Nicholas Pribytkov ===============================================
 
 def order_match(chem_in, chem_desired):
+    # [KY] returns points_per_order
     
     if type(chem_in) == type(chem_desired):
         # [KY] This compares the names of the chemical produced and the chemical ordered
@@ -32,11 +33,12 @@ def order_match(chem_in, chem_desired):
         points_per_order = 0
         accuracy_percent = 0
 
-        total_points += points_per_order
-        
-        return points_per_order
-        return accuracy_percent
-        return total_points
+    return points_per_order
 
-        # [KY] Accuracy should be very low for a fail to occur
-        # Use accuracy to determine fail
+    def amount_accuracy(chem_in, chem_desired):
+        accuracy_percent = abs((chem_in.quantity - chem_desired.quantity)/chem_desired.quantity)*100
+        
+        return accuracy_percent
+        
+        # [KY] Accuracy is used to determine a fail in the main file
+        # [KY] Using a separate function to return accuracy allows us to call the specific function from this file to use in main
