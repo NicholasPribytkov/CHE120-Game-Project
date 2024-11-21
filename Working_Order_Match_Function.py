@@ -35,7 +35,7 @@ def order_match(chem_in, chem_desired):
 
     return points_per_order
 
-    def amount_accuracy(chem_in_amount, chem_desired_amount):
+    def accuracy_as_percent(chem_in_amount, chem_desired_amount):
         accuracy_percent = abs((chem_in_amount - chem_desired_amount)/chem_desired_amount)*100
         
         return accuracy_percent
