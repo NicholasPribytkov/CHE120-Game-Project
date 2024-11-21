@@ -52,7 +52,7 @@ b = WorkingMovingGoose.Runtime(player, position, OrderA, OrderB, True, Order1, O
 print(b)
 WorkingMovingGoose.Runtime(player, position, OrderA, OrderB, False, Order1, Order2)
 
----------------------------------------------------------------------------------------------------------
+# ---------------------------------------------------------------------------------------------------------
 
 # [KY] initialize variables required for order_match and fail check to work
 # [KY] once player presses "done" on the machine, end stopwatch that begins when player accepts order and store time_taken as a variable
@@ -70,7 +70,7 @@ accuracies_below_30 = 0
 total_points = 0
 
 
----------------------------------------------------------------------------------------------------------
+# ---------------------------------------------------------------------------------------------------------
 #[KY] Initialize loop that runs an order and call functions
 while True 
 
@@ -100,7 +100,7 @@ while True
 def playAgain():
          #add graphics
          
----------------------------------------------------------------------------------------------------------
+# ---------------------------------------------------------------------------------------------------------
 
 # [KY] game ends if accuracy (for amount produced) is below 30 for three non-consecutive orders or if time taken to complete order is greater than or equal to customer wait time
 # 2 fail checks are implemented in case one of the checks does take forever to reach
