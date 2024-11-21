@@ -42,7 +42,9 @@ import Mixing_Function
 import Molecules
 import TheMachine
 import Order_Match_Function
-import WorkingMovingGoose # [NP] WorkingMovingGoose outputs visuals of the Customers and Orders.
+import WorkingMovingGoose # [NP] WorkingMovingGoose outputs visuals of the Customers and Orders
+import pygame
+import pygame.freetype
 #import TheMachine # [NP] TheMachine outputs visuals of the Machine at work, allowing the player to interface with it in order to mix chemicals together.
 
 player, position, OrderA, OrderB, Order1, Order2 = WorkingMovingGoose.Customer()
@@ -61,14 +63,15 @@ wait_time = #placeholder, store customer wait time
 time_taken = #placeholder, store time elapsed from accepting an order to finishing the order here
 
 # [KY] the below variables are adjusted by order_match until the game ends
-# they must be initialized in main so that their values both start at 0 and accumulate as the order_match function is repeated 
+# they must be initialized in main so that their values both start at 0
 # initializing them in main also allows them to be easily accessed at the end of the game
+# they must be able to accumulate as the order_match function is repeated
 accuracies_below_30 = 0
 total_points = 0
 
 
 ---------------------------------------------------------------------------------------------------------
-#[KY] Initialize loop that runs game and call functions
+#[KY] Initialize loop that runs an order and call functions
 while True 
 
 # [KY] Get value returned by Customer Order function in WorkingMovingGoose (since WorkingMovingGoose calls it first)
@@ -93,6 +96,8 @@ while True
 # [KY] Add points earned from current order to total points
          total_points += points_per_order
 
+def playAgain():
+         
 ---------------------------------------------------------------------------------------------------------
 
 # [KY] game ends if accuracy (for amount produced) is below 30 for three non-consecutive orders or if time taken to complete order is greater than or equal to customer wait time
@@ -123,8 +128,11 @@ while True
                   #INSERT GAME OVER MESSAGE
                   PlayerFail = True
 
-         if PlayerFail:
-                  #allow player to play again?
+if PlayerFail:
+         #allow player to play again?
+         accuracies_below_30 = 0
+         total_points = 0
+         
 
                   
 
