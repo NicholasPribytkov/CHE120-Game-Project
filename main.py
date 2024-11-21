@@ -85,7 +85,7 @@ while True
          # Mixing Function and CustomerOrders, respectively
          # confirm function call
 
-         accuracy = Order_Match_Function.accuracy_as_percent(output.quantity, orderchem.quantity)
+         accuracy = Order_Match_Function.accuracy_as_percent(output, orderchem)
          if accuracy < 30:
                   accuracies_below_30 += 1
                   #display 'X' to indicate that the player has less strikes left
