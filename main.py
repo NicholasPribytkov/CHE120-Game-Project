@@ -107,7 +107,7 @@ def playAgain():
 # 30 can be adjusted once we test our game, not crucial to have a reasonable number for our game to work
 # accuracies_below_30 is initialized by main
 
-         if accuracies_below_30 < 3 or time_taken < wait_time:
+         if accuracies_below_30 > 3 or time_taken > wait_time:
                   #display total_points and message for the player here
                   #end game here (break)
                   #allow player to play again?
