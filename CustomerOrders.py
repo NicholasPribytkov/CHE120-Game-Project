@@ -19,7 +19,7 @@ NH3 = mol.NH3()
 NH4OH = mol.NH4OH()
 HCl = mol.HCl()
 NaOH = mol.NaOH()
-Chemicals = [NaCl,NH3,NH4OH,HCl,NaOH] # [LG] generates a generic object of every recipie to ask the player for, and latter compare to what is produced
+Chemicals = [NaCl,NH3,NH4OH,HCl,NaOH] # [LG] generates a generic object of every recipe to ask the player for, and latter compare to what is produced
 
 
 # CUSTOMER ORDER ==============================================================
