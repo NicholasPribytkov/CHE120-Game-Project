@@ -2,6 +2,7 @@ import pygame  # LAW main game functions
 import random  # LAW This is used to randomize things
 import pygame.freetype  # LAW This is used for the text on the screen
 import time  # LAW used for text showing up after a certain time has passed
+import Order_Match_Function
 
 # LAW Initializes the Pygame
 def Game(score):
@@ -9,7 +10,10 @@ def Game(score):
     
     scorestr='SCORE:'+ str(score)
     randit=[1,2,3,4,5]
-    newscore=random.choice(randit)
+    newscore= order_match(output, order)
+#EDIT
+
+
     #Instructions for each order
     NaClin = '''You are making Sodium Chloride:
                 - Step 1
