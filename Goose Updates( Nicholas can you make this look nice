@@ -237,5 +237,6 @@ def Game(score):
 Game(0)
 
 
-
+while True:
+    print("GOOOOOOOSE")
 
