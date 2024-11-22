@@ -153,7 +153,7 @@ def Runtime(player, position, OrderA, OrderB, show, Order1, Order2):
         if show_speech_bubble:
             screen.blit(speech_bubble, (700, 10)) # [LAW] Position the speech bubble
             display_text(OrderA, 760, 150) # [LAW] Adjusts text position to fit inside the speech bubble
-            display_text(OrderB, 760, 190)
+            display_text(OrderB, 760, 190) 
             
         # [LAW] Draw the first button
         pygame.draw.rect(screen, (0, 0, 225), button_rect)  # Blue button
@@ -163,7 +163,6 @@ def Runtime(player, position, OrderA, OrderB, show, Order1, Order2):
         # [LAW]  Draw the second button
         pygame.draw.rect(screen, (225, 0, 0), button_rect2)  # Red button
         font.render_to(screen, (1010, 660), "Reject Order", (225, 255, 255))  # White text
-    
     
         # [LAW] Updates the display with this text
         pygame.display.update()
