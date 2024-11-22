@@ -21,7 +21,7 @@
 # Work carefully but vigilantly to give customers their desired chemicals and
 # recieve $$$$$ the bag $$$$$$.
 #
-# The game ends if the accuracy of the amount produced is below 30% for three non consecutive orders or 
+# The game ends the first time the accuracy of the amount produced is below 30% or 
 # if the time taken to complete one order exceeds the customer wait time, whichever comes first
 
 
