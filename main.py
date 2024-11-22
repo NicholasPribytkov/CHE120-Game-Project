@@ -109,7 +109,8 @@ def playAgain():
 # 30 can be adjusted once we test our game, not crucial to have a reasonable number for our game to work
 # accuracies_below_30 is initialized by main
 
-         if accuracies_below_30 > 3 or time_taken > wait_time:
+         #FIX GRAPHICS
+         if accuracies_below_30 < 3 or time_taken < wait_time:
                   #display total_points and message for the player here
                   #end game here (break)
                   #allow player to play again?
@@ -130,12 +131,12 @@ def playAgain():
                   # [KY] display points earned for the order (check this is correct)
                   screen.fill((0,0,0))
                   screen.blit("GAME OVER: Total points = " + str(total_points))
-                  #INSERT GAME OVER MESSAGE
                   PlayerFail = True
 
 if PlayerFail:
          playAgain():
          #allow player to play again?
+         #reset values to 0 
          accuracies_below_30 = 0
          total_points = 0
          
