@@ -162,7 +162,7 @@ def Runtime(player, position, OrderA, OrderB, show, Order1, Order2):
     
         # [LAW]  Draw the second button
         pygame.draw.rect(screen, (225, 0, 0), button_rect2)  # Red button
-        font.render_to(screen, (1010, 660), "Reject Order", (225, 255, 255))  # White text
+        font.render_to(screen, (1010, 660), "QUIT", (225, 255, 255))  # White text
     
         # [LAW] Updates the display with this text
         pygame.display.update()
