@@ -69,7 +69,6 @@ time_taken = Order_Match_Function.timetaken #placeholder, time elapsed from acce
 # initializing them in main also allows them to be easily accessed at the end of the game
 # initializing them before the loop allows their values to accumulate as the order_match function is repeated
 
-accuracies_below_30 = 0
 total_points = 0
 
 # ---------------------------------------------------------------------------------------------------------
@@ -92,9 +91,6 @@ while True
          # confirm function call
 
          accuracy = Order_Match_Function.accuracy_as_percent(output, orderchem)
-         if accuracy < 30:
-                  accuracies_below_30 += 1
-                  #display 'X' to indicate that the player has less strikes left
 
 # [KY] Add points earned from current order to total points
          total_points += points_per_order
@@ -110,15 +106,12 @@ def playAgain():
 # accuracies_below_30 is initialized by main
 
          #FIX GRAPHICS
-         if accuracies_below_30 < 3 or time_taken < wait_time:
-                  #display total_points and message for the player here
-                  #end game here (break)
-                  #allow player to play again?
+         if accuracy >= 30  or time_taken < wait_time:
                   
                   # [KY] display total points (check this is correct)
                   screen.fill((0,0,0))
                   font2 = pygame.freetype.SysFont(None, 36)
-                  font.render_to(screen, (1010, 760), "Total points = " + str(total_points), (225, 255, 255))
+                  font.render_to(screen, (1010, 760), "Points earned = " + str(points_per_order), (225, 255, 255))
                   
                   # [KY] use PlayerFail condition if we want to allow the player to play again 
                   # (not totally sure if this is the best way to do it)
@@ -130,14 +123,13 @@ def playAgain():
          else:
                   # [KY] display points earned for the order (check this is correct)
                   screen.fill((0,0,0))
-                  screen.blit("GAME OVER: Total points = " + str(total_points))
+                  font.render_to(screen, (1010, 760), "GAME OVER: Total points = " + str(total_points), (225, 255, 255))
                   PlayerFail = True
 
 if PlayerFail:
          if playAgain():
                   #allow player to play again
                   #reset values to 0 
-                  accuracies_below_30 = 0
                   total_points = 0
          else:
                   break
