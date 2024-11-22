@@ -43,11 +43,11 @@ import Molecules
 import TheMachine
 import Order_Match_Function
 import WorkingMovingGoose # [NP] WorkingMovingGoose outputs visuals of the Customers and Orders
+import TheMachine # [NP] TheMachine outputs visuals of the Machine at work, allowing the player to interact with it in order to mix chemicals together.
 
 #[KY] import pygame for end of game messages
 import pygame
 import pygame.freetype
-#import TheMachine # [NP] TheMachine outputs visuals of the Machine at work, allowing the player to interface with it in order to mix chemicals together.
 
 player, position, OrderA, OrderB, Order1, Order2 = WorkingMovingGoose.Customer()
 b = WorkingMovingGoose.Runtime(player, position, OrderA, OrderB, True, Order1, Order2)
@@ -59,7 +59,7 @@ WorkingMovingGoose.Runtime(player, position, OrderA, OrderB, False, Order1, Orde
 # [KY] initialize variables required for order_match and fail check to work
 # [KY] once player presses "done" on the machine, end stopwatch that begins when player accepts order and store time_taken as a variable
 
-# Order_Match must be able to access the below variables somehow as they are used in the point system
+# [KY] wait time and time taken should be stored in Order_Match as they are used in the point system
 
 wait_time = Order_Match_Function.waittime #placeholder, customer wait time (doesn't exist yet)
 time_taken = Order_Match_Function.timetaken #placeholder, time elapsed from accepting an order to finishing the order here (doesn't exist yet)
