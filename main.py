@@ -66,8 +66,8 @@ time_taken = #placeholder, store time elapsed from accepting an order to finishi
 
 # [KY] the below variables are adjusted by order_match until the game ends
 # they must be initialized in main so that their values both start at 0
-# initializing them in main also allows them to be easily accessed at the end of the game
-# they must be able to accumulate as the order_match function is repeated
+# initializing them in main  also allows them to be easily accessed at the end of the game
+# initializing them before the loop allows their values to accumulate as the order_match function is repeated
 accuracies_below_30 = 0
 total_points = 0
 
