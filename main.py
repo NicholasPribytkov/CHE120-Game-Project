@@ -43,6 +43,8 @@ import Molecules
 import TheMachine
 import Order_Match_Function
 import WorkingMovingGoose # [NP] WorkingMovingGoose outputs visuals of the Customers and Orders
+
+#import pygame for items to display at the end
 import pygame
 import pygame.freetype
 #import TheMachine # [NP] TheMachine outputs visuals of the Machine at work, allowing the player to interface with it in order to mix chemicals together.
