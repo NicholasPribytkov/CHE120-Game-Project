@@ -127,7 +127,7 @@ def playAgain():
          else:
                   # [KY] display points earned for the order (check this is correct)
                   screen.fill((0,0,0))
-                  screen.blit(points_per_order)
+                  screen.blit("GAME OVER: Total points = " + str(total_points))
                   #INSERT GAME OVER MESSAGE
                   PlayerFail = True
 
