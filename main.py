@@ -70,6 +70,7 @@ time_taken = Order_Match_Function.timetaken #placeholder, time elapsed from acce
 # initializing them before the loop allows their values to accumulate as the order_match function is repeated
 
 total_points = 0
+#OLD SYSTEM: accuracies_below_30 = 0
 
 # ---------------------------------------------------------------------------------------------------------
 #[KY] Initialize loop that runs an order and call functions
@@ -91,6 +92,7 @@ while True
          # confirm function call
 
          accuracy = Order_Match_Function.accuracy_as_percent(output, orderchem)
+         #OLD SYSTEM: if accuracy < 0, accuracies_below_30 += 1
 
 # [KY] Add points earned from current order to total points
          total_points += points_per_order
@@ -107,6 +109,7 @@ def playAgain():
 
          #FIX GRAPHICS
          if accuracy >= 30  or time_taken < wait_time:
+         #OLD SYSTEM: if accuracies_below_30 < 3 or time_taken < wait_time:
                   
                   # [KY] display total points (check this is correct)
                   screen.fill((0,0,0))
