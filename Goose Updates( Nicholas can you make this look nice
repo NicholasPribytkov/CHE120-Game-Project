@@ -1,0 +1,241 @@
+import pygame  # LAW main game functions
+import random  # LAW This is used to randomize things
+import pygame.freetype  # LAW This is used for the text on the screen
+import time  # LAW used for text showing up after a certain time has passed
+
+# LAW Initializes the Pygame
+def Game(score):
+    pygame.init()
+    
+    scorestr='SCORE:'+ str(score)
+    randit=[1,2,3,4,5]
+    newscore=random.choice(randit)
+    #Instructions for each order
+    NaClin = '''You are making Sodium Chloride:
+                - Step 1
+                - Step 2
+                - Step 3
+                - Step 4'''
+    NH3in = '''You are making Ammonia:
+                - Step 1
+                - Step 2
+                - Step 3
+                - Step 4'''
+    NH4OHin = '''You are making Ammonium Hydroxide:
+                - Step 1
+                - Step 2
+                - Step 3
+                - Step 4'''
+    HClin = '''You are making Hydrochloric Acid:
+                - Step 1
+                - Step 2
+                - Step 3
+                - Step 4'''
+    NaOHin = '''You are making Sodium Hydroxide:
+                - Step 1
+                - Step 2
+                - Step 3
+                - Step 4'''
+    instruction_list=[NaClin,NH3in,NH4OHin,HClin,NaOHin]
+
+
+    # LAW Define file paths of the geese
+    HAM = r"C:\Users\liama\OneDrive\Desktop\UNI stuff\CHE 120 Comp\Goose4.png"
+    MAT = r"C:\Users\liama\OneDrive\Desktop\UNI stuff\CHE 120 Comp\Goose5.png"
+    PEND = r"C:\Users\liama\OneDrive\Desktop\UNI stuff\CHE 120 Comp\Goose6.png"
+    NICK = r"C:\Users\liama\OneDrive\Desktop\UNI stuff\CHE 120 Comp\Goose7.png"
+    ZINO = r"C:\Users\liama\OneDrive\Desktop\UNI stuff\CHE 120 Comp\Goose8 (1).png"
+    HELMET = r"C:\Users\liama\OneDrive\Desktop\UNI stuff\CHE 120 Comp\Goose8.png"
+    KATIE = r"C:\Users\liama\OneDrive\Desktop\UNI stuff\CHE 120 Comp\Goose9.png"
+    LAW = r"C:\Users\liama\OneDrive\Desktop\UNI stuff\CHE 120 Comp\Goose1.png"
+    GLIAM = r"C:\Users\liama\OneDrive\Desktop\UNI stuff\CHE 120 Comp\Goose2.png"
+    KAMKAR = r"C:\Users\liama\OneDrive\Desktop\UNI stuff\CHE 120 Comp\Goose3.png"
+    Speech = r"C:\Users\liama\OneDrive\Desktop\UNI stuff\CHE 120 Comp\Speech-Bubble.png"
+
+    # LAW Initializes Goose Ordering components 
+    Pics = [HAM, MAT, PEND, NICK, ZINO, HELMET, KATIE, LAW, GLIAM, KAMKAR]  # LAW List of geese
+    a = random.choice(Pics)  # LAW Selects a random goose
+
+    Greeting = ['Hello', 'Hows it going', 'Hi']  # LAW List of greetings
+
+    Chemicals = ["NaCl (Sodium Chloride)", "NH3 (Ammonia)", "NH4OH (Ammonium Hydroxide)", "HCl (Hydrochloric Acid)", "NaOH (Sodium Hydroxide)"]
+    orderchem = Chemicals[random.randint(0, len(Chemicals) - 1)]
+
+    Units = ["g", "mol"]
+    orderunit = Units[random.randint(0, len(Units) - 1)]
+
+    ordercapacity = random.randint(1, 10000)
+
+    if ordercapacity >= 1000:
+        ordercapacity /= 1000
+        ordercapacity = round(ordercapacity, 2)
+        orderunit = "k" + orderunit
+
+    OrderA = random.choice(Greeting)+ " " + "I Need " + str(ordercapacity)   # LAW Order with random greeting and a random chemical
+    OrderB = str(orderunit) + " " + str(orderchem)
+    screen = pygame.display.set_mode((1300, 800))  # LAW Sets the size of the screen
+    clock = pygame.time.Clock()  # LAW Creates a Pygame clock to control frame rates
+
+    player = pygame.image.load(a).convert_alpha()  # LAW Loads and converts the goose image
+    background = pygame.image.load(r"C:\Users\liama\OneDrive\Desktop\UNI stuff\CHE 120 Comp\R.png").convert_alpha()  # LAW Loads and converts the background image
+    speech_bubble = pygame.image.load(Speech).convert_alpha()  # LAW Loads and converts the speech bubble image
+    speech_bubble = pygame.transform.scale(speech_bubble, (550, 550))  # LAW Resizes the speech bubble
+
+    Machine = pygame.image.load(r"C:\Users\liama\OneDrive\Desktop\UNI stuff\CHE 120 Comp\Machine.png").convert()
+    Machine = pygame.transform.scale(Machine, (1300, 800))  # Scale the background to fit the screen
+
+    position = player.get_rect()  # LAW Gets the position of the player
+
+    if orderchem == "H2O (Water)":
+        b = r"C:\Users\liama\OneDrive\Desktop\UNI stuff\CHE 120 Comp\FlaskC.png"
+    elif orderchem == "NH3OH (Ammonia Hydroxide)" or orderchem == "NH4 (Ammonium)":
+        b = r"C:\Users\liama\OneDrive\Desktop\UNI stuff\CHE 120 Comp\Flask B.png"
+    else:
+        b = r"C:\Users\liama\OneDrive\Desktop\UNI stuff\CHE 120 Comp\Flask A.png"
+
+
+
+    Flask = pygame.image.load(b).convert_alpha()  # Load and convert the Flask image with alpha for transparency
+    FlaskB = Flask.copy()  # Make a copy of Flask for FlaskB
+
+    # Resize Flask and FlaskB images
+    Flask = pygame.transform.scale(Flask, (200, 250))  # Adjust the dimensions as needed
+    FlaskB = pygame.transform.scale(FlaskB, (200, 250))  # Make FlaskB smaller
+
+
+    # LAW Defines colors
+    BLACK = (0, 0, 0)
+
+    # Set up the font
+    font = pygame.freetype.SysFont("Calibri", 40)  # LAW Sets the font and size of the text
+    font2 = pygame.freetype.SysFont("Calibri",25)
+
+    click_area = pygame.Rect(700, 400, 50, 50)
+    click_area2 = pygame.Rect(700, 50, 50, 50)
+    click_area3 = click_area = pygame.Rect(700, 400, 50, 50)
+
+    # Set the starting position of the Flask
+    flask_position= Flask.get_rect()
+    flask_position.topleft = (1000, 90)  # Set the starting position
+
+    # LAW Main display loop
+    for x in range(100):  # LAW This tells the following to repeat 100 times
+        screen.blit(background, (0, 0))  # LAW Ensures background is drawn before everything else
+        position = position.move(1.5, 0)  # LAW Moves the player
+        screen.blit(player, position)  # LAW Draws the player in the new position
+        pygame.display.update()  # LAW Updates the display
+        clock.tick(30)  # LAW Sets the frame rate
+
+    # LAW Order text function
+    def display_text(text, x, y):
+        font.render_to(screen, (x, y), text, BLACK)
+
+    def display_text2(text, x, y):
+        lines = text.split('\n')
+        for i, line in enumerate(lines):
+            font2.render_to(screen, (x, y + i * 30), line.strip(), BLACK)
+
+    for i in range(len(Chemicals)): #Finds what Chemical has been ordered and asigns the instructions to the instructions variable
+        if Chemicals[i] in orderchem:
+            instructions= instruction_list[i]
+            
+    def MoveFlask():
+        global flask_position
+        for x in range(100):
+            screen.blit(background, (0, 0))  # Ensure the background is drawn before everything else
+            position.move_ip(3, 0)  # Move the Flask
+            screen.blit(Flask, flask_position)  # Draw the Flask in the new position
+            pygame.display.update()  # Update the display
+            clock.tick(10)  # Set the frame rate
+
+    # Define the button properties
+    button_rect = pygame.Rect(1000, 750, 250, 60)  # Position the first button
+    button_rect2 = pygame.Rect(1000, 650, 250, 60)  # Position the second button
+
+    # LAW Initializes timer and control variables
+    start_time = time.time()
+    show_text = False
+    show_speech_bubble = False
+    running = True
+    show_machine = False
+    Show_things = False
+    show_instructions=False
+    Show_FlaskB = False
+    Move_Flask = False
+
+
+    # LAW Main text loop
+    while running:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                running = False  # LAW Allows the window to be closed
+            elif event.type == pygame.MOUSEBUTTONDOWN:
+                mouse_pos = pygame.mouse.get_pos()
+                if button_rect.collidepoint(mouse_pos):  # Check if the click is within the first button's area
+                    Show_things = True
+                    Show_FlaskB = True
+                elif button_rect2.collidepoint(mouse_pos):  # Check if the click is within the second button's area
+                    running=False
+                elif click_area3.collidepoint(mouse_pos):
+                    Move_Flask = True
+                    Show_FlaskB = False
+                    
+                    
+
+        # LAW Checks if 1.25 seconds have elapsed
+        if not show_text and time.time() - start_time >= 1.25:
+            show_text = True
+            show_speech_bubble = True
+        if Show_things:
+            show_text = False
+            show_speech_bubble = False
+            show_machine = True
+            show_instructions=True
+
+        screen.blit(background, (0, 0))  # LAW Redraws the background
+        screen.blit(player, position)  # LAW Redraws the player at the current position
+
+        # LAW Displays text and speech bubble after two seconds have passed
+        if show_speech_bubble:
+            screen.blit(speech_bubble, (700, 10))  # LAW Positions the speech bubble
+            display_text(OrderA, 760, 150)  # LAW Adjusts text position to fit inside the speech bubble
+            display_text(OrderB, 760, 190)
+
+        # Draw the first button
+        pygame.draw.rect(screen, (0, 0, 225), button_rect)  # Blue button
+        font = pygame.freetype.SysFont(None, 36)
+        font.render_to(screen, (1010, 760), "Accept Order", (225, 255, 255))  # White text
+
+        # Draw the second button
+        pygame.draw.rect(screen, (225, 0, 0), button_rect2)  # Red button
+        font.render_to(screen, (1010, 660), "Quit", (225, 255, 255))  # White text
+
+        if show_machine:
+            screen.blit(Machine, (0, 0))
+            font.render_to(screen, (1010, 760), scorestr, (225, 255, 255))
+        
+        if show_instructions:
+            display_text2(instructions, 30, 250)
+        
+        if Show_FlaskB:
+            screen.blit(FlaskB, (650, 90))  # Display FlaskB at the new position
+            
+        if Move_Flask:
+             position.move_ip(3, 0)  # Move the Flask
+             screen.blit(Flask, flask_position)  # Draw Flask in the new position
+             pygame.display.update()
+             pygame.time.wait(500)
+             Game(newscore)
+             
+        pygame.display.update()
+        clock.tick(10)  # LAW Control the frame rate
+
+    pygame.quit()  # LAW Quits Pygame after all the functions have been completed
+
+
+
+Game(0)
+
+
+
+
