@@ -216,6 +216,7 @@ def Runtime(player, position, OrderA, OrderB, show, Order1, Order2):
 
                     # [KY] - initialize fail message 1 (Accuracy below 30) 
                     # confirm how to display text onto existing surface/or onto filled surface (introduced colour white at the top) 
+                    # Define new button        
                             
                     fail_msg1 = font.render('GAME OVER: Accuracy below 30', True, WHITE) 
                     #display_text('GAME OVER: Accuracy below 30', (0,0))
