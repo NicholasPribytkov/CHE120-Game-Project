@@ -19,10 +19,10 @@ def order_match(chem_in, chem_desired):
         
         #chem_match = True variable assignment isn't necessary since this case is unlikely, unless we want to use it for something
         # [KY] Take abs value of error
-        accuracy_fraction = abs((chem_in.quantity - chem_desired.quantity)/chem_desired.quantity)
+        accuracy_fraction = abs((chem_in.Quantity - chem_desired.Quantity)/chem_desired.Quantity)
         # [KY] Sample accuracy: if customer orders 2 mol and you make 1.75, accuracy = 0.875
             
-        points_per_order = int((chem_desired.difficulty + time_difference)*(accuracy_fraction))
+        points_per_order = int((chem_desired.Difficulty + time_difference)*(accuracy_fraction))
         # [KY] Sample points_per_order = (20 + (20-10))*0.8 = 24
         
     else:
@@ -34,7 +34,7 @@ def order_match(chem_in, chem_desired):
 
     def accuracy_as_percent(chem_in, chem_desired):
         if type(chem_in) == type(chem_desired):
-            accuracy_percent = (abs((chem_in.quantity - chem_desired.quantity)/chem_desired.quantity))*100
+            accuracy_percent = (abs((chem_in.Quantity - chem_desired.Quantity)/chem_desired.Quantity))*100
 
         else:
             # [KY] If the player makes the completely wrong chemical, accuracy is automatically 0
