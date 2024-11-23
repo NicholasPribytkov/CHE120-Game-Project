@@ -212,10 +212,9 @@ def Runtime(player, position, OrderA, OrderB, show, Order1, Order2):
                     # [KY] - call order match and accuracy as percent functions 
                     order_points = order_match(output, orderchem) 
                     order_accuracy = accuracy_as_percent(output, orderchem)  
+                            
                     if order_accuracy < 30:   
-                        #screen.fill((0, 0, 0)) # [KY] Sets the background to black
-                        fail_msg = font.render_to(screen, (1010, 760), "Accept Order", (225, 255, 255))
-                        
+                        font.render_to(screen, (1010, 760), "GAME OVER", (225, 255, 255))
                         running = False
                         pygame.quit() # [KY] Closes window if the user fails the game (accuracy is below 30)(placeholder until we have play again feature)
 
