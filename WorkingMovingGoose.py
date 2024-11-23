@@ -147,7 +147,7 @@ flask_position.topleft = (1000, 90)
         pygame.display.update() # [LAW] Updates the display
         clock.tick(30) # [LAW] Sets the frame rate
         
-    return player, position, OrderA, OrderB, Order[0], Order[1]
+    return player, position, OrderA, OrderB, Order, Order.Quantity
         
 # ORDER TEXT FUNCTION =========================================================
 
@@ -203,12 +203,14 @@ def Runtime(player, position, OrderA, OrderB, show, Order1, Order2):
                 elif button_rect2.collidepoint(mouse_pos): # [LAW] Checks if click is on the second button
                     running = False
                     pygame.quit() # [LAW] Allows the window to be closed
-                elif click_area3.collidepoint(mouse_pos):
+                elif click_area3.collidepoint(mouse_pos): # [KY] Checks if done button is pressed
                     Move_Flask = True
-                    Show_FlaskB = False 
+                    Show_FlaskB = False
 
-            # [KY] - check if done is pressed
-            # [KY] - call order match
+                    import Order_Match    
+                    # [KY] - call order match function    
+                            
+            
 
     
         # [LAW] Checks if 1.25 seconds have elapsed
