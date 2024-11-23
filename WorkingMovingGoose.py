@@ -104,11 +104,6 @@ global position
 global OrderA
 global OrderB
 
-=============================================================
-
-total_points = 0
-
-
 # CUSTOMER ORDERS =============================================================
 
 def Customer():
