@@ -215,7 +215,8 @@ def Runtime(player, position, OrderA, OrderB, show, Order1, Order2):
                     order_accuracy = accuracy_as_percent(output, orderchem)
 
                     # [KY] - initialize fail message 1 (Accuracy below 30) 
-                    # confirm how to display text onto existing surface (introduced colour white at the top)   
+                    # confirm how to display text onto existing surface/or onto filled surface (introduced colour white at the top) 
+                            
                     fail_msg1 = font.render('GAME OVER: Accuracy below 30', True, WHITE) 
                     #display_text('GAME OVER: Accuracy below 30', (0,0))
                     #fail_msg1_Rect = fail_msg1.get_rect()
