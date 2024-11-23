@@ -88,6 +88,7 @@ Machine = pygame.image.load(MachineIMG).convert()
 Machine = pygame.transform.scale(Machine, (1300, 800))  # [LAW] Scale the second Background to fit
 
 BLACK = (0, 0, 0) # [LAW] Defines colors
+WHITE = (255, 255, 255)
  
 font = pygame.freetype.SysFont("Calibri", 40) # [LAW] Sets the font and size of the text
 font2 = pygame.freetype.SysFont("Calibri",25)
@@ -209,12 +210,19 @@ def Runtime(player, position, OrderA, OrderB, show, Order1, Order2):
                     Move_Flask = True
                     Show_FlaskB = False
 
-                    # [KY] - call order match and accuracy as percent functions 
+                    # [KY] - call order match and accuracy as percent functions from Order_Match
                     order_points = order_match(output, orderchem) 
-                    order_accuracy = accuracy_as_percent(output, orderchem)  
+                    order_accuracy = accuracy_as_percent(output, orderchem)
+
+                    # [KY] - initialize fail message 1 (Accuracy below 30) 
+                    # confirm how to display text    
+                    fail_msg1 = font.render('GAME OVER: Accuracy below 30', True, WHITE, BLACK) 
+                    fail_msg1_Rect = fail_msg1.get_rect()
+                    fail_msg1_Rect.center = (1300//2, 800//2)        
                             
                     if order_accuracy < 30:   
-                        font.render_to(screen, (1010, 760), "GAME OVER", (225, 255, 255))
+                        screen.fill(WHITE)
+                        screen.blit(fail_msg1, fail_msg1_Rect)
                         running = False
                         pygame.quit() # [KY] Closes window if the user fails the game (accuracy is below 30)(placeholder until we have play again feature)
 
