@@ -16,9 +16,10 @@ import os # [NP] This is used to obtain the parent (folder) file directory path 
 
 # IMPORT PY FILES =============================================================
 
-#import main
+# [KY] import functions
 from CustomerOrders import CustomerOrder # [NP] This file helps the customers formulte their order
-import Order_Match_Function
+from Order_Match import order_match # [KY] This function returns points per order
+from Order_Match import accuracy_as_percent # [KY] This function returns amount accuracy as a percent by comparing the quantities of chem ordered and chem produced, to be used in fail system)
 
 # ASSET CALL ==================================================================
 
@@ -207,12 +208,10 @@ def Runtime(player, position, OrderA, OrderB, show, Order1, Order2):
                     Move_Flask = True
                     Show_FlaskB = False
 
-                    import Order_Match    
-                    # [KY] - call order match function    
-                            
-            
+                    # [KY] - call order match and accuracy as percent functions 
+                    order_points = order_match(output, orderchem) 
+                    order_accuracy = accuracy_as_percent(output, orderchem)    
 
-    
         # [LAW] Checks if 1.25 seconds have elapsed
         if not show_text and time.time() - start_time >= 1.25:
             show_text = True
