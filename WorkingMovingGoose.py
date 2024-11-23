@@ -17,7 +17,7 @@ import os # [NP] This is used to obtain the parent (folder) file directory path 
 # IMPORT PY FILES =============================================================
 
 # [KY] import functions
-from CustomerOrders import CustomerOrder # [NP] This file helps the customers formulte their order
+from CustomerOrders import CustomerOrder # [NP] This file helps the customers formulate their order
 from Order_Match import order_match # [KY] This function returns points per order
 from Order_Match import accuracy_as_percent # [KY] This function returns amount accuracy as a percent by comparing the quantities of chem ordered and chem produced, to be used in fail system)
 
@@ -210,7 +210,10 @@ def Runtime(player, position, OrderA, OrderB, show, Order1, Order2):
 
                     # [KY] - call order match and accuracy as percent functions 
                     order_points = order_match(output, orderchem) 
-                    order_accuracy = accuracy_as_percent(output, orderchem)    
+                    order_accuracy = accuracy_as_percent(output, orderchem)  
+                    if order_accuracy < 30:   
+                        screen.blit(background, (0, 0)) # [KY] Sets the background to black
+                        fail_msg = font.render("Hello, Pygame!", True, (255, 255, 255))
 
         # [LAW] Checks if 1.25 seconds have elapsed
         if not show_text and time.time() - start_time >= 1.25:
@@ -224,7 +227,7 @@ def Runtime(player, position, OrderA, OrderB, show, Order1, Order2):
             show_machine = True
             show_instructions=True
             return [Order1, Order2]
-    
+       
         screen.blit(background, (0, 0)) # [LAW] Redraws the background
         screen.blit(player, position) # [LAW] Redraws the player at the current position
     
