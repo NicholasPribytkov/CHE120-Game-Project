@@ -11,7 +11,7 @@ def Game(score):
     scorestr='SCORE:'+ str(score)
     # randit=[1,2,3,4,5]
     newscore = 0
-    newscore += order_match(output, order)
+    newscore += order_points
 
     #Instructions for each order
     NaClin = '''You are making Sodium Chloride:
