@@ -2,17 +2,16 @@ import pygame  # LAW main game functions
 import random  # LAW This is used to randomize things
 import pygame.freetype  # LAW This is used for the text on the screen
 import time  # LAW used for text showing up after a certain time has passed
-import Order_Match_Function
+import Order_Match
 
 # LAW Initializes the Pygame
 def Game(score):
     pygame.init()
     
     scorestr='SCORE:'+ str(score)
-    randit=[1,2,3,4,5]
-    newscore= order_match(output, order)
-#EDIT
-
+    # randit=[1,2,3,4,5]
+    newscore = 0
+    newscore += order_match(output, order)
 
     #Instructions for each order
     NaClin = '''You are making Sodium Chloride:
@@ -229,6 +228,7 @@ def Game(score):
              screen.blit(Flask, flask_position)  # Draw Flask in the new position
              pygame.display.update()
              pygame.time.wait(500)
+
              Game(newscore)
              
         pygame.display.update()
@@ -241,6 +241,5 @@ def Game(score):
 Game(0)
 
 
-while True:
-    print("GOOOOOOOSE")
+
 
