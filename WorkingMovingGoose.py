@@ -217,11 +217,11 @@ def Runtime(player, position, OrderA, OrderB, show, Order1, Order2):
                     # [KY] - initialize fail message 1 (Accuracy below 30) 
                     # confirm how to display text (introduced colour white at the top)   
                     fail_msg1 = font.render('GAME OVER: Accuracy below 30', True, WHITE, BLACK) 
-                    fail_msg1_Rect = fail_msg1.get_rect()
-                    fail_msg1_Rect.center = (1300//2, 800//2)        
+                    #fail_msg1_Rect = fail_msg1.get_rect()
+                    #fail_msg1_Rect.center = (1300//2, 800//2)        
                             
                     if order_accuracy < 30:   
-                        screen.blit(fail_msg1, background)
+                        screen.blit(fail_msg1, (0,0))
                         pygame.display.update()
                         #running = False
                         #pygame.quit() # [KY] Closes window if the user fails the game (accuracy is below 30)(placeholder until we have play again feature)
