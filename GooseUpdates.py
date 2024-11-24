@@ -16,10 +16,11 @@ import os # [NP] This is used to obtain the parent (folder) file directory path 
 
 # IMPORT PY FILES =============================================================
 
-from Order_Match import order_match
-from Accuracy_Function import accuracy_as_percent
-import Molecules as mol
-import Mixing_Function as mix
+from Point_Function import point_calculation # [NP] This function allows the game to calculate how many points should be given per order fulfillment
+from Accuracy_Function import accuracy_as_percent # [NP] This function determines how accurate the player is when filling out an order
+import Molecules as mol # [NP] This file allows us to store and retrieve various values from element classes
+import Mixing_Function as mix # [NP] This function lets the player mix chemicals
+
 # ASSET CALL ==================================================================
 
 parentfile = os.path.dirname(__file__) # [NP] Find the path for the parent folder
@@ -74,7 +75,8 @@ NaOHin = '''You are making Sodium Hydroxide:
             - Step 3
             - Step 4'''
 
-ChemicalCorrelator = {"H2O (Water)": FlaskC, "NH3OH (Ammonia Hydroxide)": FlaskB, "NH4 (Ammonium)": FlaskB} # [NP] Matches each chemical with an appropriate sprite
+ChemicalCorrelator = {"H2O (Water)": FlaskC, "NH4OH (Ammonium Hydroxide)": FlaskB, "NH3 (Ammonia)": FlaskB} # [NP] Matches each chemical with an appropriate sprite
+ChemicalClassification = {"H2O (Water)": mol.H2O(), "NH4OH (Ammonium Hydroxide)": mol.NH4OH(), "NH3 (Ammonia)": mol.NH3(), "NaCl (Sodium Chloride)": mol.NaCl(), "HCl (Hydrochloric Acid)": mol.HCl(), "NaOH (Sodium Hydroxide)": mol.NaOH()}
 Pics = [HAM, MAT, PEND, NICK, ZINO, HELMET, KATIE, LAW, GLIAM, KAMKAR]  # [LAW] List of geese
 instruction_list=[NaClin,NH3in,NH4OHin,HClin,NaOHin] # [NP] Puts all the instructions into a list which has the same indexes as Chemicals for its respective elements
 DefaultFlask = FlaskA # [NP] If a chemical isn't found in the correlator above, it will be matched with this flask instead
@@ -82,7 +84,6 @@ DefaultFlask = FlaskA # [NP] If a chemical isn't found in the correlator above, 
 # GAME SETTINGS ===============================================================
 
 QuantityRange = [1, 999] # [NP] The range of quantity of a chemical a customer can order
-Bounty = 100 # [NP] How much score you get for completing an order
 TextFont = "Calibri" # [NP] The font the game uses
 CustomerSpeed = 1 # [NP] Multiplies the customer walk speed
 FlaskSpeed = 1 # [NP] Multiplies the flask conveyor speed
@@ -103,10 +104,10 @@ SmallButtonSize = [1000, 650, 250, 60]
 
 # [KY] Position and center buttons that show up if the player has failed the game
 playagain_rect = pygame.Rect(650, 400, 700, 100) 
-playagain.center = (650, 400)
+playagain_rect.center = (650, 400)
 
 endgame_rect = pygame.Rect(650, 400, 700, 100)
-endgame.center = (650, 550)
+endgame_rect.center = (650, 550)
 
 # UI POSITION VALUES ==========================================================
 
@@ -138,7 +139,8 @@ BLACK = (0, 0, 0)
 RED = (225, 0, 0)
 BLUE = (0, 0, 225)
 WHITE = (255, 255, 255)
-# Defining Buttons ============================================================
+
+# DEFINING BUTTONS ============================================================
 
 class Button(): # [LG] Creats a class of Button allowing easy button creation that does functions
     def __init__(self, x, y, width, height, buttonText='Button', onclickFunction=None, onePress=False): # [LG] takes in position and size of button, then what function to run on press, and if its a press and hold button
@@ -256,11 +258,11 @@ def add_mols_Ca(obj):
     print(obj.Quantity)
     return obj
 
-# Function to activate mixing sequence ========================================
+# THE MIX FUNCTION ============================================================
 
 def mixing_sequence(): # [LG] function that returns true to allow if statement to attivate after button press
     return True
-
+        
 # STARTING THE GAME ===========================================================
 
 def Game(Score): # [NP] The score parameter determines how much score the player has
@@ -275,7 +277,9 @@ def Game(Score): # [NP] The score parameter determines how much score the player
         lines = text.split('\n')
         for i, line in enumerate(lines):
             font2.render_to(screen, (x, y + i * 30), line.strip(), BLACK)
+            
 # CREATING DISPENSING BUTTONS =================================================
+
     H_button = Button(400,200,200,50, "add Hydrogen", add_mols_H, True) #[LG] Creates buttons that can be held, that run the listed function when pressed
     C_button = Button(400,400,200,50, "add Carbon", add_mols_C, True)
     O_button = Button(400,600,200,50, "add Oxygen", add_mols_O, True)
@@ -284,6 +288,7 @@ def Game(Score): # [NP] The score parameter determines how much score the player
     Cl_button = Button(500,600,200,50, "add Chlorine", add_mols_Cl, True)
     Ca_button = Button(500,800,200,50, "add Calcium", add_mols_Ca, True)
     Mixing_button = Button(700,400,200,50, "mixing time", mixing_sequence, False)
+    
 # START-UP ====================================================================
 
     pygame.init() # [NP] Initializes the game
@@ -313,13 +318,12 @@ def Game(Score): # [NP] The score parameter determines how much score the player
     button_rect = pygame.Rect(BigButtonSize[0], BigButtonSize[1], BigButtonSize[2], BigButtonSize[3])  # [LAW] Position the first button
     button_rect2 = pygame.Rect(SmallButtonSize[0], SmallButtonSize[1], SmallButtonSize[2], SmallButtonSize[3])  # [LAW] Position the second button
     
-    
 # DEFINE MIXING VARIABLES =====================================================
+
     mix1 = None
     mix2 = None
     mix3 = None
     
-
 # ALTERING SCALES =============================================================
 
     speech_bubble = pygame.transform.scale(speech_bubble, SpeechBubbleSize)  # [LAW] Resizes the speech bubble
@@ -341,6 +345,9 @@ def Game(Score): # [NP] The score parameter determines how much score the player
     Move_Flask = False
     FlaskMoves = MoveFrames // FlaskSpeed
     mixing_start = False
+    OrderOver = False
+    OrderPoints = 0
+    
 # CUSTOMER CREATION ===========================================================
     
     GooseCustomer = random.choice(Pics)  # [LAW] Selects a random goose
@@ -386,6 +393,7 @@ def Game(Score): # [NP] The score parameter determines how much score the player
         clock.tick(CustomerFrameRate)  # [LAW] Sets the frame rate
         
 # ELEMENT LIST INITALIZATION ==================================================
+
     elementlist = [mol.H, mol.C, mol.O, mol.N, mol.Na, mol.Cl, mol.Ca] # [LG] Creates a list of all basic element types
     processlist_mix1 = [H_button.process(mix1), C_button.process(mix1),O_button.process(mix1), # [LG] creates a list of the process commands for the buttons in the same order as basic element type list
      N_button.process(mix1), Na_button.process(mix1),Cl_button.process(mix1),Ca_button.process(mix1)]
@@ -413,42 +421,27 @@ def Game(Score): # [NP] The score parameter determines how much score the player
         pygame.draw.rect(screen, RED, button_rect2) # [LAW] Creates a red button
         font.render_to(screen, QuitButtonFontPos, "Quit", WHITE) # [LAW] Adds white text
         
-# PYGAME EVENTS ===============================================================        
-        
+# PYGAME EVENTS AND BUTTON EVENTS =============================================        
+
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False  # [LAW] Allows the window to be closed
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 mouse_pos = pygame.mouse.get_pos()
-                if button_rect.collidepoint(mouse_pos):  # [LAW] Check if the click is within the first button's area
+                if button_rect.collidepoint(mouse_pos) and not show_machine:  # [LAW] Check if the click is within the first button's area
                     Show_things = True
                     Show_FlaskCOPY = True
-                elif button_rect2.collidepoint(mouse_pos):  # [LAW] Check if the click is within the second button's area
+                elif button_rect2.collidepoint(mouse_pos) and not show_machine:  # [LAW] Check if the click is within the second button's area
                     running = False
-                elif click_area3.collidepoint(mouse_pos): # [NP] Check if the DONE button has been clicked
+                elif click_area3.collidepoint(mouse_pos) and show_machine: # [NP] Check if the DONE button has been clicked
                     FlaskPhase = 0
                     Move_Flask = True
                     Show_FlaskCOPY = False
-                 
-# POINT ASSIGNMENT/FAIL CHECK =============================================================
-                 
-                    Order_points = order_match(output, orderchem) # [KY] Assign points per order to order_match function call
-                    Order_accuracy = accuracy_as_percent(output, orderchem) # [KY] Assign accuracy of order to accuracy_as_percent function call
-                    # FIRST ARGUMENT MUST CORRESPOND TO WHAT THE MIXING FUNCTION RETURNS
-
-                    if Order_accuracy < 30: #[KY] Checks if the accuracy of the amount produced compared to the amount ordered is below 30 (fail condition)
-                        pygame.draw.rect(screen, BLUE, playagain_rect) #[KY] draws play again and quit game buttons (rects are defined above)
-                        pygame.draw.rect(screen, RED, endgame_rect) 
-                        font.render_to(screen, (360, 385), "Game Over - Click to Play Again", WHITE)
-                        font.render_to(screen, (550, 535), "Quit Game", WHITE)
-                     
-                        pygame.display.update()
-                     
-                        if playagain_rect.collidepoint(mouse_pos):
-                            Game(0) #CHECK IF POINTS RESET
-                         
-                        if endgame_rect.collidepoint(mouse_pos): #[KY] close window if 'quit game' is pressed
-                            running = False 
+                elif playagain_rect.collidepoint(mouse_pos) and OrderOver:
+                    Game(0)
+                elif endgame_rect.collidepoint(mouse_pos) and OrderOver:
+                    running = False
+                    
 # UI CONDITIONALS =============================================================
                     
         # [LAW] Checks if enough seconds have elapsed
@@ -465,20 +458,31 @@ def Game(Score): # [NP] The score parameter determines how much score the player
             display_text(OrderA, OrderAFontPos[0], OrderAFontPos[1])  # [LAW] Adjusts text position to fit inside the speech bubble
             display_text(OrderB, OrderBFontPos[0], OrderBFontPos[1])
 
+        if show_instructions: display_text2(instructions, InstructionsFontPos[0], InstructionsFontPos[1]) # [NP] Show the instructions
+
+        if Show_FlaskCOPY: screen.blit(FlaskCOPY, FlaskCopyPos)  # [LAW] Display FlaskCOPY at the new position
+        
         if show_machine:
+            
+# STARTING UP THE MIXER =======================================================
+        
             if mixing_start:
                 mix1 = mix.Mixing(mix1, mix2, mix3)
                 mix2 = None
                 mix3 = None
                 mixing_start = False
-            H_button.draw() #[LG] Draws all the buttons on screen
-            C_button.draw()
-            O_button.draw()
-            N_button.draw()
-            Na_button.draw()
-            Cl_button.draw()
-            Ca_button.draw()
-            Mixing_button.draw()
+                
+                
+            H_button.draw(screen) #[LG] Draws all the buttons on screen
+            C_button.draw(screen)
+            O_button.draw(screen)
+            N_button.draw(screen)
+            Na_button.draw(screen)
+            Cl_button.draw(screen)
+            Ca_button.draw(screen)
+            Mixing_button.draw(screen)
+            
+
             if mix1 == None: # [LG] Checks if mix1 has been filled yet
                 mix1 = H_button.process(mix1) # [LG] Checks if buttons are pressed, and adds the mol type to mix1 if pressed
                 mix1 = C_button.process(mix1)
@@ -512,15 +516,16 @@ def Game(Score): # [NP] The score parameter determines how much score the player
                     if type(elementlist[i] == type(mix3)): # [LG] same for mix3
                         mix3 = processlist_mix3[i]
             mixing_start = Mixing_button.process(None)
+            
+# STARTING UP THE MACHINE =====================================================
+
             # [LAW] Draw the mix Click Area
             pygame.draw.rect(screen, BLACK, click_area3)
             
             screen.blit(Machine, MachinePos) # [NP] Show the machine
             font.render_to(screen, ScorePos, scorestr, WHITE) # [NP] Show the player's current score
         
-        if show_instructions: display_text2(instructions, InstructionsFontPos[0], InstructionsFontPos[1]) # [NP] Show the instructions
-        
-        if Show_FlaskCOPY: screen.blit(FlaskCOPY, FlaskCopyPos)  # [LAW] Display FlaskCOPY at the new position
+# FLASK CONVEYOR BELT =========================================================
             
         if Move_Flask:
             
@@ -528,7 +533,20 @@ def Game(Score): # [NP] The score parameter determines how much score the player
                 flask_position.move_ip(FlaskOffset * FlaskSpeed, 0)  # [LAW] Move the Flask
                 screen.blit(Flask, flask_position)  # [LAW] Draw Flask in the new position
             else:
-                Game(Score + Order_points)
+                
+# POINT ASSIGNMENT/FAIL CHECK =================================================
+       
+                Order_accuracy = accuracy_as_percent(orderchem, orderchem, ordercapacity, ordercapacity) # [KY] Assign accuracy of order to accuracy_as_percent function call
+                OrderPoints = point_calculation(ChemicalClassification[orderchem].Difficulty, Order_accuracy / 100, 0) # [KY] Assign points per order to order_match function call
+                
+                if Order_accuracy < 30: # [KY] Checks if the accuracy of the amount produced compared to the amount ordered is below 30 (fail condition)
+                    pygame.draw.rect(screen, BLUE, playagain_rect) # [KY] draws play again and quit game buttons (rects are defined above)
+                    pygame.draw.rect(screen, RED, endgame_rect) 
+                    font.render_to(screen, (360, 385), "Game Over - Click to Play Again", WHITE)
+                    font.render_to(screen, (550, 535), "Quit Game", WHITE)
+                    OrderOver = True
+                else:
+                     Game(Score + OrderPoints)
             FlaskPhase += 1
             
 # RESETTING THE LOOP ==========================================================

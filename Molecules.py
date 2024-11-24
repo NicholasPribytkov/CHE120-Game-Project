@@ -44,7 +44,7 @@ class Ca:
 # COMPOUNDS ===================================================================
 
 # [NP] Compounds are listed here:
-class H20:
+class H2O:
     Name = "H2O"
     Ingredients = ["H", "O"]
     Quantity = 0
@@ -80,12 +80,14 @@ class NH3:
     Name = "Ammonia"
     Ingredients = ['N', 'H']
     Quantity = 0
+    Difficulty = 40
     Ingredient_ratios = [3, 1/3]
 
 class NH4OH:
     Name = "Ammonium Hydroxide"
     Ingredients = ['NH3', 'H', "O"]
     Quantity = 0
+    Difficulty = 50
     Ingredient_ratios = [1, 2, 1]
     
 # END =========================================================================
