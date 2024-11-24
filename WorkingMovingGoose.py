@@ -18,7 +18,7 @@ import os # [NP] This is used to obtain the parent (folder) file directory path 
 
 # [KY] import functions
 from CustomerOrders import CustomerOrder # [NP] This file helps the customers formulate their order
-from Order_Match import ordermatch # [KY] This function returns points per order
+from Order_Match import order_match # [KY] This function returns points per order
 from Accuracy_Function import accuracy_as_percent # [KY] This function returns amount accuracy as a percent by comparing the quantities of chem ordered and chem produced, to be used in fail system)
 from Mixing_Function import Mixing
 
