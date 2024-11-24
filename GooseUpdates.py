@@ -18,7 +18,8 @@ import os # [NP] This is used to obtain the parent (folder) file directory path 
 
 from Order_Match import order_match
 from Accuracy_Function import accuracy_as_percent
-
+import Molecules as mol
+import Mixing_Function as mix
 # ASSET CALL ==================================================================
 
 parentfile = os.path.dirname(__file__) # [NP] Find the path for the parent folder
@@ -81,6 +82,7 @@ DefaultFlask = FlaskA # [NP] If a chemical isn't found in the correlator above, 
 # GAME SETTINGS ===============================================================
 
 QuantityRange = [1, 999] # [NP] The range of quantity of a chemical a customer can order
+Bounty = 100 # [NP] How much score you get for completing an order
 TextFont = "Calibri" # [NP] The font the game uses
 CustomerSpeed = 1 # [NP] Multiplies the customer walk speed
 FlaskSpeed = 1 # [NP] Multiplies the flask conveyor speed
@@ -129,6 +131,127 @@ BLACK = (0, 0, 0)
 RED = (225, 0, 0)
 BLUE = (0, 0, 225)
 WHITE = (255, 255, 255)
+# Defining Buttons ============================================================
+
+class Button(): # [LG] Creats a class of Button allowing easy button creation that does functions
+    def __init__(self, x, y, width, height, buttonText='Button', onclickFunction=None, onePress=False): # [LG] takes in position and size of button, then what function to run on press, and if its a press and hold button
+        self.x = x 
+        self.y = y
+        self.width = width
+        self.height = height
+        self.buttonText = buttonText
+        self.onclickFunction = onclickFunction
+        self.onePress = onePress
+        self.alreadyPressed = False
+
+        self.fillColors = { #[LG] Provides default colors for button states
+            'normal': '#ffffff',
+            'hover': '#666666',
+            'pressed': '#333333',
+        }
+        self.buttonSurface = pygame.Surface((self.width, self.height)) #[LG] Defines visual area of button
+        self.buttonRect = pygame.Rect(self.x, self.y, self.width, self.height) # [LG] Defines where button is interactable
+
+    def draw(self, screen): #[LG] function to draw the button on the screen
+        pygame.draw.rect(screen, pygame.Color(self.fillColors['normal']), (self.x, self.y, self.width, self.height))
+        font = pygame.freetype.SysFont("Calibri", 30)
+        font.render_to(screen, (self.x + 10, self.y + 10), self.buttonText, pygame.Color('black'))
+
+    def process(self, storage): #[LG] function to be ran in loop, actualy checks if button is clicked, and runs given function on click, also stores a value to be acted on (used for adding mols to mix)
+        if storage == None:
+                   
+            mousePos = pygame.mouse.get_pos()
+            self.buttonSurface.fill(self.fillColors['normal'])
+            if self.buttonRect.collidepoint(mousePos):
+                self.buttonSurface.fill(self.fillColors['hover'])
+                if pygame.mouse.get_pressed(num_buttons=3)[0]:
+                    self.buttonSurface.fill(self.fillColors['pressed'])
+                    if self.onePress:
+                        self.onclickFunction()
+                    elif not self.alreadyPressed:
+                        self.onclickFunction()
+                        self.alreadyPressed = True
+                else:
+                    self.alreadyPressed = False
+            return storage
+        else:   
+            mousePos = pygame.mouse.get_pos()
+            self.buttonSurface.fill(self.fillColors['normal'])
+            if self.buttonRect.collidepoint(mousePos):
+                self.buttonSurface.fill(self.fillColors['hover'])
+                if pygame.mouse.get_pressed(num_buttons=3)[0]:
+                    self.buttonSurface.fill(self.fillColors['pressed'])
+                    if self.onePress:
+                        storage = self.onclickFunction(storage)
+                    elif not self.alreadyPressed:
+                        storage = self.onclickFunction(storage)
+                        self.alreadyPressed = True
+                else:
+                    self.alreadyPressed = False
+            return storage
+        
+# DEFINING FUNCTIONS FOR DISPENSING SUBSTANCES ================================
+
+def add_mols_H(obj): #[LG] Runs a function that inputs an object, then either assigns it to an element and or adds 0.5 to it for each time its pressed
+    if obj == None:
+        obj = mol.H()
+    obj.Quantity += 0.5 #[LG] If button held adds 0.5 per frame
+    print(obj)
+    print(obj.Quantity)
+    return obj
+
+def add_mols_C(obj):
+    if obj == None:
+        obj = mol.C()
+    obj.Quantity += 0.5
+    print(obj)
+    print(obj.Quantity)
+    return obj
+
+def add_mols_O(obj):
+    if obj == None:
+        obj = mol.O()
+    obj.Quantity += 0.5
+    print(obj)
+    print(obj.Quantity)
+    return obj
+
+def add_mols_N(obj):
+    if obj == None:
+        obj = mol.N()
+    obj.Quantity += 0.5
+    print(obj)
+    print(obj.Quantity)
+    return obj
+
+def add_mols_Na(obj):
+    if obj == None:
+        obj = mol.Na()
+    obj.Quantity += 0.5
+    print(obj)
+    print(obj.Quantity)
+    return obj
+
+def add_mols_Cl(obj):
+    if obj == None:
+        obj = mol.Cl()
+    obj.Quantity += 0.5
+    print(obj)
+    print(obj.Quantity)
+    return obj
+
+def add_mols_Ca(obj):
+    if obj == None:
+        obj = mol.Ca()
+    obj.Quantity += 0.5
+    print(obj)
+    print(obj.Quantity)
+    return obj
+
+# Function to activate mixing sequence ========================================
+
+def mixing_sequence(): # [LG] function that returns true to allow if statement to attivate after button press
+    return True
 
 # STARTING THE GAME ===========================================================
 
@@ -144,7 +267,15 @@ def Game(Score): # [NP] The score parameter determines how much score the player
         lines = text.split('\n')
         for i, line in enumerate(lines):
             font2.render_to(screen, (x, y + i * 30), line.strip(), BLACK)
-
+# CREATING DISPENSING BUTTONS =================================================
+    H_button = Button(400,200,200,50, "add Hydrogen", add_mols_H, True) #[LG] Creates buttons that can be held, that run the listed function when pressed
+    C_button = Button(400,400,200,50, "add Carbon", add_mols_C, True)
+    O_button = Button(400,600,200,50, "add Oxygen", add_mols_O, True)
+    N_button = Button(400,800,200,50, "add Nitrogen", add_mols_N, True)
+    Na_button = Button(500,400,200,50, "add Sodium", add_mols_Na, True)
+    Cl_button = Button(500,600,200,50, "add Chlorine", add_mols_Cl, True)
+    Ca_button = Button(500,800,200,50, "add Calcium", add_mols_Ca, True)
+    Mixing_button = Button(700,400,200,50, "mixing time", mixing_sequence, False)
 # START-UP ====================================================================
 
     pygame.init() # [NP] Initializes the game
@@ -174,6 +305,13 @@ def Game(Score): # [NP] The score parameter determines how much score the player
     button_rect = pygame.Rect(BigButtonSize[0], BigButtonSize[1], BigButtonSize[2], BigButtonSize[3])  # [LAW] Position the first button
     button_rect2 = pygame.Rect(SmallButtonSize[0], SmallButtonSize[1], SmallButtonSize[2], SmallButtonSize[3])  # [LAW] Position the second button
     
+    
+# DEFINE MIXING VARIABLES =====================================================
+    mix1 = None
+    mix2 = None
+    mix3 = None
+    
+
 # ALTERING SCALES =============================================================
 
     speech_bubble = pygame.transform.scale(speech_bubble, SpeechBubbleSize)  # [LAW] Resizes the speech bubble
@@ -194,7 +332,7 @@ def Game(Score): # [NP] The score parameter determines how much score the player
     Show_FlaskCOPY = False
     Move_Flask = False
     FlaskMoves = MoveFrames // FlaskSpeed
-    
+    mixing_start = False
 # CUSTOMER CREATION ===========================================================
     
     GooseCustomer = random.choice(Pics)  # [LAW] Selects a random goose
@@ -238,7 +376,16 @@ def Game(Score): # [NP] The score parameter determines how much score the player
         screen.blit(player, position)  # [LAW] Draws the player in the new position
         pygame.display.update()  # [LAW] Updates the display
         clock.tick(CustomerFrameRate)  # [LAW] Sets the frame rate
-
+        
+# ELEMENT LIST INITALIZATION ==================================================
+    elementlist = [mol.H, mol.C, mol.O, mol.N, mol.Na, mol.Cl, mol.Ca] # [LG] Creates a list of all basic element types
+    processlist_mix1 = [H_button.process(mix1), C_button.process(mix1),O_button.process(mix1), # [LG] creates a list of the process commands for the buttons in the same order as basic element type list
+     N_button.process(mix1), Na_button.process(mix1),Cl_button.process(mix1),Ca_button.process(mix1)]
+    processlist_mix2 = [H_button.process(mix2), C_button.process(mix2),O_button.process(mix2), # [LG] creates a list of the process commands for the buttons in the same order as basic element type list
+     N_button.process(mix2), Na_button.process(mix2),Cl_button.process(mix2),Ca_button.process(mix2)]
+    processlist_mix3 = [H_button.process(mix3), C_button.process(mix3),O_button.process(mix3), # [LG] creates a list of the process commands for the buttons in the same order as basic element type list
+     N_button.process(mix3), Na_button.process(mix3),Cl_button.process(mix3),Ca_button.process(mix3)]
+    
 # PYGAME UPDATE LOOP ==========================================================
 
     start_time = time.time() # [LAW] Initializes timer
@@ -274,10 +421,6 @@ def Game(Score): # [NP] The score parameter determines how much score the player
                     FlaskPhase = 0
                     Move_Flask = True
                     Show_FlaskCOPY = False
-                 
-                    # [KY] - call order match and accuracy as percent functions from Order_Match
-                    Order_points = order_match(output, orderchem) 
-                    Order_accuracy = accuracy_as_percent(output, orderchem)
                     
 # UI CONDITIONALS =============================================================
                     
@@ -296,7 +439,52 @@ def Game(Score): # [NP] The score parameter determines how much score the player
             display_text(OrderB, OrderBFontPos[0], OrderBFontPos[1])
 
         if show_machine:
-            
+            if mixing_start:
+                mix1 = mix.Mixing(mix1, mix2, mix3)
+                mix2 = None
+                mix3 = None
+                mixing_start = False
+            H_button.draw() #[LG] Draws all the buttons on screen
+            C_button.draw()
+            O_button.draw()
+            N_button.draw()
+            Na_button.draw()
+            Cl_button.draw()
+            Ca_button.draw()
+            Mixing_button.draw()
+            if mix1 == None: # [LG] Checks if mix1 has been filled yet
+                mix1 = H_button.process(mix1) # [LG] Checks if buttons are pressed, and adds the mol type to mix1 if pressed
+                mix1 = C_button.process(mix1)
+                mix1 = O_button.process(mix1)
+                mix1 = N_button.process(mix1)
+                mix1 = Na_button.process(mix1)
+                mix1 = Cl_button.process(mix1)
+                mix1 = Ca_button.process(mix1)
+            elif mix2 == None: # [LG] Checks if mix2 has been filled yet
+                mix2 = H_button.process(mix2) # [LG] Checks if buttons are pressed, and adds the mol type to mix2 if pressed
+                mix2 = C_button.process(mix2)
+                mix2 = O_button.process(mix2)
+                mix2 = N_button.process(mix2)
+                mix2 = Na_button.process(mix2)
+                mix2 = Cl_button.process(mix2)
+                mix2 = Ca_button.process(mix2)
+            elif mix3 == None: # [LG] Checks if mix3 has been filled yet
+                mix3 = H_button.process(mix3) # [LG] Checks if buttons are pressed, and adds the mol type to mix3 if pressed
+                mix3 = C_button.process(mix3)
+                mix3 = O_button.process(mix3)
+                mix3 = N_button.process(mix3)
+                mix3 = Na_button.process(mix3)
+                mix3 = Cl_button.process(mix3)
+                mix3 = Ca_button.process(mix3)
+            else: # [LG] Logic for if all three have been filled already
+                for i in range (len(elementlist)):
+                    if type(elementlist[i] == type(mix1)): #[LG] checks every element in the list against the mix type, if match is found, allows the process for only that type to be appled to the object
+                        mix1 = processlist_mix1[i]
+                    if type(elementlist[i] == type(mix2)):# [LG] same for mix2
+                        mix2 = processlist_mix2[i]
+                    if type(elementlist[i] == type(mix3)): # [LG] same for mix3
+                        mix3 = processlist_mix3[i]
+            mixing_start = Mixing_button.process(None)
             # [LAW] Draw the mix Click Area
             pygame.draw.rect(screen, BLACK, click_area3)
             
@@ -330,5 +518,4 @@ def Game(Score): # [NP] The score parameter determines how much score the player
 Game(0) # [NP] Plays The Game.
 
 # END =========================================================================
-
 
