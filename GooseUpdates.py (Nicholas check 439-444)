@@ -445,7 +445,7 @@ def Game(Score): # [NP] The score parameter determines how much score the player
                         pygame.display.update()
                      
                         if playagain_rect.collidepoint(mouse_pos):
-                            #ALLOW PLAY AGAIN + RESET POINTS
+                            Game(0) #CHECK IF POINTS RESET
                          
                         if endgame_rect.collidepoint(mouse_pos): #[KY] close window if 'quit game' is pressed
                             running = False 
