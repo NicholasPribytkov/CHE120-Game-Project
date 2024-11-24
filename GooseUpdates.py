@@ -102,11 +102,11 @@ BigButtonSize = [1000, 750, 250, 60]
 SmallButtonSize = [1000, 650, 250, 60]
 
 # [KY] Position and center buttons that show up if the player has failed the game
-FailMsg_rect = pygame.Rect(650, 400, 700, 100) 
-FailMsg.center = (650, 400)
+playagain_rect = pygame.Rect(650, 400, 700, 100) 
+playagain.center = (650, 400)
 
-EndGame_rect = pygame.Rect(650, 400, 700, 100)
-EndGame.center = (650, 550)
+endgame_rect = pygame.Rect(650, 400, 700, 100)
+endgame.center = (650, 550)
 
 # UI POSITION VALUES ==========================================================
 
@@ -424,7 +424,7 @@ def Game(Score): # [NP] The score parameter determines how much score the player
                     Show_things = True
                     Show_FlaskCOPY = True
                 elif button_rect2.collidepoint(mouse_pos):  # [LAW] Check if the click is within the second button's area
-                    running= False
+                    running = False
                 elif click_area3.collidepoint(mouse_pos): # [NP] Check if the DONE button has been clicked
                     FlaskPhase = 0
                     Move_Flask = True
@@ -435,11 +435,19 @@ def Game(Score): # [NP] The score parameter determines how much score the player
                     Order_points = order_match(output, orderchem) # [KY] Assign points per order to order_match function call
                     Order_accuracy = accuracy_as_percent(output, orderchem) # [KY] Assign accuracy of order to accuracy_as_percent function call
 
-                    if Order_accuracy < 30:
+                    if Order_accuracy < 30: #[KY] Checks if the accuracy of the amount produced compared to the amount ordered is below 30 (fail condition)
+                        pygame.draw.rect(screen, BLUE, playagain_rect) #[KY] draws play again and quit game buttons (rects are defined above)
+                        pygame.draw.rect(screen, RED, endgame_rect) 
+                        display_text("Game Over - Click to Play Again", 360, 385)
+                        display_text("Quit Game", 550, 535)
                      
+                        pygame.display.update()
+                     
+                        if playagain_rect.collidepoint(mouse_pos):
+                            #ALLOW PLAY AGAIN + RESET POINTS
                          
-                         
-                    
+                        if endgame_rect.collidepoint(mouse_pos): #[KY] close window if 'quit game' is pressed
+                            running = False 
 # UI CONDITIONALS =============================================================
                     
         # [LAW] Checks if enough seconds have elapsed
