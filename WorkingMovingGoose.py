@@ -166,6 +166,12 @@ def display_text2(text, x, y):
 for i in range(len(Chemicals)): # [LAW] Finds what Chemical has been ordered and asigns the instructions to the instructions variable
     if Chemicals[i] in orderchem:
         instructions= instruction_list[i]
+
+# FAIL MESSAGE ===========================================================
+
+fail_msgrect = pygame.Rect(1300/2, 800/2, 300, 100)
+fail_msgrect.center = (1300/2, 800/2)
+
 # MOVING THE FLASK ============================================================
 def MoveFlask():
     for x in range(100):
@@ -214,18 +220,11 @@ def Runtime(player, position, OrderA, OrderB, show, Order1, Order2):
                     order_points = order_match(output, orderchem) 
                     order_accuracy = accuracy_as_percent(output, orderchem)
 
-                    # [KY] - initialize fail message 1 (Accuracy below 30) 
-                    # confirm how to display text onto existing surface/or onto filled surface
-                    # Define new button        
-                            
-                    fail_msg1 = font.render('GAME OVER: Accuracy below 30%', True, (225, 255, 255)) 
-                    #display_text('GAME OVER: Accuracy below 30', (0,0))
-                    #fail_msg1_Rect = fail_msg1.get_rect()
-                    #fail_msg1_Rect.center = (1300//2, 800//2)        
+                    # [KY] - initialize fail message 1 (Accuracy below 30)     
                             
                     if order_accuracy < 30:   
-                        screen.fill((0, 0, 0))
-                        screen.blit(fail_msg1, (0,0))
+                        pygame.draw.rect(screen, BLUE, fail_msgrect)
+                        display_text("Game Over", 550, 385)
                         pygame.display.update()
                         #running = False
                         #pygame.quit() # [KY] Closes window if the user fails the game (accuracy is below 30)(placeholder until we have play again feature)
