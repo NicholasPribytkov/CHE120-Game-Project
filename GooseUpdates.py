@@ -101,6 +101,13 @@ SmallCLSize = [700, 50, 50, 50]
 BigButtonSize = [1000, 750, 250, 60]
 SmallButtonSize = [1000, 650, 250, 60]
 
+# [KY] Position and center buttons that show up if the player has failed the game
+FailMsgSize = pygame.Rect(650, 400, 700, 100) 
+FailMsgSize.center = (650, 400)
+
+EndGameSize = pygame.Rect(650, 400, 700, 100)
+EndGameSize.center = (650, 550)
+
 # UI POSITION VALUES ==========================================================
 
 FlaskStartingPos = (850, 90)
@@ -511,7 +518,7 @@ def Game(Score): # [NP] The score parameter determines how much score the player
                 flask_position.move_ip(FlaskOffset * FlaskSpeed, 0)  # [LAW] Move the Flask
                 screen.blit(Flask, flask_position)  # [LAW] Draw Flask in the new position
             else:
-                Game(Score + Bounty)
+                Game(Score + Order_points)
             FlaskPhase += 1
             
 # RESETTING THE LOOP ==========================================================
