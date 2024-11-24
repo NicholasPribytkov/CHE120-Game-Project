@@ -4,7 +4,7 @@
 # the UI and both calls and runs game mechanic files.
 
 # Author: Liam Westlake =======================================================
-# Editor(s): Nicholas Pribytkov, Katie Yu =====================================
+# Editor(s): Nicholas Pribytkov, Katie Yu, Liam Gleason =======================
 
 # IMPORT PYTHON MODULES =======================================================
 
@@ -174,6 +174,7 @@ class Button(): # [LG] Creats a class of Button allowing easy button creation th
                 else:
                     self.alreadyPressed = False
             return storage
+         
         else:   
             mousePos = pygame.mouse.get_pos()
             self.buttonSurface.fill(self.fillColors['normal'])
