@@ -2,7 +2,9 @@ import pygame  # LAW main game functions
 import random  # LAW This is used to randomize things
 import pygame.freetype  # LAW This is used for the text on the screen
 import time  # LAW used for text showing up after a certain time has passed
-import Order_Match
+
+from Order_Match import order_match
+from Accuracy_Function import accuracy_as_percent
 
 # LAW Initializes the Pygame
 def Game(score):
