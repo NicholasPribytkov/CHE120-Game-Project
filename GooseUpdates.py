@@ -275,6 +275,10 @@ def Game(Score): # [NP] The score parameter determines how much score the player
                     FlaskPhase = 0
                     Move_Flask = True
                     Show_FlaskCOPY = False
+                 
+                    # [KY] - call order match and accuracy as percent functions from Order_Match
+                    Bounty = order_match(output, orderchem) 
+                    Order_Accuracy = accuracy_as_percent(output, orderchem)
                     
 # UI CONDITIONALS =============================================================
                     
