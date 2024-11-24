@@ -1,3 +1,4 @@
+
 # GOOSE UPDATES ===============================================================
 
 # This file acts as the backbone of the game. It's main purpose is to update
@@ -258,6 +259,8 @@ def add_mols_Ca(obj):
     print(obj.Quantity)
     return obj
 
+def isthesame(mix, obj): # [LG] tells if the mix and object are the same type
+    return type(mix) == type(obj)
 # THE MIX FUNCTION ============================================================
 
 def mixing_sequence(): # [LG] function that returns true to allow if statement to attivate after button press
@@ -482,39 +485,111 @@ def Game(Score): # [NP] The score parameter determines how much score the player
             Ca_button.draw(screen)
             Mixing_button.draw(screen)
             
-
-            if mix1 == None: # [LG] Checks if mix1 has been filled yet
-                mix1 = H_button.process(mix1) # [LG] Checks if buttons are pressed, and adds the mol type to mix1 if pressed
-                mix1 = C_button.process(mix1)
-                mix1 = O_button.process(mix1)
-                mix1 = N_button.process(mix1)
-                mix1 = Na_button.process(mix1)
-                mix1 = Cl_button.process(mix1)
-                mix1 = Ca_button.process(mix1)
-            elif mix2 == None: # [LG] Checks if mix2 has been filled yet
-                mix2 = H_button.process(mix2) # [LG] Checks if buttons are pressed, and adds the mol type to mix2 if pressed
-                mix2 = C_button.process(mix2)
-                mix2 = O_button.process(mix2)
-                mix2 = N_button.process(mix2)
-                mix2 = Na_button.process(mix2)
-                mix2 = Cl_button.process(mix2)
-                mix2 = Ca_button.process(mix2)
-            elif mix3 == None: # [LG] Checks if mix3 has been filled yet
-                mix3 = H_button.process(mix3) # [LG] Checks if buttons are pressed, and adds the mol type to mix3 if pressed
-                mix3 = C_button.process(mix3)
-                mix3 = O_button.process(mix3)
-                mix3 = N_button.process(mix3)
-                mix3 = Na_button.process(mix3)
-                mix3 = Cl_button.process(mix3)
-                mix3 = Ca_button.process(mix3)
-            else: # [LG] Logic for if all three have been filled already
-                for i in range (len(elementlist)):
-                    if type(elementlist[i] == type(mix1)): #[LG] checks every element in the list against the mix type, if match is found, allows the process for only that type to be appled to the object
-                        mix1 = processlist_mix1[i]
-                    if type(elementlist[i] == type(mix2)):# [LG] same for mix2
-                        mix2 = processlist_mix2[i]
-                    if type(elementlist[i] == type(mix3)): # [LG] same for mix3
-                        mix3 = processlist_mix3[i]
+            #Hydrgoen
+            if isthesame(mix1,mol.H): # [LG] Checks if mix1 is already H
+                H_button.process(mix1)
+            elif isthesame(mix2,mol.H): # [LG] Checks if mix2 is already H
+                H_button.process(mix2)
+            elif isthesame(mix3,mol.H): # [LG] Checks if mix3 is already H
+                H_button.process(mix3)
+            else: # [LG] if none of the mixes are already H
+                if mix1 == None: # [LG] if mix1 is unassigned, assign it to H
+                    H_button.process(mix1)
+                elif mix2 == None: # [LG] if mix2 is unassigned, assign it to H
+                    H_button.process(mix2)
+                elif mix3 == None: # [LG] if mix3 is unassigned, assign it to H
+                    H_button.process(mix3)
+                # [LG] If mix1-mix3 are filled, and non are H, dont process the button
+                
+            #Carbon [LG] same for Carbon
+            if isthesame(mix1,mol.C):
+                C_button.process(mix1)
+            elif isthesame(mix2,mol.C):
+                C_button.process(mix2)
+            elif isthesame(mix3,mol.C):
+                C_button.process(mix3)
+            else:
+                if mix1 == None:
+                    C_button.process(mix1)
+                elif mix2 == None:
+                    C_button.process(mix2)
+                elif mix3 == None:
+                    C_button.process(mix3)
+                
+            #Oxygen [LG] same for oxygen
+            if isthesame(mix1,mol.O):
+                O_button.process(mix1)
+            elif isthesame(mix2,mol.O):
+                O_button.process(mix2)
+            elif isthesame(mix3,mol.O):
+                O_button.process(mix3)
+            else:
+                if mix1 == None:
+                    O_button.process(mix1)
+                elif mix2 == None:
+                    O_button.process(mix2)
+                elif mix3 == None:
+                    O_button.process(mix3)
+                
+            #Nitrogen [LG] same for Nitrogen
+            if isthesame(mix1,mol.N):
+                N_button.process(mix1)
+            elif isthesame(mix2,mol.N):
+                N_button.process(mix2)
+            elif isthesame(mix3,mol.N):
+                N_button.process(mix3)
+            else:
+                if mix1 == None:
+                    N_button.process(mix1)
+                elif mix2 == None:
+                    N_button.process(mix2)
+                elif mix3 == None:
+                    N_button.process(mix3)
+                
+            #Sodium [LG] same for Sodium
+            if isthesame(mix1,mol.Na):
+                Na_button.process(mix1)
+            elif isthesame(mix2,mol.Na):
+                Na_button.process(mix2)
+            elif isthesame(mix3,mol.Na):
+                Na_button.process(mix3)
+            else:
+                if mix1 == None:
+                    Na_button.process(mix1)
+                elif mix2 == None:
+                    Na_button.process(mix2)
+                elif mix3 == None:
+                    Na_button.process(mix3)
+                
+            #Chlorine [LG] same for Chlorine
+            if isthesame(mix1,mol.Cl):
+                Cl_button.process(mix1)
+            elif isthesame(mix2,mol.Cl):
+                Cl_button.process(mix2)
+            elif isthesame(mix3,mol.Cl):
+                Cl_button.process(mix3)
+            else:
+                if mix1 == None:
+                    Cl_button.process(mix1)
+                elif mix2 == None:
+                    Cl_button.process(mix2)
+                elif mix3 == None:
+                    Cl_button.process(mix3)
+                
+            #Calcium [LG] same for Calcium
+            if isthesame(mix1,mol.Ca):
+                Ca_button.process(mix1)
+            elif isthesame(mix2,mol.Ca):
+                Ca_button.process(mix2)
+            elif isthesame(mix3,mol.Ca):
+                Ca_button.process(mix3)
+            else:
+                if mix1 == None:
+                    Ca_button.process(mix1)
+                elif mix2 == None:
+                    Ca_button.process(mix2)
+                elif mix3 == None:
+                    Ca_button.process(mix3)
             mixing_start = Mixing_button.process(None)
             
 # STARTING UP THE MACHINE =====================================================
