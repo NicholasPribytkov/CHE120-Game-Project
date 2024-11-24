@@ -9,6 +9,7 @@ Created on Sat Nov 23 19:02:15 2024
 def accuracy_as_percent(chem_in, chem_desired):
         if type(chem_in) == type(chem_desired):
             accuracy_percent = (abs((chem_in.Quantity - chem_desired.Quantity)/chem_desired.Quantity))*100
+        # [KY] absolute value accounts for the user making either too much or too little of a chemical
 
         else:
             # [KY] If the player makes the completely wrong chemical, accuracy is automatically 0
