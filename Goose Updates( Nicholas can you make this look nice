@@ -9,10 +9,12 @@ from Accuracy_Function import accuracy_as_percent
 # LAW Initializes the Pygame
 def Game(score):
     pygame.init()
-    
+
+
     scorestr='SCORE:'+ str(score)
     # randit=[1,2,3,4,5]
     newscore = 0
+    order_points = order_match()
     newscore += order_points
 
     #Instructions for each order
