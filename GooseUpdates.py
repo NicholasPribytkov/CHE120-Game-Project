@@ -102,11 +102,11 @@ BigButtonSize = [1000, 750, 250, 60]
 SmallButtonSize = [1000, 650, 250, 60]
 
 # [KY] Position and center buttons that show up if the player has failed the game
-FailMsgSize = pygame.Rect(650, 400, 700, 100) 
-FailMsgSize.center = (650, 400)
+FailMsg_rect = pygame.Rect(650, 400, 700, 100) 
+FailMsg.center = (650, 400)
 
-EndGameSize = pygame.Rect(650, 400, 700, 100)
-EndGameSize.center = (650, 550)
+EndGame_rect = pygame.Rect(650, 400, 700, 100)
+EndGame.center = (650, 550)
 
 # UI POSITION VALUES ==========================================================
 
