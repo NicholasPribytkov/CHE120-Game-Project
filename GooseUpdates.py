@@ -81,7 +81,6 @@ DefaultFlask = FlaskA # [NP] If a chemical isn't found in the correlator above, 
 # GAME SETTINGS ===============================================================
 
 QuantityRange = [1, 999] # [NP] The range of quantity of a chemical a customer can order
-Bounty = 100 # [NP] How much score you get for completing an order
 TextFont = "Calibri" # [NP] The font the game uses
 CustomerSpeed = 1 # [NP] Multiplies the customer walk speed
 FlaskSpeed = 1 # [NP] Multiplies the flask conveyor speed
@@ -277,8 +276,8 @@ def Game(Score): # [NP] The score parameter determines how much score the player
                     Show_FlaskCOPY = False
                  
                     # [KY] - call order match and accuracy as percent functions from Order_Match
-                    Bounty = order_match(output, orderchem) 
-                    Order_Accuracy = accuracy_as_percent(output, orderchem)
+                    Order_points = order_match(output, orderchem) 
+                    Order_accuracy = accuracy_as_percent(output, orderchem)
                     
 # UI CONDITIONALS =============================================================
                     
