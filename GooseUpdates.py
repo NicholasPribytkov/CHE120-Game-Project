@@ -421,6 +421,15 @@ def Game(Score): # [NP] The score parameter determines how much score the player
                     FlaskPhase = 0
                     Move_Flask = True
                     Show_FlaskCOPY = False
+                 
+# POINT ASSIGNMENT/FAIL CHECK =============================================================
+                 
+                    Order_points = order_match(output, orderchem) # [KY] Assign points per order to order_match function call
+                    Order_accuracy = accuracy_as_percent(output, orderchem) # [KY] Assign accuracy of order to accuracy_as_percent function call
+
+                    if Order_accuracy < 30:
+                         
+                         
                     
 # UI CONDITIONALS =============================================================
                     
