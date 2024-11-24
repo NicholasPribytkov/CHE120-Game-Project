@@ -438,8 +438,8 @@ def Game(Score): # [NP] The score parameter determines how much score the player
                     if Order_accuracy < 30: #[KY] Checks if the accuracy of the amount produced compared to the amount ordered is below 30 (fail condition)
                         pygame.draw.rect(screen, BLUE, playagain_rect) #[KY] draws play again and quit game buttons (rects are defined above)
                         pygame.draw.rect(screen, RED, endgame_rect) 
-                        display_text("Game Over - Click to Play Again", 360, 385)
-                        display_text("Quit Game", 550, 535)
+                        font.render_to(screen, (360, 385), "Game Over - Click to Play Again", WHITE)
+                        font.render_to(screen, (550, 535), "Quit Game", WHITE)
                      
                         pygame.display.update()
                      
