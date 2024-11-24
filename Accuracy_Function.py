@@ -18,4 +18,4 @@ def accuracy_as_percent(chem_in, chem_desired):
         return accuracy_percent
         
         # [KY] Accuracy is used to determine a fail in the main file
-        # [KY] Using a separate function to return accuracy allows us to call the specific function from this file to us
+        # [KY] Using a separate function to return accuracy allows us to call the specific function from this file to use in main
