@@ -436,6 +436,7 @@ def Game(Score): # [NP] The score parameter determines how much score the player
                     Order_accuracy = accuracy_as_percent(output, orderchem) # [KY] Assign accuracy of order to accuracy_as_percent function call
 
                     if Order_accuracy < 30:
+                     
                          
                          
                     
