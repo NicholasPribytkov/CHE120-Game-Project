@@ -169,7 +169,7 @@ for i in range(len(Chemicals)): # [LAW] Finds what Chemical has been ordered and
 
 # FAIL MESSAGE ===========================================================
 
-fail_msgrect = pygame.Rect(1300/2, 800/2, 300, 100)
+fail_msgrect = pygame.Rect(1300/2, 800/2, 300, 100) # [KY] Center the rectangle that displays the fail message
 fail_msgrect.center = (1300/2, 800/2)
 
 # MOVING THE FLASK ============================================================
