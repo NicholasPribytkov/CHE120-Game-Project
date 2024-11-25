@@ -69,7 +69,7 @@ class NaOH:
     Name = "Sodium Hydroxide"
     Ingredients = ['NaCl', 'H', "O"]
     Quantity = 0
-    Difficulty = 30
+    Difficulty = 40
     Ingredient_ratios = [1, 2, 1]
     
 # POLYATOMICS =================================================================
@@ -80,14 +80,14 @@ class NH3:
     Name = "Ammonia"
     Ingredients = ['N', 'H']
     Quantity = 0
-    Difficulty = 40
+    Difficulty = 30
     Ingredient_ratios = [3, 1/3]
 
 class NH4OH:
     Name = "Ammonium Hydroxide"
     Ingredients = ['NH3', 'H', "O"]
     Quantity = 0
-    Difficulty = 50
+    Difficulty = 40
     Ingredient_ratios = [1, 2, 1]
     
 # END =========================================================================
