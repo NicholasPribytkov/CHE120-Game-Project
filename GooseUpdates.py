@@ -46,7 +46,7 @@ FlaskC = r"" + parentfile + "\Images\FlaskC.png"
 
 # OPTION LISTINGS =============================================================
 
-Greeting = ['Hello', 'Hows it going', 'Hi']  # [LAW] List of greetings
+Greeting = ['Hello', 'How's it going', 'Hi']  # [LAW] List of greetings
 Chemicals = ["NaCl (Sodium Chloride)", "NH3 (Ammonia)", "NH4OH (Ammonium Hydroxide)", "HCl (Hydrochloric Acid)", "NaOH (Sodium Hydroxide)"] # [NP] List of possible chemicals to receive in an order
 
  # [LAW] Instructions for each order
