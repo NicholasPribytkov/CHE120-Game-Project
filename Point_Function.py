@@ -9,7 +9,7 @@
 
 def point_calculation(Difficulty, accuracy_fraction, time_difference):
     
-    points_per_order = int((Difficulty + time_difference)/(accuracy_fraction))
+    points_per_order = int((Difficulty + time_difference)*(accuracy_fraction))
     # [KY] Sample points_per_order = (20 + (20-10))*0.8 = 24
 
     return points_per_order
