@@ -69,7 +69,7 @@ class NaOH:
     Name = "Sodium Hydroxide"
     Ingredients = ['NaCl', 'H', 'O']
     Quantity = 0
-    Difficulty = 30 #[KY] two ingredients you have to make, 1:1 ratio
+    Difficulty = 30 #[KY] one ingredient you have to make, 1:1:1 ratio
     Ingredient_ratios = [1, 1, 1]
     
 # POLYATOMICS =================================================================
