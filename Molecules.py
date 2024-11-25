@@ -48,29 +48,29 @@ class H2O:
     Name = "H2O"
     Ingredients = ['H', 'O']
     Quantity = 0
-    Difficulty = 10
+    Difficulty = 20 #[KY] two basic ingredients, non 1:1 ratio
     Ingredient_ratios = [2,1/2]
     
 class NaCl:
     Name = "Sodium Chlorine"
     Ingredients = ['Na', 'Cl']
     Quantity = 0
-    Difficulty = 10
+    Difficulty = 10 #[KY] two basic ingredients, 1:1 ratio
     Ingredient_ratios = [1, 1]
     
 class HCl:
     Name = "Hydrochloric Acid"
     Ingredients = ['H', 'Cl']
     Quantity = 0
-    Difficulty = 20
+    Difficulty = 10 #[KY] two basic ingredients, 1:1 ratio
     Ingredient_ratios = [1, 1]
     
 class NaOH:
     Name = "Sodium Hydroxide"
     Ingredients = ['NaCl', 'H2O']
     Quantity = 0
-    Difficulty = 40
-    Ingredient_ratios = [1, 2, 1]
+    Difficulty = 30 #[KY] two ingredients you have to make, 1:1 ratio
+    Ingredient_ratios = [1, 1]
     
 # POLYATOMICS =================================================================
     
@@ -80,14 +80,14 @@ class NH3:
     Name = "Ammonia"
     Ingredients = ['N', 'H']
     Quantity = 0
-    Difficulty = 30
+    Difficulty = 20 #[KY] two basic ingredients, non 1:1 ratio
     Ingredient_ratios = [3, 1/3]
 
 class NH4OH:
     Name = "Ammonium Hydroxide"
     Ingredients = ['NH3', 'H2O']
     Quantity = 0
-    Difficulty = 40
-    Ingredient_ratios = [1, 2, 1]
+    Difficulty = 30 #[KY] two ingredients you have to make, 1:1 ratio
+    Ingredient_ratios = [1, 1]
     
 # END =========================================================================
