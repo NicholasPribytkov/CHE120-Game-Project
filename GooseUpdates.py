@@ -448,7 +448,8 @@ def Game(Score): # [NP] The score parameter determines how much score the player
 # UI CONDITIONALS =============================================================
                     
         # [LAW] Checks if enough seconds have elapsed
-        if time.time() - start_time >= CustomerSpeakTimer: show_speech_bubble = True
+        if time.time() - start_time >= CustomerSpeakTimer: 
+         show_speech_bubble = True
             
         if Show_things: # [NP] Switches from Customer view to Machine view
             show_speech_bubble = False
@@ -460,10 +461,6 @@ def Game(Score): # [NP] The score parameter determines how much score the player
             screen.blit(speech_bubble, SpeechBubblePos)  # [LAW] Positions the speech bubble
             display_text(OrderA, OrderAFontPos[0], OrderAFontPos[1])  # [LAW] Adjusts text position to fit inside the speech bubble
             display_text(OrderB, OrderBFontPos[0], OrderBFontPos[1])
-
-        if show_instructions: display_text2(instructions, InstructionsFontPos[0], InstructionsFontPos[1]) # [NP] Show the instructions
-
-        if Show_FlaskCOPY: screen.blit(FlaskCOPY, FlaskCopyPos)  # [LAW] Display FlaskCOPY at the new position
         
         if show_machine:
             
@@ -599,9 +596,16 @@ def Game(Score): # [NP] The score parameter determines how much score the player
             
             screen.blit(Machine, MachinePos) # [NP] Show the machine
             font.render_to(screen, ScorePos, scorestr, WHITE) # [NP] Show the player's current score
-        
-# FLASK CONVEYOR BELT =========================================================
-            
+# FLASK AND INSTRUCTIONS ONTOP OF MACHINE ======================================
+
+        if show_instructions: 
+          display_text2(instructions, InstructionsFontPos[0], InstructionsFontPos[1]) # [NP] Show the instructions
+
+        if Show_FlaskCOPY: 
+          screen.blit(FlaskCOPY, FlaskCopyPos)  # [LAW] Display FlaskCOPY at the new position
+         
+ # FLASK CONVEYOR BELT =========================================================
+     
         if Move_Flask:
             
             if FlaskPhase < FlaskMoves:
