@@ -49,7 +49,7 @@ class H2O:
     Ingredients = ["H", "O"]
     Quantity = 0
     Difficulty = 10
-    Ingredients_ratios = [1,1/2]
+    Ingredient_ratios = [2,1/2]
     
 class NaCl:
     Name = "Sodium Chlorine"
