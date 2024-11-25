@@ -46,7 +46,7 @@ class Ca:
 # [NP] Compounds are listed here:
 class H2O:
     Name = "H2O"
-    Ingredients = ["H", "O"]
+    Ingredients = ['H', 'O']
     Quantity = 0
     Difficulty = 10
     Ingredient_ratios = [2,1/2]
@@ -67,7 +67,7 @@ class HCl:
     
 class NaOH:
     Name = "Sodium Hydroxide"
-    Ingredients = ['NaCl', 'H', "O"]
+    Ingredients = ['NaCl', 'H2O']
     Quantity = 0
     Difficulty = 40
     Ingredient_ratios = [1, 2, 1]
@@ -85,7 +85,7 @@ class NH3:
 
 class NH4OH:
     Name = "Ammonium Hydroxide"
-    Ingredients = ['NH3', 'H', "O"]
+    Ingredients = ['NH3', 'H2O']
     Quantity = 0
     Difficulty = 40
     Ingredient_ratios = [1, 2, 1]
