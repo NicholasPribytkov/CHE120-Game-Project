@@ -610,7 +610,23 @@ def Game(Score): # [NP] The score parameter determines how much score the player
         
 # FLASK CONVEYOR BELT =========================================================
             
-        if show_instructions: display_text2(instructions, InstructionsFontPos[0], InstructionsFontPos[1]) # [NP] Show the instructions
+        if show_instructions: 
+          display_text2(instructions, InstructionsFontPos[0], InstructionsFontPos[1]) # [NP] Show the instructions
+          if mix1 != None:
+                element1 = mix1.Name
+                Moly1= str(element1)+ ' = ' + str(mix1.Quantity)
+                display_text2(Moly1,25,150)# Currently place holder will need to be repositioned
+                pygame.display.update()
+           if mix2 != None:
+                element2 = mix2.Name
+                Moly2= str(element2)+ ' = ' + str(mix2.Quantity)
+                display_text2(Moly2,225,150)
+                pygame.display.update()
+           if mix3 != None:
+                element3 = mix3.Name
+                Moly3= str(element3)+ ' = ' + str(mix3.Quantity)
+                display_text2(Moly3,425,150)
+                pygame.display.update()
 
         if Show_FlaskCOPY: screen.blit(FlaskCOPY, FlaskCopyPos)  # [LAW] Display FlaskCOPY at the new position
 
