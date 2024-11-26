@@ -6,11 +6,13 @@
 
 # Parent: main ================================================================
 # Author: Nicholas Pribytkov ==================================================
+# Editors: Katie Yu ===========================================================
 
 # ELEMENTS ====================================================================
 
 # [NP] Elements are listed here:
 
+#[KY] quantities are zero by default
 class H:
     Name = "H"
     Quantity = 0
