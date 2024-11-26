@@ -12,6 +12,7 @@
 
 # [NP] Elements are listed here:
 
+#3 recipe difficulty levels
 #[KY] quantities are zero by default
 class H:
     Name = "H"
