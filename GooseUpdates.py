@@ -36,7 +36,7 @@ HELMET = r"" + parentfile + "\Images\GooseEng.png"
 KATIE = r"" + parentfile + "\Images\GooseKY.png"
 LAW = r"" + parentfile + "\Images\GooseLAW.png"
 GLIAM = r"" + parentfile + "\Images\GooseLG.png"
-KAMKAR = r"" + parentfile + "\Images\Machine.png"
+KAMKAR = r"" + parentfile + "\Images\Kamkar.png"
 Speech = r"" + parentfile + "\Images\Speech-Bubble.png"
 Background = r"" + parentfile + "\Images\Background.png"
 MachineIMG = r"" + parentfile + "\Images\Machine.png"
@@ -168,24 +168,24 @@ class Button(): # [LG] Creats a class of Button allowing easy button creation th
         font.render_to(screen, (self.x + 10, self.y + 10), self.buttonText, pygame.Color('black'))
 
     def process(self, storage): #[LG] function to be ran in loop, actualy checks if button is clicked, and runs given function on click, also stores a value to be acted on (used for adding mols to mix)
-        if storage == None:
-                   
-            mousePos = pygame.mouse.get_pos()
-            self.buttonSurface.fill(self.fillColors['normal'])
-            if self.buttonRect.collidepoint(mousePos):
-                self.buttonSurface.fill(self.fillColors['hover'])
-                if pygame.mouse.get_pressed(num_buttons=3)[0]:
-                    self.buttonSurface.fill(self.fillColors['pressed'])
-                    if self.onePress:
-                        self.onclickFunction()
-                    elif not self.alreadyPressed:
-                        self.onclickFunction()
-                        self.alreadyPressed = True
-                else:
-                    self.alreadyPressed = False
-            return storage
+        #if storage == False:
+         #   print("storage False")
+          #  mousePos = pygame.mouse.get_pos()
+           # self.buttonSurface.fill(self.fillColors['normal'])
+            #if self.buttonRect.collidepoint(mousePos):
+             #   self.buttonSurface.fill(self.fillColors['hover'])
+              #  if pygame.mouse.get_pressed(num_buttons=3)[0]:
+               #     self.buttonSurface.fill(self.fillColors['pressed'])
+                #    if self.onePress:
+                 #       self.onclickFunction()
+                  #  elif not self.alreadyPressed:
+                   #     self.onclickFunction()
+                    #    self.alreadyPressed = True
+         #       else:
+         #           self.alreadyPressed = False
+          #  return storage
          
-        else:   
+        #else:   
             mousePos = pygame.mouse.get_pos()
             self.buttonSurface.fill(self.fillColors['normal'])
             if self.buttonRect.collidepoint(mousePos):
@@ -206,7 +206,7 @@ class Button(): # [LG] Creats a class of Button allowing easy button creation th
 def add_mols_H(obj): #[LG] Runs a function that inputs an object, then either assigns it to an element and or adds 0.5 to it for each time its pressed
     if obj == None:
         obj = mol.H()
-    obj.Quantity += 0.5 #[LG] If button held adds 0.5 per frame
+    obj.Quantity += 0.5#[LG] If button held adds 0.5 per frame
     print(obj)
     print(obj.Quantity)
     return obj
@@ -448,8 +448,7 @@ def Game(Score): # [NP] The score parameter determines how much score the player
 # UI CONDITIONALS =============================================================
                     
         # [LAW] Checks if enough seconds have elapsed
-        if time.time() - start_time >= CustomerSpeakTimer: 
-         show_speech_bubble = True
+        if time.time() - start_time >= CustomerSpeakTimer:  show_speech_bubble = True
             
         if Show_things: # [NP] Switches from Customer view to Machine view
             show_speech_bubble = False
@@ -461,13 +460,27 @@ def Game(Score): # [NP] The score parameter determines how much score the player
             screen.blit(speech_bubble, SpeechBubblePos)  # [LAW] Positions the speech bubble
             display_text(OrderA, OrderAFontPos[0], OrderAFontPos[1])  # [LAW] Adjusts text position to fit inside the speech bubble
             display_text(OrderB, OrderBFontPos[0], OrderBFontPos[1])
+
+       
         
         if show_machine:
             
 # STARTING UP THE MIXER =======================================================
         
+            
+        
+            
+# STARTING UP THE MACHINE =====================================================
+
+            # [LAW] Draw the mix Click Area
+            pygame.draw.rect(screen, BLACK, click_area3)
+            
+            screen.blit(Machine, MachinePos) # [NP] Show the machine
+            font.render_to(screen, ScorePos, scorestr, WHITE) # [NP] Show the player's current score
+            
             if mixing_start:
                 mix1 = mix.Mixing(mix1, mix2, mix3)
+                
                 mix2 = None
                 mix3 = None
                 mixing_start = False
@@ -481,131 +494,126 @@ def Game(Score): # [NP] The score parameter determines how much score the player
             Cl_button.draw(screen)
             Ca_button.draw(screen)
             Mixing_button.draw(screen)
-            
+            #===========================================
+            """
+            function keeps assigning new object to mix1 than mix2 then mix3
+            even if mix1 is already defined as that object
+            """
+            #===========================================
             #Hydrgoen
-            if isthesame(mix1,mol.H): # [LG] Checks if mix1 is already H
-                H_button.process(mix1)
+            if type(mix1) == type(mol.H): # [LG] Checks if mix1 is already H
+                mix1 = H_button.process(mix1)
             elif isthesame(mix2,mol.H): # [LG] Checks if mix2 is already H
-                H_button.process(mix2)
+                mix2 = H_button.process(mix2)
             elif isthesame(mix3,mol.H): # [LG] Checks if mix3 is already H
-                H_button.process(mix3)
+                mix3 = H_button.process(mix3)
             else: # [LG] if none of the mixes are already H
                 if mix1 == None: # [LG] if mix1 is unassigned, assign it to H
-                    H_button.process(mix1)
+                    mix1 = H_button.process(mix1)
                 elif mix2 == None: # [LG] if mix2 is unassigned, assign it to H
-                    H_button.process(mix2)
+                    mix2 = H_button.process(mix2)
                 elif mix3 == None: # [LG] if mix3 is unassigned, assign it to H
-                    H_button.process(mix3)
+                    mix3 = H_button.process(mix3)
                 # [LG] If mix1-mix3 are filled, and non are H, dont process the button
                 
             #Carbon [LG] same for Carbon
             if isthesame(mix1,mol.C):
-                C_button.process(mix1)
+                mix1 = C_button.process(mix1)
             elif isthesame(mix2,mol.C):
-                C_button.process(mix2)
+                mix2 = C_button.process(mix2)
             elif isthesame(mix3,mol.C):
-                C_button.process(mix3)
+                mix3 = C_button.process(mix3)
             else:
                 if mix1 == None:
-                    C_button.process(mix1)
+                    mix1 = C_button.process(mix1)
                 elif mix2 == None:
-                    C_button.process(mix2)
+                    mix2 = C_button.process(mix2)
                 elif mix3 == None:
-                    C_button.process(mix3)
+                    mix3 = C_button.process(mix3)
                 
             #Oxygen [LG] same for oxygen
             if isthesame(mix1,mol.O):
-                O_button.process(mix1)
+                mix1 = O_button.process(mix1)
             elif isthesame(mix2,mol.O):
-                O_button.process(mix2)
+                mix2 = O_button.process(mix2)
             elif isthesame(mix3,mol.O):
-                O_button.process(mix3)
+                mix3 = O_button.process(mix3)
             else:
                 if mix1 == None:
-                    O_button.process(mix1)
+                    mix1 = O_button.process(mix1)
                 elif mix2 == None:
-                    O_button.process(mix2)
+                    mix2 = O_button.process(mix2)
                 elif mix3 == None:
-                    O_button.process(mix3)
+                    mix3 = O_button.process(mix3)
                 
             #Nitrogen [LG] same for Nitrogen
             if isthesame(mix1,mol.N):
-                N_button.process(mix1)
+                mix1 = N_button.process(mix1)
             elif isthesame(mix2,mol.N):
-                N_button.process(mix2)
+                mix2 = N_button.process(mix2)
             elif isthesame(mix3,mol.N):
-                N_button.process(mix3)
+                mix3 = N_button.process(mix3)
             else:
                 if mix1 == None:
-                    N_button.process(mix1)
+                    mix1 = N_button.process(mix1)
                 elif mix2 == None:
-                    N_button.process(mix2)
+                    mix2 = N_button.process(mix2)
                 elif mix3 == None:
-                    N_button.process(mix3)
+                    mix3 = N_button.process(mix3)
                 
             #Sodium [LG] same for Sodium
             if isthesame(mix1,mol.Na):
-                Na_button.process(mix1)
+                mix1 = Na_button.process(mix1)
             elif isthesame(mix2,mol.Na):
-                Na_button.process(mix2)
+                mix2 = Na_button.process(mix2)
             elif isthesame(mix3,mol.Na):
-                Na_button.process(mix3)
+                mix3 = Na_button.process(mix3)
             else:
                 if mix1 == None:
-                    Na_button.process(mix1)
+                    mix1 = Na_button.process(mix1)
                 elif mix2 == None:
-                    Na_button.process(mix2)
+                    mix2 = Na_button.process(mix2)
                 elif mix3 == None:
-                    Na_button.process(mix3)
+                    mix3 = Na_button.process(mix3)
                 
             #Chlorine [LG] same for Chlorine
             if isthesame(mix1,mol.Cl):
-                Cl_button.process(mix1)
+                mix1 = Cl_button.process(mix1)
             elif isthesame(mix2,mol.Cl):
-                Cl_button.process(mix2)
+                mix2 = Cl_button.process(mix2)
             elif isthesame(mix3,mol.Cl):
-                Cl_button.process(mix3)
+                mix3 = Cl_button.process(mix3)
             else:
                 if mix1 == None:
-                    Cl_button.process(mix1)
+                    mix1 = Cl_button.process(mix1)
                 elif mix2 == None:
-                    Cl_button.process(mix2)
+                    mix2 = Cl_button.process(mix2)
                 elif mix3 == None:
-                    Cl_button.process(mix3)
+                    mix3 = Cl_button.process(mix3)
                 
             #Calcium [LG] same for Calcium
             if isthesame(mix1,mol.Ca):
-                Ca_button.process(mix1)
+                mix1 = Ca_button.process(mix1)
             elif isthesame(mix2,mol.Ca):
-                Ca_button.process(mix2)
+                mix2 = Ca_button.process(mix2)
             elif isthesame(mix3,mol.Ca):
-                Ca_button.process(mix3)
+                mix3 = Ca_button.process(mix3)
             else:
                 if mix1 == None:
-                    Ca_button.process(mix1)
+                    mix1 = Ca_button.process(mix1)
                 elif mix2 == None:
-                    Ca_button.process(mix2)
+                    mix2 = Ca_button.process(mix2)
                 elif mix3 == None:
-                    Ca_button.process(mix3)
-            mixing_start = Mixing_button.process(None)
+                    mix3 = Ca_button.process(mix3)
+            mixing_start = Mixing_button.process(False)
             
-# STARTING UP THE MACHINE =====================================================
-
-            # [LAW] Draw the mix Click Area
-            pygame.draw.rect(screen, BLACK, click_area3)
+        
+# FLASK CONVEYOR BELT =========================================================
             
-            screen.blit(Machine, MachinePos) # [NP] Show the machine
-            font.render_to(screen, ScorePos, scorestr, WHITE) # [NP] Show the player's current score
-# FLASK AND INSTRUCTIONS ONTOP OF MACHINE ======================================
+        if show_instructions: display_text2(instructions, InstructionsFontPos[0], InstructionsFontPos[1]) # [NP] Show the instructions
 
-        if show_instructions: 
-          display_text2(instructions, InstructionsFontPos[0], InstructionsFontPos[1]) # [NP] Show the instructions
+        if Show_FlaskCOPY: screen.blit(FlaskCOPY, FlaskCopyPos)  # [LAW] Display FlaskCOPY at the new position
 
-        if Show_FlaskCOPY: 
-          screen.blit(FlaskCOPY, FlaskCopyPos)  # [LAW] Display FlaskCOPY at the new position
-         
- # FLASK CONVEYOR BELT =========================================================
-     
         if Move_Flask:
             
             if FlaskPhase < FlaskMoves:
