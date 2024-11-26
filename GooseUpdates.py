@@ -613,9 +613,9 @@ def Game(Score): # [NP] The score parameter determines how much score the player
         if show_instructions: 
           display_text2(instructions, InstructionsFontPos[0], InstructionsFontPos[1]) # [NP] Show the instructions
           if mix1 != None:
-                element1 = mix1.Name
+                element1 = mix1.Name # [LAW] If either of the mixes are non-zero values the mols will be displayed
                 Moly1= str(element1)+ ' = ' + str(mix1.Quantity)
-                display_text2(Moly1,25,150)# Currently place holder will need to be repositioned
+                display_text2(Moly1,25,150)
                 pygame.display.update()
            if mix2 != None:
                 element2 = mix2.Name
