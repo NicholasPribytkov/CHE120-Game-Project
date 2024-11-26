@@ -155,9 +155,9 @@ class Button(): # [LG] Creats a class of Button allowing easy button creation th
         self.alreadyPressed = False
 
         self.fillColors = { #[LG] Provides default colors for button states
-            'normal': '#ffffff',
-            'hover': '#666666',
-            'pressed': '#333333',
+            'normal': (255,0,0),
+            'hover': (0,255,0),
+            'pressed': (0,0,255),
         }
         self.buttonSurface = pygame.Surface((self.width, self.height)) #[LG] Defines visual area of button
         self.buttonRect = pygame.Rect(self.x, self.y, self.width, self.height) # [LG] Defines where button is interactable
@@ -168,28 +168,26 @@ class Button(): # [LG] Creats a class of Button allowing easy button creation th
         font.render_to(screen, (self.x + 10, self.y + 10), self.buttonText, pygame.Color('black'))
 
     def process(self, storage): #[LG] function to be ran in loop, actualy checks if button is clicked, and runs given function on click, also stores a value to be acted on (used for adding mols to mix)
-        #if storage == False:
-         #   print("storage False")
-          #  mousePos = pygame.mouse.get_pos()
-           # self.buttonSurface.fill(self.fillColors['normal'])
-            #if self.buttonRect.collidepoint(mousePos):
-             #   self.buttonSurface.fill(self.fillColors['hover'])
-              #  if pygame.mouse.get_pressed(num_buttons=3)[0]:
-               #     self.buttonSurface.fill(self.fillColors['pressed'])
-                #    if self.onePress:
-                 #       self.onclickFunction()
-                  #  elif not self.alreadyPressed:
-                   #     self.onclickFunction()
-                    #    self.alreadyPressed = True
-         #       else:
-         #           self.alreadyPressed = False
-          #  return storage
-         
-        #else:   
+        if storage == False:
             mousePos = pygame.mouse.get_pos()
             self.buttonSurface.fill(self.fillColors['normal'])
             if self.buttonRect.collidepoint(mousePos):
-                self.buttonSurface.fill(self.fillColors['hover'])
+                if pygame.mouse.get_pressed(num_buttons=3)[0]:
+                    print("its mixin time")
+                    self.buttonSurface.fill(self.fillColors['pressed'])
+                    if self.onePress:
+                        self.onclickFunction()
+                    elif not self.alreadyPressed:
+                        self.onclickFunction()
+                        self.alreadyPressed = True
+                    else:
+                        self.alreadyPressed = False
+            return storage
+         
+        else:   
+            mousePos = pygame.mouse.get_pos()
+            self.buttonSurface.fill(self.fillColors['normal'])
+            if self.buttonRect.collidepoint(mousePos):
                 if pygame.mouse.get_pressed(num_buttons=3)[0]:
                     self.buttonSurface.fill(self.fillColors['pressed'])
                     if self.onePress:
@@ -197,8 +195,8 @@ class Button(): # [LG] Creats a class of Button allowing easy button creation th
                     elif not self.alreadyPressed:
                         storage = self.onclickFunction(storage)
                         self.alreadyPressed = True
-                else:
-                    self.alreadyPressed = False
+                    else:
+                        self.alreadyPressed = False
             return storage
         
 # DEFINING FUNCTIONS FOR DISPENSING SUBSTANCES ================================
@@ -283,14 +281,14 @@ def Game(Score): # [NP] The score parameter determines how much score the player
             
 # CREATING DISPENSING BUTTONS =================================================
 
-    H_button = Button(400,200,200,50, "add Hydrogen", add_mols_H, True) #[LG] Creates buttons that can be held, that run the listed function when pressed
-    C_button = Button(400,400,200,50, "add Carbon", add_mols_C, True)
-    O_button = Button(400,600,200,50, "add Oxygen", add_mols_O, True)
-    N_button = Button(400,800,200,50, "add Nitrogen", add_mols_N, True)
-    Na_button = Button(500,400,200,50, "add Sodium", add_mols_Na, True)
-    Cl_button = Button(500,600,200,50, "add Chlorine", add_mols_Cl, True)
-    Ca_button = Button(500,800,200,50, "add Calcium", add_mols_Ca, True)
-    Mixing_button = Button(700,400,200,50, "mixing time", mixing_sequence, False)
+    H_button = Button(200,100,60,60, "H", add_mols_H, True) #[LG] Creates buttons that can be held, that run the listed function when pressed
+    C_button = Button(160,300,70,70, "C", add_mols_C, True)
+    O_button = Button(80,75,70,60, "O", add_mols_O, True)
+    N_button = Button(15,75,70,60, "N", add_mols_N, True)
+    Na_button = Button(500,400,60,60, "Na", add_mols_Na, True)
+    Cl_button = Button(500,600,60,60, "Cl", add_mols_Cl, True)
+    Ca_button = Button(500,800,60,60, "Ca", add_mols_Ca, True)
+    Mixing_button = Button(700,600,50,50, "mixing time", mixing_sequence, False)
     
 # START-UP ====================================================================
 
@@ -480,7 +478,8 @@ def Game(Score): # [NP] The score parameter determines how much score the player
             
             if mixing_start:
                 mix1 = mix.Mixing(mix1, mix2, mix3)
-                
+                print(mix1)
+                print(mix1.Quantity)
                 mix2 = None
                 mix3 = None
                 mixing_start = False
@@ -501,11 +500,11 @@ def Game(Score): # [NP] The score parameter determines how much score the player
             """
             #===========================================
             #Hydrgoen
-            if type(mix1) == type(mol.H): # [LG] Checks if mix1 is already H
+            if isthesame(mix1,mol.H()): # [LG] Checks if mix1 is already H
                 mix1 = H_button.process(mix1)
-            elif isthesame(mix2,mol.H): # [LG] Checks if mix2 is already H
+            elif isthesame(mix2,mol.H()): # [LG] Checks if mix2 is already H
                 mix2 = H_button.process(mix2)
-            elif isthesame(mix3,mol.H): # [LG] Checks if mix3 is already H
+            elif isthesame(mix3,mol.H()): # [LG] Checks if mix3 is already H
                 mix3 = H_button.process(mix3)
             else: # [LG] if none of the mixes are already H
                 if mix1 == None: # [LG] if mix1 is unassigned, assign it to H
@@ -517,11 +516,11 @@ def Game(Score): # [NP] The score parameter determines how much score the player
                 # [LG] If mix1-mix3 are filled, and non are H, dont process the button
                 
             #Carbon [LG] same for Carbon
-            if isthesame(mix1,mol.C):
+            if isthesame(mix1,mol.C()):
                 mix1 = C_button.process(mix1)
-            elif isthesame(mix2,mol.C):
+            elif isthesame(mix2,mol.C()):
                 mix2 = C_button.process(mix2)
-            elif isthesame(mix3,mol.C):
+            elif isthesame(mix3,mol.C()):
                 mix3 = C_button.process(mix3)
             else:
                 if mix1 == None:
@@ -532,14 +531,15 @@ def Game(Score): # [NP] The score parameter determines how much score the player
                     mix3 = C_button.process(mix3)
                 
             #Oxygen [LG] same for oxygen
-            if isthesame(mix1,mol.O):
+            if isthesame(mix1,mol.O()):
                 mix1 = O_button.process(mix1)
-            elif isthesame(mix2,mol.O):
+            elif isthesame(mix2,mol.O()):
                 mix2 = O_button.process(mix2)
-            elif isthesame(mix3,mol.O):
+            elif isthesame(mix3,mol.O()):
                 mix3 = O_button.process(mix3)
             else:
                 if mix1 == None:
+                    
                     mix1 = O_button.process(mix1)
                 elif mix2 == None:
                     mix2 = O_button.process(mix2)
@@ -547,11 +547,11 @@ def Game(Score): # [NP] The score parameter determines how much score the player
                     mix3 = O_button.process(mix3)
                 
             #Nitrogen [LG] same for Nitrogen
-            if isthesame(mix1,mol.N):
+            if isthesame(mix1,mol.N()):
                 mix1 = N_button.process(mix1)
-            elif isthesame(mix2,mol.N):
+            elif isthesame(mix2,mol.N()):
                 mix2 = N_button.process(mix2)
-            elif isthesame(mix3,mol.N):
+            elif isthesame(mix3,mol.N()):
                 mix3 = N_button.process(mix3)
             else:
                 if mix1 == None:
@@ -562,11 +562,11 @@ def Game(Score): # [NP] The score parameter determines how much score the player
                     mix3 = N_button.process(mix3)
                 
             #Sodium [LG] same for Sodium
-            if isthesame(mix1,mol.Na):
+            if isthesame(mix1,mol.Na()):
                 mix1 = Na_button.process(mix1)
-            elif isthesame(mix2,mol.Na):
+            elif isthesame(mix2,mol.Na()):
                 mix2 = Na_button.process(mix2)
-            elif isthesame(mix3,mol.Na):
+            elif isthesame(mix3,mol.Na()):
                 mix3 = Na_button.process(mix3)
             else:
                 if mix1 == None:
@@ -577,11 +577,11 @@ def Game(Score): # [NP] The score parameter determines how much score the player
                     mix3 = Na_button.process(mix3)
                 
             #Chlorine [LG] same for Chlorine
-            if isthesame(mix1,mol.Cl):
+            if isthesame(mix1,mol.Cl()):
                 mix1 = Cl_button.process(mix1)
-            elif isthesame(mix2,mol.Cl):
+            elif isthesame(mix2,mol.Cl()):
                 mix2 = Cl_button.process(mix2)
-            elif isthesame(mix3,mol.Cl):
+            elif isthesame(mix3,mol.Cl()):
                 mix3 = Cl_button.process(mix3)
             else:
                 if mix1 == None:
@@ -592,11 +592,11 @@ def Game(Score): # [NP] The score parameter determines how much score the player
                     mix3 = Cl_button.process(mix3)
                 
             #Calcium [LG] same for Calcium
-            if isthesame(mix1,mol.Ca):
+            if isthesame(mix1,mol.Ca()):
                 mix1 = Ca_button.process(mix1)
-            elif isthesame(mix2,mol.Ca):
+            elif isthesame(mix2,mol.Ca()):
                 mix2 = Ca_button.process(mix2)
-            elif isthesame(mix3,mol.Ca):
+            elif isthesame(mix3,mol.Ca()):
                 mix3 = Ca_button.process(mix3)
             else:
                 if mix1 == None:
@@ -610,19 +610,20 @@ def Game(Score): # [NP] The score parameter determines how much score the player
         
 # FLASK CONVEYOR BELT =========================================================
             
+       
         if show_instructions: 
-          display_text2(instructions, InstructionsFontPos[0], InstructionsFontPos[1]) # [NP] Show the instructions
-          if mix1 != None:
-                element1 = mix1.Name # [LAW] If either of the mixes are non-zero values the mols will be displayed
+            display_text2(instructions, InstructionsFontPos[0], InstructionsFontPos[1]) # [NP] Show the instructions
+            if mix1 != None:
+                element1 = mix1.Name
                 Moly1= str(element1)+ ' = ' + str(mix1.Quantity)
-                display_text2(Moly1,25,150)
+                display_text2(Moly1,25,150)# Currently place holder will need to be repositioned
                 pygame.display.update()
-           if mix2 != None:
+            if mix2 != None:
                 element2 = mix2.Name
                 Moly2= str(element2)+ ' = ' + str(mix2.Quantity)
                 display_text2(Moly2,225,150)
                 pygame.display.update()
-           if mix3 != None:
+            if mix3 != None:
                 element3 = mix3.Name
                 Moly3= str(element3)+ ' = ' + str(mix3.Quantity)
                 display_text2(Moly3,425,150)
