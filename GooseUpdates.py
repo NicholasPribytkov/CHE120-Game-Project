@@ -144,59 +144,43 @@ WHITE = (255, 255, 255)
 # DEFINING BUTTONS ============================================================
 
 class Button(): # [LG] Creats a class of Button allowing easy button creation that does functions
-    def __init__(self, x, y, width, height, buttonText='Button', onclickFunction=None, onePress=False): # [LG] takes in position and size of button, then what function to run on press, and if its a press and hold button
+    def __init__(self, x, y, width, height, buttonText='Button',onclickFunction = None, cooldown = 0): # [LG] takes in position and size of button, then what function to run on press, and if its a press and hold button
         self.x = x 
         self.y = y
         self.width = width
         self.height = height
         self.buttonText = buttonText
         self.onclickFunction = onclickFunction
-        self.onePress = onePress
-        self.alreadyPressed = False
+        self.timePressed = pygame.time.get_ticks()
+        self.cooldown = cooldown
 
         self.fillColors = { #[LG] Provides default colors for button states
-            'normal': (255,0,0),
-            'hover': (0,255,0),
-            'pressed': (0,0,255),
+            'normal': (100,255,0),
+            
         }
         self.buttonSurface = pygame.Surface((self.width, self.height)) #[LG] Defines visual area of button
         self.buttonRect = pygame.Rect(self.x, self.y, self.width, self.height) # [LG] Defines where button is interactable
 
     def draw(self, screen): #[LG] function to draw the button on the screen
-        pygame.draw.rect(screen, pygame.Color(self.fillColors['normal']), (self.x, self.y, self.width, self.height))
-        font = pygame.freetype.SysFont("Calibri", 30)
-        font.render_to(screen, (self.x + 10, self.y + 10), self.buttonText, pygame.Color('black'))
+        pygame.draw.rect(screen, pygame.Color(self.fillColors['normal']), (self.x, self.y, self.width, self.height)) #[LG] draws the area of the button with its color, position, and dimentions
+        font = pygame.freetype.SysFont("Calibri", 30) # [LG] defines font of any text
+        font.render_to(screen, (self.x + 10, self.y + 10), self.buttonText, pygame.Color('black')) # [LG] renders the text over the button, 10 units up and right from the corner
 
     def process(self, storage): #[LG] function to be ran in loop, actualy checks if button is clicked, and runs given function on click, also stores a value to be acted on (used for adding mols to mix)
-        if storage == False:
+        right_now = pygame.time.get_ticks() #[LG] takes the time in ms of the game every tick
+        if storage == False: # [LG] checks if the function has the storage varible
             mousePos = pygame.mouse.get_pos()
-            self.buttonSurface.fill(self.fillColors['normal'])
-            if self.buttonRect.collidepoint(mousePos):
+            if self.buttonRect.collidepoint(mousePos): # [LG] checks if the mouse is over the interactable area
+                if pygame.mouse.get_pressed(num_buttons=3)[0]: # [LG] checks if the left mouse button is pressed
+                    if (right_now - self.timePressed) > self.cooldown:   #[LG] checks the differenct of time between now and last time pressed, checks if that is more than the cooldown of the button
+                        self.timePressed = pygame.time.get_ticks() #[LG] updates last time pressed to now
+                        storage = self.onclickFunction()  # [LG] runs given function
+                        return storage
+        else:   # [LG] if storage is not false, does its function with storage as a varable 
+            mousePos = pygame.mouse.get_pos() # [LG] time function is not needed for this type of button so not implemented
+            if self.buttonRect.collidepoint(mousePos): 
                 if pygame.mouse.get_pressed(num_buttons=3)[0]:
-                    print("its mixin time")
-                    self.buttonSurface.fill(self.fillColors['pressed'])
-                    if self.onePress:
-                        self.onclickFunction()
-                    elif not self.alreadyPressed:
-                        self.onclickFunction()
-                        self.alreadyPressed = True
-                    else:
-                        self.alreadyPressed = False
-            return storage
-         
-        else:   
-            mousePos = pygame.mouse.get_pos()
-            self.buttonSurface.fill(self.fillColors['normal'])
-            if self.buttonRect.collidepoint(mousePos):
-                if pygame.mouse.get_pressed(num_buttons=3)[0]:
-                    self.buttonSurface.fill(self.fillColors['pressed'])
-                    if self.onePress:
-                        storage = self.onclickFunction(storage)
-                    elif not self.alreadyPressed:
-                        storage = self.onclickFunction(storage)
-                        self.alreadyPressed = True
-                    else:
-                        self.alreadyPressed = False
+                    storage = self.onclickFunction(storage)
             return storage
         
 # DEFINING FUNCTIONS FOR DISPENSING SUBSTANCES ================================
@@ -281,14 +265,14 @@ def Game(Score): # [NP] The score parameter determines how much score the player
             
 # CREATING DISPENSING BUTTONS =================================================
 
-    H_button = Button(150,75,60,60, "", add_mols_H, True) #[LG] Creates buttons that can be held, that run the listed function when pressed
-    C_button = Button(290,75,60,60, "", add_mols_C, True)
-    O_button = Button(80,75,60,60, "", add_mols_O, True)
-    N_button = Button(15,75,60,60, "", add_mols_N, True)
-    Na_button = Button(365,75,60,60, "", add_mols_Na, True)
-    Cl_button = Button(225,75,60,60, "", add_mols_Cl, True)
-    Ca_button = Button(450,75,60,60, "", add_mols_Ca, True)
-    Mixing_button = Button(790,390,85,85, "", mixing_sequence, False)
+    H_button = Button(150,75,60,60, "", add_mols_H) #[LG] Creates buttons that can be held, that run the listed function when pressed
+    C_button = Button(290,75,60,60, "", add_mols_C)
+    O_button = Button(80,75,60,60, "", add_mols_O)
+    N_button = Button(15,75,60,60, "", add_mols_N)
+    Na_button = Button(365,75,60,60, "", add_mols_Na)
+    Cl_button = Button(225,75,60,60, "", add_mols_Cl)
+    Ca_button = Button(450,75,60,60, "", add_mols_Ca)
+    Mixing_button = Button(790,390,85,85, "", mixing_sequence, 1000)
     
 # START-UP ====================================================================
 
@@ -303,6 +287,7 @@ def Game(Score): # [NP] The score parameter determines how much score the player
     font2 = pygame.freetype.SysFont(TextFont, FontSizes[1])
  
 # TIMER FUNCTIONS===============================================================
+    time_given = 1000 # [LAW] The amount the timer will cound down for
     begin=pygame.time.get_ticks()# [LAW] Initial time
     
     
@@ -416,16 +401,6 @@ def Game(Score): # [NP] The score parameter determines how much score the player
         pygame.display.update()  # [LAW] Updates the display
         clock.tick(CustomerFrameRate)  # [LAW] Sets the frame rate
         
-# ELEMENT LIST INITALIZATION ==================================================
-
-    elementlist = [mol.H, mol.C, mol.O, mol.N, mol.Na, mol.Cl, mol.Ca] # [LG] Creates a list of all basic element types
-    processlist_mix1 = [H_button.process(mix1), C_button.process(mix1),O_button.process(mix1), # [LG] creates a list of the process commands for the buttons in the same order as basic element type list
-     N_button.process(mix1), Na_button.process(mix1),Cl_button.process(mix1),Ca_button.process(mix1)]
-    processlist_mix2 = [H_button.process(mix2), C_button.process(mix2),O_button.process(mix2), # [LG] creates a list of the process commands for the buttons in the same order as basic element type list
-     N_button.process(mix2), Na_button.process(mix2),Cl_button.process(mix2),Ca_button.process(mix2)]
-    processlist_mix3 = [H_button.process(mix3), C_button.process(mix3),O_button.process(mix3), # [LG] creates a list of the process commands for the buttons in the same order as basic element type list
-     N_button.process(mix3), Na_button.process(mix3),Cl_button.process(mix3),Ca_button.process(mix3)]
-    
 # PYGAME UPDATE LOOP ==========================================================
 
     start_time = time.time() # [LAW] Initializes timer
@@ -499,14 +474,7 @@ def Game(Score): # [NP] The score parameter determines how much score the player
             screen.blit(Machine, MachinePos) # [NP] Show the machine
             font.render_to(screen, ScorePos, scorestr, WHITE) # [NP] Show the player's current score
             
-            if mixing_start:
-                mix1 = mix.Mixing(mix1, mix2, mix3)
-                print(mix1)
-                print(mix1.Quantity)
-                mix2 = None
-                mix3 = None
-                mixing_start = False
-                
+
                 
             H_button.draw(screen) #[LG] Draws all the buttons on screen
             C_button.draw(screen)
@@ -630,7 +598,12 @@ def Game(Score): # [NP] The score parameter determines how much score the player
                     mix3 = Ca_button.process(mix3)
             mixing_start = Mixing_button.process(False)
             
-        
+            if  mixing_start:
+                mix1 = mix.Mixing(mix1, mix2, mix3)
+                mix2 = None
+                mix3 = None
+                mixing_start = False
+                
 # FLASK CONVEYOR BELT =========================================================
             
        
@@ -639,9 +612,7 @@ def Game(Score): # [NP] The score parameter determines how much score the player
                      
             # [LAW] Display the timer
             
-            time_given = 20
             display_timer(time_given,begin,False)
-           
             
             # [LAW] Update the display
             pygame.display.flip()
@@ -712,4 +683,3 @@ def Game(Score): # [NP] The score parameter determines how much score the player
 Game(0) # [NP] Plays The Game.
 
 # END =========================================================================
-
