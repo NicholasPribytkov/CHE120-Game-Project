@@ -303,7 +303,6 @@ def Game(Score): # [NP] The score parameter determines how much score the player
     font2 = pygame.freetype.SysFont(TextFont, FontSizes[1])
  
 # TIMER FUNCTIONS===============================================================
-    time_given = 10 # [LAW] The amount the timer will cound down for
     begin=pygame.time.get_ticks()# [LAW] Initial time
     
     
@@ -640,7 +639,9 @@ def Game(Score): # [NP] The score parameter determines how much score the player
                      
             # [LAW] Display the timer
             
+            time_given = 20
             display_timer(time_given,begin,False)
+           
             
             # [LAW] Update the display
             pygame.display.flip()
