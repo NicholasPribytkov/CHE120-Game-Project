@@ -281,14 +281,14 @@ def Game(Score): # [NP] The score parameter determines how much score the player
             
 # CREATING DISPENSING BUTTONS =================================================
 
-    H_button = Button(200,100,60,60, "H", add_mols_H, True) #[LG] Creates buttons that can be held, that run the listed function when pressed
-    C_button = Button(160,300,70,70, "C", add_mols_C, True)
-    O_button = Button(80,75,70,60, "O", add_mols_O, True)
-    N_button = Button(15,75,70,60, "N", add_mols_N, True)
-    Na_button = Button(500,400,60,60, "Na", add_mols_Na, True)
-    Cl_button = Button(500,600,60,60, "Cl", add_mols_Cl, True)
-    Ca_button = Button(500,800,60,60, "Ca", add_mols_Ca, True)
-    Mixing_button = Button(700,600,50,50, "mixing time", mixing_sequence, False)
+    H_button = Button(150,75,60,60, "", add_mols_H, True) #[LG] Creates buttons that can be held, that run the listed function when pressed
+    C_button = Button(290,75,60,60, "", add_mols_C, True)
+    O_button = Button(80,75,60,60, "", add_mols_O, True)
+    N_button = Button(15,75,60,60, "", add_mols_N, True)
+    Na_button = Button(365,75,60,60, "", add_mols_Na, True)
+    Cl_button = Button(225,75,60,60, "", add_mols_Cl, True)
+    Ca_button = Button(450,75,60,60, "", add_mols_Ca, True)
+    Mixing_button = Button(790,390,85,85, "", mixing_sequence, False)
     
 # START-UP ====================================================================
 
