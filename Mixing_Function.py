@@ -14,11 +14,15 @@ def Mixing (mix1,mix2,mix3):
     NH4OH = mol.NH4OH()
     HCl = mol.HCl()
     NaOH = mol.NaOH()
+    H2O = mol.H2O()
 
-    if mix3 == None and not type(mix1) == None and not type(mix2) == None: # [LG] Identifies if there are two or three ingridents
+    if mix3 == None and not mix1 == None and not mix2 == None: # [LG] Identifies if there are two or three ingridents
         print("loop1")
+        
         mixture = [mix1.Name, mix2.Name] # [LG] Makes a list of the names of the ingridents
         mixture_set = set([mix1.Name, mix2.Name]) # [LG] Makes a set to allow for checking against other ingreident sets regardless of order
+        print(mixture_set)
+        print(set(H2O.Ingredients))
         if mixture_set == set(NaCl.Ingredients): # [LG] checks if the ingridents of the product are the same as the provided ingridents
             for i in range (len(NaCl.Ingredients)):
                 if NaCl.Ingredients[i]==mix1.Name:
@@ -54,7 +58,6 @@ def Mixing (mix1,mix2,mix3):
                 output.Quantity =+ round(mix1Stoich,2)
                 return output
         elif mixture_set == set(HCl.Ingredients): # [LG] repeat as before but with different ingredients
-            print("HCL PROCK")
             for i in range (len(HCl.Ingredients)):
                 if HCl.Ingredients[i]==mix1.Name:
                     mix1ratio = HCl.Ingredient_ratios[i]
@@ -71,11 +74,31 @@ def Mixing (mix1,mix2,mix3):
                 output = mol.NaCl()
                 output.Quantity =+ round(mix1Stoich,2)
                 return output
+        elif mixture_set == set(H2O.Ingredients): # [LG] repeat as before but with different ingredients
+            for i in range (len(H2O.Ingredients)):
+                if H2O.Ingredients[i]==mix1.Name:
+                    mix1ratio = H2O.Ingredient_ratios[i]
+            for i in range (len(H2O.Ingredients)):
+                if H2O.Ingredients[i]==mix2.Name:
+                    mix2ratio = H2O.Ingredient_ratios[i]
+            mix1Stoich = mix1.Quantity / mix1ratio
+            mix2Stoich = mix2.Quantity / mix2ratio
+            if mix1Stoich >= mix2Stoich:
+                output = mol.H2O()
+                output.Quantity =+ round(mix2Stoich,2)
+                return output
+            else:
+                output = mol.NaCl()
+                output.Quantity =+ round(mix1Stoich,2)
+                return output
         else:
             return None
         
     elif not mix3 == None: # [LG] Determines if mix3 has been assigned to somthing
+        print("loop2")
         mixture_set = set([mix1.Name,mix2.Name,mix3.Name]) # [LG] makes a set of all the ingridents provided (mixture inputs)
+        print(mixture_set)
+        print(set(NaOH.Ingredients))
         if mixture_set == set(NH4OH.Ingredients): # [LG] Checks if the provided ingrediets are the same as needed ot make the new mix
             for i in range (len(NH4OH.Ingredients)): # [LG] Finds the stoichiometric coeficent for first ingrident
                 if NH4OH.Ingredients[i] == mix1.Name:
@@ -103,6 +126,7 @@ def Mixing (mix1,mix2,mix3):
                 return output
 
         elif mixture_set == set(NaOH.Ingredients): # [LG] same for new recipe
+            print("NaOH match")
             for i in range (len(NaOH.Ingredients)):
                 if NaOH.Ingredients[i] == mix1.Name:
                     mix1ratio = NaOH.Ingredient_ratios[i]
@@ -133,5 +157,3 @@ def Mixing (mix1,mix2,mix3):
     else:
         
         return None # [LG] if mix3 is None and mix1 and mix2 dont make a recipe return none, OR if mix1 or mix2 are None return None
-        
-

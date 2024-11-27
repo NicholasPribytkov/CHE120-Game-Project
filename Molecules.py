@@ -52,7 +52,7 @@ class H2O:
     Ingredients = ['H', 'O']
     Quantity = 0
     Difficulty = 20 #[KY] two basic ingredients, non 1:1 ratio
-    Ingredient_ratios = [2,1/2]
+    Ingredient_ratios = [2,1]
     
 class NaCl:
     Name = "NaCl"
@@ -70,7 +70,7 @@ class HCl:
     
 class NaOH:
     Name = "NaOH"
-    Ingredients = ['NaCl', 'H', 'O']
+    Ingredients = ['Na', 'H', 'O']
     Quantity = 0
     Difficulty = 30 #[KY] one ingredient you have to make, 1:1:1 ratio
     Ingredient_ratios = [1, 1, 1]

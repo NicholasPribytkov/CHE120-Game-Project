@@ -599,6 +599,9 @@ def Game(Score): # [NP] The score parameter determines how much score the player
             mixing_start = Mixing_button.process(False)
             
             if  mixing_start:
+                print(mix1)
+                print(mix2)
+                print(mix3)
                 mix1 = mix.Mixing(mix1, mix2, mix3)
                 mix2 = None
                 mix3 = None
