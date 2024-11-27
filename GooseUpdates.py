@@ -84,7 +84,7 @@ DefaultFlask = FlaskA # [NP] If a chemical isn't found in the correlator above, 
 
 # GAME SETTINGS ===============================================================
 
-QuantityRange = [1, 999] # [NP] The range of quantity of a chemical a customer can order
+QuantityRange = [1, 100] # [NP] The range of quantity of a chemical a customer can order
 TextFont = "Calibri" # [NP] The font the game uses
 CustomerSpeed = 1 # [NP] Multiplies the customer walk speed
 FlaskSpeed = 1 # [NP] Multiplies the flask conveyor speed
