@@ -302,7 +302,7 @@ def Game(Score): # [NP] The score parameter determines how much score the player
     font = pygame.freetype.SysFont(TextFont, FontSizes[0])
     font2 = pygame.freetype.SysFont(TextFont, FontSizes[1])
  
-# TIMER FUNCTION===============================================================
+# TIMER FUNCTIONS===============================================================
     Count = 10 # [LAW] The amount the timer will cound down for
     begin=pygame.time.get_ticks()# [LAW] Initial time
     
@@ -319,6 +319,10 @@ def Game(Score): # [NP] The score parameter determines how much score the player
 
         timer_text = 'Remaining Time: ' + str(int(remaining_time))
         display_text(timer_text, 900 ,50)# [LAW] Displays the time on the screen
+
+     def elapsed(initial):
+        player_elapsed_time = ((pygame.time.get_ticks()-initial) / 1000)# [LAW] Calculates the elapsed time of the player once done making the chemical
+        return player_elapsed_time
      
 # LOADING SPRITES =============================================================
 
@@ -665,7 +669,9 @@ def Game(Score): # [NP] The score parameter determines how much score the player
         if Show_FlaskCOPY: screen.blit(FlaskCOPY, FlaskCopyPos)  # [LAW] Display FlaskCOPY at the new position
 
         if Move_Flask:
-            
+         
+            player_time=elapsed(Count)# [LAW] Returns how long it took the player to make the chemical
+         
             if FlaskPhase < FlaskMoves:
                 flask_position.move_ip(FlaskOffset * FlaskSpeed, 0)  # [LAW] Move the Flask
                 screen.blit(Flask, flask_position)  # [LAW] Draw Flask in the new position
