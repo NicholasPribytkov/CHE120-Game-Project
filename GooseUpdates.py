@@ -301,7 +301,25 @@ def Game(Score): # [NP] The score parameter determines how much score the player
     # [LAW] Sets the font and size of the text
     font = pygame.freetype.SysFont(TextFont, FontSizes[0])
     font2 = pygame.freetype.SysFont(TextFont, FontSizes[1])
+ 
+# TIMER FUNCTION===============================================================
+    Count = 10 # [LAW] The amount the timer will cound down for
+    begin=pygame.time.get_ticks()# [LAW] Initial time
+    
+    
+    def display_timer(count_down, initial,fail_time):
+        elapsed_time = ((pygame.time.get_ticks()-initial) / 1000)# [LAW] Calculates how much time has elapsed
+        remaining_time = count_down - elapsed_time# [LAW] Calculates how much time is left
+    
+        # If the timer reaches 0, stop the timer
+        if remaining_time < 0:
+            remaining_time = 0# [LAW] If time runs out timer stops and fail_time is set to true and is returned
+            fail_time = True
+            return fail_time
 
+        timer_text = 'Remaining Time: ' + str(int(remaining_time))
+        display_text(timer_text, 900 ,50)# [LAW] Displays the time on the screen
+     
 # LOADING SPRITES =============================================================
 
     background = pygame.image.load(Background).convert_alpha() # [LAW] Loads and converts the background image
@@ -613,6 +631,21 @@ def Game(Score): # [NP] The score parameter determines how much score the player
        
         if show_instructions: 
             display_text2(instructions, InstructionsFontPos[0], InstructionsFontPos[1]) # [NP] Show the instructions
+                     
+            # [LAW] Display the timer
+            
+            display_timer(Count,begin,False)
+            
+            # [LAW] Update the display
+            pygame.display.flip()
+            
+            if display_timer(Count,begin,False): # [LAW] If the timer runs out displays fail message
+                pygame.draw.rect(screen, BLUE, playagain_rect) # [KY] draws play again and quit game buttons (rects are defined above)
+                pygame.draw.rect(screen, RED, endgame_rect) 
+                font.render_to(screen, (360, 385), "Game Over - Click to Play Again", WHITE)
+                font.render_to(screen, (550, 535), "Quit Game", WHITE)
+                OrderOver = True
+             
             if mix1 != None:
                 element1 = mix1.Name
                 Moly1= str(element1)+ ' = ' + str(mix1.Quantity)
