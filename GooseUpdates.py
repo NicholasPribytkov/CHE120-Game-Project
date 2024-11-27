@@ -693,7 +693,7 @@ def Game(Score): # [NP] The score parameter determines how much score the player
                     OrderOver = True
                 else:
                      Game(Score + OrderPoints)
-                     time_given -= 1
+                     time_given -= 2
                  
             FlaskPhase += 1
             
