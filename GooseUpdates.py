@@ -1,4 +1,3 @@
-
 # GOOSE UPDATES ===============================================================
 
 # This file acts as the backbone of the game. It's main purpose is to update
@@ -84,7 +83,7 @@ DefaultFlask = FlaskA # [NP] If a chemical isn't found in the correlator above, 
 
 # GAME SETTINGS ===============================================================
 
-QuantityRange = [1, 100] # [NP] The range of quantity of a chemical a customer can order
+QuantityRange = [1, 50] # [NP] The range of quantity of a chemical a customer can order
 TextFont = "Calibri" # [NP] The font the game uses
 CustomerSpeed = 1 # [NP] Multiplies the customer walk speed
 FlaskSpeed = 1 # [NP] Multiplies the flask conveyor speed
@@ -287,7 +286,6 @@ def Game(Score): # [NP] The score parameter determines how much score the player
     font2 = pygame.freetype.SysFont(TextFont, FontSizes[1])
  
 # TIMER FUNCTIONS===============================================================
-    time_given = 1000 # [LAW] The amount the timer will cound down for
     begin=pygame.time.get_ticks()# [LAW] Initial time
     
     
@@ -304,9 +302,9 @@ def Game(Score): # [NP] The score parameter determines how much score the player
         timer_text = 'Remaining Time: ' + str(int(remaining_time))
         display_text(timer_text, 900 ,50)# [LAW] Displays the time on the screen
 
-    def elapsed(initial):
-        player_time_elapsed = ((pygame.time.get_ticks()-initial) / 1000)# [LAW] Calculates the elapsed time of the player once done making the chemical
-        return player_time_elapsed
+    #def elapsed(initial): ([KY]: no longer needed, time elapsed is defined correctly before the point assignment)
+        #player_time_elapsed = ((pygame.time.get_ticks()-initial) / 1000)# [LAW] Calculates the elapsed time of the player once done making the chemical
+        #return player_time_elapsed
       
 
    
@@ -427,15 +425,18 @@ def Game(Score): # [NP] The score parameter determines how much score the player
                 running = False  # [LAW] Allows the window to be closed
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 mouse_pos = pygame.mouse.get_pos()
-                if button_rect.collidepoint(mouse_pos) and not show_machine:  # [LAW] Check if the click is within the first button's area
+                if button_rect.collidepoint(mouse_pos) and not show_machine:  # [LAW] Check if the click is within the first button's area ("Accept Order")
                     Show_things = True
                     Show_FlaskCOPY = True
-                elif button_rect2.collidepoint(mouse_pos) and not show_machine:  # [LAW] Check if the click is within the second button's area
+                    time_at_beginorder = pygame.time.get_ticks()/1000 #[KY] get time in seconds that have elapsed from beginning of the game to the start of the order ("Accept Order" being pressed)
+                    time_given = 1000 # [LAW] The amount the timer will count down for, initialized once accept order is pressed
+                elif button_rect2.collidepoint(mouse_pos) and not show_machine:  # [LAW] Check if the click is within the second button's area ("Quit")
                     running = False
                 elif click_area3.collidepoint(mouse_pos) and show_machine: # [NP] Check if the DONE button has been clicked
                     FlaskPhase = 0
                     Move_Flask = True
                     Show_FlaskCOPY = False
+                    time_at_endorder = pygame.time.get_ticks()/1000 #[KY] get time in seconds that have elapsed from beginning of the game to the end of the order ("Done" being pressed), to be compared with time_at_beginorder to determine points
                 elif playagain_rect.collidepoint(mouse_pos) and OrderOver:
                     Game(0)
                 elif endgame_rect.collidepoint(mouse_pos) and OrderOver:
@@ -647,8 +648,11 @@ def Game(Score): # [NP] The score parameter determines how much score the player
 
         if Move_Flask:
          
-            time_taken=elapsed(time_given)# [LAW] Returns how long it took the player to make the chemical
-            time_fraction = (time_given - time_taken)/(time_given)
+            time_taken = time_at_endorder - time_at_beginorder# [KY] Returns how long it took the player to make the chemical
+            time_fraction = (time_given - time_taken)/(time_given) #[KY] returns fraction of time remaining after completing the order, to be used in point function
+            
+            print(time_taken) #[KY] for testing purposes
+            print(time_fraction) #[KY] for testing purposes
          
             if FlaskPhase < FlaskMoves:
                 flask_position.move_ip(FlaskOffset * FlaskSpeed, 0)  # [LAW] Move the Flask
@@ -657,8 +661,9 @@ def Game(Score): # [NP] The score parameter determines how much score the player
                 
 # POINT ASSIGNMENT/FAIL CHECK =================================================
        
-                Order_accuracy = accuracy_as_percent(orderchem, orderchem, ordercapacity, ordercapacity) # [KY] Assign accuracy of order to accuracy_as_percent function call
-                OrderPoints = point_calculation(ChemicalClassification[orderchem].Difficulty, Order_accuracy / 100, time_fraction) # [KY] Assign points per order to order_match function call
+                Order_accuracy = accuracy_as_percent(mix1, orderchem, ordercapacity, ordercapacity) # [KY] EDIT, Assign accuracy of order to accuracy_as_percent function call
+                #[KY] Parameters must correspond to (chemical produced, chemical ordered (good), quantity of chemical produced, quantity of chemical ordered)
+                OrderPoints = point_calculation(ChemicalClassification[orderchem].Difficulty, Order_accuracy/100, time_fraction) # [KY] Assign points per order to order_match function call
                 
                 if Order_accuracy < 30: # [KY] Checks if the accuracy of the amount produced compared to the amount ordered is below 30 (fail condition)
                     pygame.draw.rect(screen, BLUE, playagain_rect) # [KY] draws play again and quit game buttons (rects are defined above)
@@ -668,7 +673,6 @@ def Game(Score): # [NP] The score parameter determines how much score the player
                     OrderOver = True
                 else:
                      Game(Score + OrderPoints)
-                     time_given -= 2
                  
             FlaskPhase += 1
             
