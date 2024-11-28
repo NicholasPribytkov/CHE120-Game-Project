@@ -660,10 +660,13 @@ def Game(Score): # [NP] The score parameter determines how much score the player
                 
 # POINT ASSIGNMENT/FAIL CHECK =================================================
        
-                Order_accuracy = accuracy_as_percent(mix1, orderchem, ordercapacity, ordercapacity) # [KY] EDIT, Assign accuracy of order to accuracy_as_percent function call
+                Order_accuracy = accuracy_as_percent(orderchem, orderchem, ordercapacity, ordercapacity) # [KY] EDIT, Assign accuracy of order to accuracy_as_percent function call
                 #[KY] Parameters must correspond to (chemical produced, chemical ordered (good), quantity of chemical produced, quantity of chemical ordered)
-                #[KY] Right now players will always fail bc types of the first two objects aren't equal
-                OrderPoints = point_calculation(ChemicalClassification[orderchem].Difficulty, Order_accuracy/100, time_fraction) # [KY] Assign points per order to order_match function call
+                #[KY] If the types of the first two objects aren't equal, accuracy will be 0 (confirmed)
+                Order_points = point_calculation(ChemicalClassification[orderchem].Difficulty, Order_accuracy/100, time_fraction) # [KY] Assign points per order to order_match function call
+
+                print(str(Order_accuracy)) #[KY] for testing purposes
+                print(Order_points) #[KY] for testing purposes
                 
                 if Order_accuracy < 30: # [KY] Checks if the accuracy of the amount produced compared to the amount ordered is below 30 (fail condition)
                     pygame.draw.rect(screen, BLUE, playagain_rect) # [KY] draws play again and quit game buttons (rects are defined above)
