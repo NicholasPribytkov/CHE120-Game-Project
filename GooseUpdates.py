@@ -645,13 +645,13 @@ def Game(Score): # [NP] The score parameter determines how much score the player
                 pygame.display.update()
 
         if Show_FlaskCOPY: screen.blit(FlaskCOPY, FlaskCopyPos)  # [LAW] Display FlaskCOPY at the new position
+     
+        if Move_Flask:
             time_taken = time_at_endorder - time_at_beginorder# [KY] Returns how long it took the player to make the chemical
             time_fraction = (time_given - time_taken)/(time_given) #[KY] returns fraction of time remaining after completing the order, to be used in point function
             
             print(time_taken) #[KY] for testing purposes
             print(time_fraction) #[KY] for testing purposes
-     
-        if Move_Flask:
          
             if FlaskPhase < FlaskMoves:
                 flask_position.move_ip(FlaskOffset * FlaskSpeed, 0)  # [LAW] Move the Flask
