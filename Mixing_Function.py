@@ -21,8 +21,7 @@ def Mixing (mix1,mix2,mix3):
         
         mixture = [mix1.Name, mix2.Name] # [LG] Makes a list of the names of the ingridents
         mixture_set = set([mix1.Name, mix2.Name]) # [LG] Makes a set to allow for checking against other ingreident sets regardless of order
-        print(mixture_set)
-        print(set(H2O.Ingredients))
+        
         if mixture_set == set(NaCl.Ingredients): # [LG] checks if the ingridents of the product are the same as the provided ingridents
             for i in range (len(NaCl.Ingredients)):
                 if NaCl.Ingredients[i]==mix1.Name:
@@ -34,11 +33,11 @@ def Mixing (mix1,mix2,mix3):
             mix2Stoich = mix2.Quantity / mix2ratio
             if mix1Stoich >= mix2Stoich: # [LG] Chceks what limiting reactant is
                 output = mol.NaCl() # [LG] Creates new mixture based on ingredients
-                output.Quantity += round(mix2Stoich,2) # [LG] Applies quanitity to new mixture according limiting reactant
+                output.Quantity =+ round(mix2Stoich,2) # [LG] Applies quanitity to new mixture according limiting reactant
                 return output
             else:
                 output = mol.NaCl()
-                output.Quantity += round(mix1Stoich,2)
+                output.Quantity =+ round(mix1Stoich,2)
                 return output
         elif mixture_set == set(NH3.Ingredients): # [LG] repeat as before but with different ingredients
             for i in range (len(NH3.Ingredients)):
@@ -51,11 +50,11 @@ def Mixing (mix1,mix2,mix3):
             mix2Stoich = mix2.Quantity / mix2ratio
             if mix1Stoich >= mix2Stoich:
                 output = mol.NH3()
-                output.Quantity += round(mix2Stoich,2)
+                output.Quantity =+ round(mix2Stoich,2)
                 return output
             else:
-                output = mol.NaCl()
-                output.Quantity += round(mix1Stoich,2)
+                output = mol.NH3()
+                output.Quantity =+ round(mix1Stoich,2)
                 return output
         elif mixture_set == set(HCl.Ingredients): # [LG] repeat as before but with different ingredients
             for i in range (len(HCl.Ingredients)):
@@ -68,11 +67,11 @@ def Mixing (mix1,mix2,mix3):
             mix2Stoich = mix2.Quantity / mix2ratio
             if mix1Stoich >= mix2Stoich:
                 output = mol.HCl()
-                output.Quantity += round(mix2Stoich,2)
+                output.Quantity =+ round(mix2Stoich,2)
                 return output
             else:
-                output = mol.NaCl()
-                output.Quantity += round(mix1Stoich,2)
+                output = mol.HCl()
+                output.Quantity =+ round(mix1Stoich,2)
                 return output
         elif mixture_set == set(H2O.Ingredients): # [LG] repeat as before but with different ingredients
             for i in range (len(H2O.Ingredients)):
@@ -85,11 +84,11 @@ def Mixing (mix1,mix2,mix3):
             mix2Stoich = mix2.Quantity / mix2ratio
             if mix1Stoich >= mix2Stoich:
                 output = mol.H2O()
-                output.Quantity += round(mix2Stoich,2)
+                output.Quantity =+ round(mix2Stoich,2)
                 return output
             else:
-                output = mol.NaCl()
-                output.Quantity += round(mix1Stoich,2)
+                output = mol.H2O()
+                output.Quantity =+ round(mix1Stoich,2)
                 return output
         else:
             return None
@@ -142,7 +141,7 @@ def Mixing (mix1,mix2,mix3):
             mix3Stoich = mix3.Quantity/mix3ratio
             if mix1Stoich <= mix2Stoich and mix1Stoich <= mix3Stoich:
                 output = mol.NaOH()
-                output.Quantity += round(mix1Stoich,2)
+                output.Quantity =+ round(mix1Stoich,2)
                 return output
             elif mix2Stoich <= mix1Stoich and mix2Stoich <= mix2Stoich:
                 output = mol.NaOH()
