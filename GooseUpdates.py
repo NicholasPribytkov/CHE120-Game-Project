@@ -50,30 +50,60 @@ Chemicals = ["NaCl (Sodium Chloride)", "NH3 (Ammonia)", "NH4OH (Ammonium Hydroxi
 
  # [LAW] Instructions for each order
 NaClin = '''You are making Sodium Chloride:
-            - Step 1
-            - Step 2
-            - Step 3
-            - Step 4'''
+            - Step 1 Given the equation is Na + Cl -> NaCl, you need 
+            to dispense equal molar quantities of these elements to 
+            the moles of the ordered chemical. This is done by pressing 
+            and holding the corresponding buttons to the elements. 
+            - Step 2 Click the mix button once you have reached the 
+            desired moles of each of your reactants. If you are unhappy 
+            with the result, just click the mix button again.
+            - Step 3 If you are happy with your result click the done button'''
+
 NH3in = '''You are making Ammonia:
-            - Step 1
-            - Step 2
-            - Step 3
-            - Step 4'''
+            - Step 1 Given the equation is N + 3H -> NH3, you need to 
+            dispense stoichiometric molar quantities of these elements 
+            to make the moles of the ordered chemical. This is done by 
+            pressing and holding the corresponding buttons to the elements. 
+            - Step 2 Click the mix button once you have reached the desired 
+            moles of each of your reactants. If you are unhappy with the result, 
+            just click the mix button again.
+            - Step 3 If you are happy with your result click the done button'''
+
 NH4OHin = '''You are making Ammonium Hydroxide:
-            - Step 1
-            - Step 2
-            - Step 3
-            - Step 4'''
+           - Step 1 This is a two-step process, firstly you need to make 
+           Ammonium. Given The equation N + 4H -> NH4 you need to dispense 
+           stoichiometric molar quantities of these elements to make the moles 
+           of the ordered chemical. This is done by pressing and holding the 
+           corresponding buttons to the elements
+           - Step 2 Now click mix once you have reached the desired moles of 
+           each of your first reactants.The next equation is NH4 + O + H -> NH4OH 
+           you need to dispense equal molar quantities of these elements to the 
+           moles of the ordered chemical
+           - Step 3 Again now click the mix button once you have reached the desired 
+           moles of each of your reactants. If you are unhappy with the result, 
+           just click the mix button again.
+            - Step 4 If you are happy with your result click the done button. 
+
+'''
 HClin = '''You are making Hydrochloric Acid:
-            - Step 1
-            - Step 2
-            - Step 3
-            - Step 4'''
+            - Step 1 Given the equation is H + Cl -> HCl, you need to dispense 
+            equal molar quantities of these elements to the moles of the ordered 
+            chemical. This is done by pressing and holding the corresponding buttons 
+            to the elements. 
+            - Step 2 Click the mix button once you have reached the desired moles 
+            of each of your reactants. If you are unhappy with the result, just 
+            click the mix button again.
+            - Step 3 If you are happy with your result click the done button'''
+
 NaOHin = '''You are making Sodium Hydroxide:
-            - Step 1
-            - Step 2
-            - Step 3
-            - Step 4'''
+            - Step 1 Given the equation is Na + O + H  -> NaOH, you need to
+            dispense equal molar quantities of these elements to the moles 
+            of the ordered chemical. This is done by pressing and holding 
+            the corresponding buttons to the elements. 
+            - Step 2 Click the mix button once you have reached the desired 
+            moles of each of your reactants. If you are unhappy with the result, 
+            just click the mix button again.
+            - Step 3 If you are happy with your result click the done button'''
 
 ChemicalCorrelator = {"H2O (Water)": FlaskC, "NH4OH (Ammonium Hydroxide)": FlaskB, "NH3 (Ammonia)": FlaskB} # [NP] Matches each chemical with an appropriate sprite
 ChemicalClassification = {"H2O (Water)": mol.H2O(), "NH4OH (Ammonium Hydroxide)": mol.NH4OH(), "NH3 (Ammonia)": mol.NH3(), "NaCl (Sodium Chloride)": mol.NaCl(), "HCl (Hydrochloric Acid)": mol.HCl(), "NaOH (Sodium Hydroxide)": mol.NaOH()}
@@ -95,7 +125,7 @@ ScreenSize = (1300, 800)
 SpeechBubbleSize = (550, 550)
 MachineSize = (1300, 800)
 FlaskSize = (200, 250)
-FontSizes = [40, 25]
+FontSizes = [40, 18]
 
 BigCLSize = [700, 400, 50, 50] 
 SmallCLSize = [700, 50, 50, 50]
