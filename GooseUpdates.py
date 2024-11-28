@@ -648,7 +648,7 @@ def Game(Score): # [NP] The score parameter determines how much score the player
         if Move_Flask:
          
             time_taken=elapsed(time_given)# [LAW] Returns how long it took the player to make the chemical
-            time_difference = time_given - time_taken
+            time_fraction = (time_given - time_taken)/(time_given)
          
             if FlaskPhase < FlaskMoves:
                 flask_position.move_ip(FlaskOffset * FlaskSpeed, 0)  # [LAW] Move the Flask
@@ -658,7 +658,7 @@ def Game(Score): # [NP] The score parameter determines how much score the player
 # POINT ASSIGNMENT/FAIL CHECK =================================================
        
                 Order_accuracy = accuracy_as_percent(orderchem, orderchem, ordercapacity, ordercapacity) # [KY] Assign accuracy of order to accuracy_as_percent function call
-                OrderPoints = point_calculation(ChemicalClassification[orderchem].Difficulty, Order_accuracy / 100, time_difference) # [KY] Assign points per order to order_match function call
+                OrderPoints = point_calculation(ChemicalClassification[orderchem].Difficulty, Order_accuracy / 100, time_fraction) # [KY] Assign points per order to order_match function call
                 
                 if Order_accuracy < 30: # [KY] Checks if the accuracy of the amount produced compared to the amount ordered is below 30 (fail condition)
                     pygame.draw.rect(screen, BLUE, playagain_rect) # [KY] draws play again and quit game buttons (rects are defined above)
