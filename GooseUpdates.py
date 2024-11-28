@@ -279,7 +279,7 @@ def mixing_sequence(): # [LG] function that returns true to allow if statement t
         
 # STARTING THE GAME ===========================================================
 
-def Game(Score): # [NP] The score parameter determines how much score the player has
+def Game(Score, time_allowed): # [NP] The score parameter determines how much score the player has
 
 # TEXT FUNCTIONS ==============================================================    
 
@@ -459,7 +459,7 @@ def Game(Score): # [NP] The score parameter determines how much score the player
                     Show_things = True
                     Show_FlaskCOPY = True
                     time_at_beginorder = pygame.time.get_ticks()/1000 #[KY] get time in seconds that have elapsed from beginning of the game to the start of the order ("Accept Order" being pressed)
-                    time_given = 1000 # [LAW] The amount the timer will count down for, initialized once accept order is pressed
+                    time_given = time_allowed # [LAW] The amount the timer will count down for, initialized once accept order is pressed
                 elif button_rect2.collidepoint(mouse_pos) and not show_machine:  # [LAW] Check if the click is within the second button's area ("Quit")
                     running = False
                 elif click_area3.collidepoint(mouse_pos) and show_machine: # [NP] Check if the DONE button has been clicked
@@ -468,7 +468,7 @@ def Game(Score): # [NP] The score parameter determines how much score the player
                     Show_FlaskCOPY = False
                     time_at_endorder = pygame.time.get_ticks()/1000 #[KY] get time in seconds that have elapsed from beginning of the game to the end of the order ("Done" being pressed), to be compared with time_at_beginorder to determine points
                 elif playagain_rect.collidepoint(mouse_pos) and OrderOver:
-                    Game(0)
+                    Game(0,time_allowed)
                 elif endgame_rect.collidepoint(mouse_pos) and OrderOver:
                     running = False
                     
@@ -705,7 +705,7 @@ def Game(Score): # [NP] The score parameter determines how much score the player
                     font.render_to(screen, (550, 535), "Quit Game", WHITE)
                     OrderOver = True
                 else:
-                     Game(Score + OrderPoints)
+                     Game(Score + OrderPoints,(time_allowed-100))
                  
             FlaskPhase += 1
             
@@ -720,6 +720,6 @@ def Game(Score): # [NP] The score parameter determines how much score the player
 
 # STARTING THE GAME ===========================================================
 
-Game(0) # [NP] Plays The Game.
+Game(0,900) # [NP] Plays The Game.
 
 # END =========================================================================
