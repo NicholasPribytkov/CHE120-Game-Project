@@ -37,7 +37,7 @@ def CustomerOrder(): # [NP] Generates a Customer Order
     '''
     
     orderchem = Chemicals[randint(0, len(Chemicals) - 1)] # [NP] Picks a random chemical from the chemical list
-    ordercapacity = randint(1, 100) # [NP] Picks a random quantity of the chemical
+    ordercapacity = randint(1, 50) # [NP] Picks a random quantity of the chemical
     orderchem.Quantity =+ ordercapacity # [LG] Assigns the Amount of desired product to the object
     return orderchem # [NP] Return the customer order details back
 
