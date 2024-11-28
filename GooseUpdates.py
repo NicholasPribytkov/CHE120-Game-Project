@@ -662,6 +662,7 @@ def Game(Score): # [NP] The score parameter determines how much score the player
        
                 Order_accuracy = accuracy_as_percent(mix1, orderchem, ordercapacity, ordercapacity) # [KY] EDIT, Assign accuracy of order to accuracy_as_percent function call
                 #[KY] Parameters must correspond to (chemical produced, chemical ordered (good), quantity of chemical produced, quantity of chemical ordered)
+                #[KY] Right now players will always fail bc types of the first two objects aren't equal
                 OrderPoints = point_calculation(ChemicalClassification[orderchem].Difficulty, Order_accuracy/100, time_fraction) # [KY] Assign points per order to order_match function call
                 
                 if Order_accuracy < 30: # [KY] Checks if the accuracy of the amount produced compared to the amount ordered is below 30 (fail condition)
