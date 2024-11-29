@@ -285,7 +285,7 @@ def mixing_sequence(): # [LG] function that returns true to allow if statement t
         
 # STARTING THE GAME ===========================================================
 
-def Game(Score): # [NP] The score parameter determines how much score the player has
+def Game(Score, time_allowed): # [NP] The score parameter determines how much score the player has
 
 # TEXT FUNCTIONS ==============================================================    
 
@@ -322,7 +322,7 @@ def Game(Score): # [NP] The score parameter determines how much score the player
     font2 = pygame.freetype.SysFont(TextFont, FontSizes[1])
  
 # TIMER FUNCTIONS===============================================================
-    time_given = 1000 # [LAW] The amount the timer will cound down for
+    time_given = time_allowed # [LAW] The amount the timer will cound down for
     begin=pygame.time.get_ticks()# [LAW] Initial time
     
     
@@ -472,7 +472,7 @@ def Game(Score): # [NP] The score parameter determines how much score the player
                     Move_Flask = True
                     Show_FlaskCOPY = False
                 elif playagain_rect.collidepoint(mouse_pos) and OrderOver:
-                    Game(0)
+                    Game(0,200)
                 elif endgame_rect.collidepoint(mouse_pos) and OrderOver:
                     running = False
                     
@@ -700,8 +700,12 @@ def Game(Score): # [NP] The score parameter determines how much score the player
                     font.render_to(screen, (550, 535), "Quit Game", WHITE)
                     OrderOver = True
                 else:
-                     Game(Score + OrderPoints)
-                     time_given -= 2
+                    if time_given >= 5:
+                        time_given -= 5
+                        Game(Score + OrderPoints, time_given)
+                    elif time_given <= 5:
+                        Game(Score + OrderPoints, time_given)
+                     
                  
             FlaskPhase += 1
             
