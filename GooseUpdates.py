@@ -49,7 +49,7 @@ Greeting = ['Hello', 'Hows it going', 'Hi']  # [LAW] List of greetings
 Chemicals = ["NaCl (Sodium Chloride)", "NH3 (Ammonia)", "NH4OH (Ammonium Hydroxide)", "HCl (Hydrochloric Acid)", "NaOH (Sodium Hydroxide)"] # [NP] List of possible chemicals to receive in an order
 
  # [LAW] Instructions for each order
-NaClin = '''You are making Sodium Chloride:
+NaClin = ''' Sodium Chloride:
             - Step 1 Given the equation is Na + Cl -> NaCl, you need 
             to dispense equal molar quantities of these elements to 
             the moles of the ordered chemical. This is done by pressing 
@@ -59,7 +59,7 @@ NaClin = '''You are making Sodium Chloride:
             with the result, just click the mix button again.
             - Step 3 If you are happy with your result click the done button'''
 
-NH3in = '''You are making Ammonia:
+NH3in = ''' Ammonia:
             - Step 1 Given the equation is N + 3H -> NH3, you need to 
             dispense stoichiometric molar quantities of these elements 
             to make the moles of the ordered chemical. This is done by 
@@ -69,7 +69,7 @@ NH3in = '''You are making Ammonia:
             just click the mix button again.
             - Step 3 If you are happy with your result click the done button'''
 
-NH4OHin = '''You are making Ammonium Hydroxide:
+NH4OHin = ''' Ammonium Hydroxide:
            - Step 1 This is a two-step process, firstly you need to make 
            Ammonia. Given The equation N + 3H -> NH3 you need to dispense 
            stoichiometric molar quantities of these elements to make the moles 
@@ -85,7 +85,7 @@ NH4OHin = '''You are making Ammonium Hydroxide:
             - Step 4 If you are happy with your result click the done button. 
 
 '''
-HClin = '''You are making Hydrochloric Acid:
+HClin = ''' Hydrochloric Acid:
             - Step 1 Given the equation is H + Cl -> HCl, you need to dispense 
             equal molar quantities of these elements to the moles of the ordered 
             chemical. This is done by pressing and holding the buttons corresponding 
@@ -95,7 +95,7 @@ HClin = '''You are making Hydrochloric Acid:
             click the mix button again.
             - Step 3 If you are happy with your result click the done button'''
 
-NaOHin = '''You are making Sodium Hydroxide:
+NaOHin = ''' Sodium Hydroxide:
             - Step 1 Given the equation is Na + O + H  -> NaOH, you need to
             dispense equal molar quantities of these elements to the moles 
             of the ordered chemical. This is done by pressing and holding 
@@ -403,7 +403,7 @@ def Game(Score, time_allowed): # [NP] The score parameter determines how much sc
 
     for i in range(len(Chemicals)): # [LAW] Finds what Chemical has been ordered and assigns the instructions to the instructions variable
         if Chemicals[i] in orderchem:
-            instructions = instruction_list[i]
+           instructions = 'You are making ' + str(ordercapacity) + ' Moles of ' + instruction_list[i]
             
 # LOADING FLASKS ==============================================================
 
