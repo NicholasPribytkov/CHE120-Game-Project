@@ -58,7 +58,8 @@ NaClin = ''' Sodium Chloride:
             - Step 2 Click the mix button once you have reached the 
             desired moles of each of your reactants. If you are unhappy 
             with the result, just click the mix button again.
-            - Step 3 If you are happy with your result click the done button'''
+            - Step 3 If you are happy with your result click the done button
+            - If the accuracy of the amount you produce is below 30%, you will fail the order'''
 
 NH3in = ''' Ammonia:
             - Step 1 Given the equation is N + 3H -> NH3, you need to 
@@ -68,7 +69,8 @@ NH3in = ''' Ammonia:
             - Step 2 Click the mix button once you have reached the desired 
             moles of each of your reactants. If you are unhappy with the result, 
             just click the mix button again.
-            - Step 3 If you are happy with your result click the done button'''
+            - Step 3 If you are happy with your result click the done button
+            - If the accuracy of the amount you produce is below 30%, you will fail the order'''
 
 NH4OHin = ''' Ammonium Hydroxide:
            - Step 1 This is a two-step process, firstly you need to make 
@@ -83,7 +85,8 @@ NH4OHin = ''' Ammonium Hydroxide:
            - Step 3 Again now click the mix button once you have reached the desired 
            moles of each of your reactants. If you are unhappy with the result, 
            just click the mix button again.
-            - Step 4 If you are happy with your result click the done button. 
+            - Step 4 If you are happy with your result click the done button.
+            - If the accuracy of the amount you produce is below 30%, you will fail the order'''
 
 '''
 HClin = ''' Hydrochloric Acid:
@@ -94,7 +97,8 @@ HClin = ''' Hydrochloric Acid:
             - Step 2 Click the mix button once you have reached the desired moles 
             of each of your reactants. If you are unhappy with the result, just 
             click the mix button again.
-            - Step 3 If you are happy with your result click the done button'''
+            - Step 3 If you are happy with your result click the done button
+            - If the accuracy of the amount you produce is below 30%, you will fail the order'''
 
 NaOHin = ''' Sodium Hydroxide:
             - Step 1 Given the equation is Na + O + H  -> NaOH, you need to
@@ -104,7 +108,8 @@ NaOHin = ''' Sodium Hydroxide:
             - Step 2 Click the mix button once you have reached the desired 
             moles of each of your reactants. If you are unhappy with the result, 
             just click the mix button again.
-            - Step 3 If you are happy with your result click the done button'''
+            - Step 3 If you are happy with your result click the done button
+            - If the accuracy of the amount you produce is below 30%, you will fail the order'''
 
 ChemicalCorrelator = {"H2O (Water)": FlaskC, "NH4OH (Ammonium Hydroxide)": FlaskB, "NH3 (Ammonia)": FlaskB} # [NP] Matches each chemical with an appropriate sprite
 ChemicalClassification = {"H2O (Water)": mol.H2O(), "NH4OH (Ammonium Hydroxide)": mol.NH4OH(), "NH3 (Ammonia)": mol.NH3(), "NaCl (Sodium Chloride)": mol.NaCl(), "HCl (Hydrochloric Acid)": mol.HCl(), "NaOH (Sodium Hydroxide)": mol.NaOH()}
@@ -126,7 +131,7 @@ ScreenSize = (1300, 800)
 SpeechBubbleSize = (550, 550)
 MachineSize = (1300, 800)
 FlaskSize = (200, 250)
-FontSizes = [40, 25]
+FontSizes = [40, 15]
 
 BigCLSize = [700, 400, 50, 50] 
 SmallCLSize = [700, 50, 50, 50]
