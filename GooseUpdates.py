@@ -323,7 +323,7 @@ def Game(Score, time_allowed): # [NP] The score parameter determines how much sc
  
 # TIMER FUNCTIONS===============================================================
     time_given = time_allowed # [LAW] The amount the timer will cound down for
-    begin=pygame.time.get_ticks()# [LAW] Initial time
+   
     
     
     def display_timer(count_down, initial,fail_time):
@@ -465,6 +465,7 @@ def Game(Score, time_allowed): # [NP] The score parameter determines how much sc
                 if button_rect.collidepoint(mouse_pos) and not show_machine:  # [LAW] Check if the click is within the first button's area
                     Show_things = True
                     Show_FlaskCOPY = True
+                    begin=pygame.time.get_ticks()# [LAW] Initial time
                 elif button_rect2.collidepoint(mouse_pos) and not show_machine:  # [LAW] Check if the click is within the second button's area
                     running = False
                 elif click_area3.collidepoint(mouse_pos) and show_machine: # [NP] Check if the DONE button has been clicked
