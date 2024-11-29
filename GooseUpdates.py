@@ -71,12 +71,12 @@ NH3in = '''You are making Ammonia:
 
 NH4OHin = '''You are making Ammonium Hydroxide:
            - Step 1 This is a two-step process, firstly you need to make 
-           Ammonium. Given The equation N + 4H -> NH4 you need to dispense 
+           Ammonia. Given The equation N + 3H -> NH3 you need to dispense 
            stoichiometric molar quantities of these elements to make the moles 
            of the ordered chemical. This is done by pressing and holding the 
            buttons corresponding to the elements
            - Step 2 Now click mix once you have reached the desired moles of 
-           each of your first reactants.The next equation is NH4 + O + H -> NH4OH 
+           each of your first reactants.The next equation is NH3 + O + 2H -> NH4OH 
            you need to dispense equal molar quantities of these elements to the 
            moles of the ordered chemical
            - Step 3 Again now click the mix button once you have reached the desired 
@@ -383,7 +383,7 @@ def Game(Score, time_allowed): # [NP] The score parameter determines how much sc
     FlaskMoves = MoveFrames // FlaskSpeed
     mixing_start = False
     OrderOver = False
-    OrderPoints = 0
+    Order_points = 0
     
 # CUSTOMER CREATION ===========================================================
     
@@ -696,9 +696,8 @@ def Game(Score, time_allowed): # [NP] The score parameter determines how much sc
                 #[KY] If the types of the first two objects aren't equal, accuracy will be 0 (confirmed)
                 Order_points = point_calculation(ChemicalClassification[orderchem].Difficulty, Order_accuracy/100, time_fraction) # [KY] Assign points per order to order_match function call
 
-                print(str(Order_accuracy)) #[KY] for testing purposes
-                print(Order_points) #[KY] for testing purposes
-                
+                print("Accuracy:" + str(Order_accuracy) + "\nPoints:" + str(Order_points) + "\nTime taken:" + str(time_taken) + "\nTime given: " + str(time_given) + "\nTime fraction: " + str(time_fraction)) #[KY] for testing purposes
+
                 if Order_accuracy < 30: # [KY] Checks if the accuracy of the amount produced compared to the amount ordered is below 30 (fail condition)
                     pygame.draw.rect(screen, BLUE, playagain_rect) # [KY] draws play again and quit game buttons (rects are defined above)
                     pygame.draw.rect(screen, RED, endgame_rect) 
@@ -706,7 +705,7 @@ def Game(Score, time_allowed): # [NP] The score parameter determines how much sc
                     font.render_to(screen, (550, 535), "Quit Game", WHITE)
                     OrderOver = True
                 else:
-                     Game(Score + OrderPoints,(time_allowed-100))
+                     Game(Score + Order_points,(time_allowed-5))
                  
             FlaskPhase += 1
             
@@ -721,6 +720,6 @@ def Game(Score, time_allowed): # [NP] The score parameter determines how much sc
 
 # STARTING THE GAME ===========================================================
 
-Game(0,900) # [NP] Plays The Game.
+Game(0,100) # [NP] Plays The Game.
 
 # END =========================================================================
