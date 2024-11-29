@@ -691,7 +691,7 @@ def Game(Score, time_allowed): # [NP] The score parameter determines how much sc
                 
 # POINT ASSIGNMENT/FAIL CHECK =================================================
        
-                Order_accuracy = accuracy_as_percent(orderchem, orderchem, ordercapacity, ordercapacity) # [KY] EDIT, Assign accuracy of order to accuracy_as_percent function call
+                Order_accuracy = accuracy_as_percent(mix1, ChemicalClassification[orderchem], mix1.Quantity, ordercapacity) # [KY] EDIT, Assign accuracy of order to accuracy_as_percent function call
                 #[KY] Parameters must correspond to (chemical produced, chemical ordered (good), quantity of chemical produced, quantity of chemical ordered)
                 #[KY] If the types of the first two objects aren't equal, accuracy will be 0 (confirmed)
                 Order_points = point_calculation(ChemicalClassification[orderchem].Difficulty, Order_accuracy/100, time_fraction) # [KY] Assign points per order to order_match function call
