@@ -88,7 +88,7 @@ NH4OHin = ''' Ammonium Hydroxide:
             - Step 4 If you are happy with your result click the done button.
             - If the accuracy of the amount you produce is below 30%, you will fail the order'''
 
-'''
+
 HClin = ''' Hydrochloric Acid:
             - Step 1 Given the equation is H + Cl -> HCl, you need to dispense 
             equal molar quantities of these elements to the moles of the ordered 
@@ -720,6 +720,6 @@ def Game(Score, time_allowed): # [NP] The score parameter determines how much sc
 
 # STARTING THE GAME ===========================================================
 
-Game(0) # [NP] Plays The Game.
+Game(0,200) # [NP] Plays The Game.
 
 # END =========================================================================
