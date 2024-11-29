@@ -690,22 +690,28 @@ def Game(Score, time_allowed): # [NP] The score parameter determines how much sc
                 
 # POINT ASSIGNMENT/FAIL CHECK =================================================
        
-                Order_accuracy = accuracy_as_percent(orderchem, orderchem, ordercapacity, ordercapacity) # [KY] Assign accuracy of order to accuracy_as_percent function call
-                OrderPoints = point_calculation(ChemicalClassification[orderchem].Difficulty, Order_accuracy / 100, time_difference) # [KY] Assign points per order to order_match function call
+                if mix1 != None:
+                    Order_accuracy = accuracy_as_percent(mix1.Name, orderchem, mix1.Quantity , ordercapacity) # [KY] Assign accuracy of order to accuracy_as_percent function call
+                    OrderPoints = point_calculation(ChemicalClassification[orderchem].Difficulty, Order_accuracy / 100, time_difference) # [KY] Assign points per order to order_match function call
                 
-                if Order_accuracy < 30: # [KY] Checks if the accuracy of the amount produced compared to the amount ordered is below 30 (fail condition)
+                    if Order_accuracy < 30: # [KY] Checks if the accuracy of the amount produced compared to the amount ordered is below 30 (fail condition)
+                        pygame.draw.rect(screen, BLUE, playagain_rect) # [KY] draws play again and quit game buttons (rects are defined above)
+                        pygame.draw.rect(screen, RED, endgame_rect) 
+                        font.render_to(screen, (360, 385), "Game Over - Click to Play Again", WHITE)
+                        font.render_to(screen, (550, 535), "Quit Game", WHITE)
+                        OrderOver = True
+                    else:
+                        if time_given >= 5:
+                            time_given -= 5
+                            Game(Score + OrderPoints, time_given)
+                        elif time_given <= 5:
+                            Game(Score + OrderPoints, time_given)
+                else:
                     pygame.draw.rect(screen, BLUE, playagain_rect) # [KY] draws play again and quit game buttons (rects are defined above)
                     pygame.draw.rect(screen, RED, endgame_rect) 
                     font.render_to(screen, (360, 385), "Game Over - Click to Play Again", WHITE)
                     font.render_to(screen, (550, 535), "Quit Game", WHITE)
-                    OrderOver = True
-                else:
-                    if time_given >= 5:
-                        time_given -= 5
-                        Game(Score + OrderPoints, time_given)
-                    elif time_given <= 5:
-                        Game(Score + OrderPoints, time_given)
-                     
+                    OrderOver = True 
                  
             FlaskPhase += 1
             
