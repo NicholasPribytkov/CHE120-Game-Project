@@ -53,7 +53,7 @@ NaClin = '''You are making Sodium Chloride:
             - Step 1 Given the equation is Na + Cl -> NaCl, you need 
             to dispense equal molar quantities of these elements to 
             the moles of the ordered chemical. This is done by pressing 
-            and holding the corresponding buttons to the elements. 
+            and holding the buttons corresponding to the elements. 
             - Step 2 Click the mix button once you have reached the 
             desired moles of each of your reactants. If you are unhappy 
             with the result, just click the mix button again.
@@ -63,7 +63,7 @@ NH3in = '''You are making Ammonia:
             - Step 1 Given the equation is N + 3H -> NH3, you need to 
             dispense stoichiometric molar quantities of these elements 
             to make the moles of the ordered chemical. This is done by 
-            pressing and holding the corresponding buttons to the elements. 
+            pressing and holding the buttons corresponding to the elements. 
             - Step 2 Click the mix button once you have reached the desired 
             moles of each of your reactants. If you are unhappy with the result, 
             just click the mix button again.
@@ -74,7 +74,7 @@ NH4OHin = '''You are making Ammonium Hydroxide:
            Ammonium. Given The equation N + 4H -> NH4 you need to dispense 
            stoichiometric molar quantities of these elements to make the moles 
            of the ordered chemical. This is done by pressing and holding the 
-           corresponding buttons to the elements
+           buttons corresponding to the elements
            - Step 2 Now click mix once you have reached the desired moles of 
            each of your first reactants.The next equation is NH4 + O + H -> NH4OH 
            you need to dispense equal molar quantities of these elements to the 
@@ -88,7 +88,7 @@ NH4OHin = '''You are making Ammonium Hydroxide:
 HClin = '''You are making Hydrochloric Acid:
             - Step 1 Given the equation is H + Cl -> HCl, you need to dispense 
             equal molar quantities of these elements to the moles of the ordered 
-            chemical. This is done by pressing and holding the corresponding buttons 
+            chemical. This is done by pressing and holding the buttons corresponding 
             to the elements. 
             - Step 2 Click the mix button once you have reached the desired moles 
             of each of your reactants. If you are unhappy with the result, just 
@@ -99,7 +99,7 @@ NaOHin = '''You are making Sodium Hydroxide:
             - Step 1 Given the equation is Na + O + H  -> NaOH, you need to
             dispense equal molar quantities of these elements to the moles 
             of the ordered chemical. This is done by pressing and holding 
-            the corresponding buttons to the elements. 
+            the buttons corresponding to the elements. 
             - Step 2 Click the mix button once you have reached the desired 
             moles of each of your reactants. If you are unhappy with the result, 
             just click the mix button again.
