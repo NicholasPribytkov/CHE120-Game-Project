@@ -519,7 +519,7 @@ def Game(Score): # [NP] The score parameter determines how much score the player
             Na_button.draw(screen)
             Cl_button.draw(screen)
             Ca_button.draw(screen)
-            Mixing_button.draw(screen)
+           
             #===========================================
 
             #===========================================
