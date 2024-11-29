@@ -84,7 +84,7 @@ class NH3:
     Ingredients = ['N', 'H']
     Quantity = 0
     Difficulty = 20 #[KY] two basic ingredients, non 1:1 ratio
-    Ingredient_ratios = [3, 1/3]
+    Ingredient_ratios = [3, 1]
 
 class NH4OH:
     Name = "NH4OH"
