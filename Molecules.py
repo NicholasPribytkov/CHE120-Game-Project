@@ -72,7 +72,7 @@ class NaOH:
     Name = "NaOH"
     Ingredients = ['Na', 'H', 'O']
     Quantity = 0
-    Difficulty = 30 #[KY] one ingredient you have to make, 1:1:1 ratio
+    Difficulty = 30 #[KY] three ingredients, 1:1:1 ratio
     Ingredient_ratios = [1, 1, 1]
     
 # POLYATOMICS =================================================================
@@ -90,7 +90,7 @@ class NH4OH:
     Name = "NH4OH"
     Ingredients = ['NH3', 'H', 'O']
     Quantity = 0
-    Difficulty = 30 #[KY] one ingredient you have to make, 1:1:1 ratio
+    Difficulty = 40 #[KY] three ingredients, one ingredient you have to make, 1:1:1 ratio
     Ingredient_ratios = [1, 2, 1]
     
 # END =========================================================================
