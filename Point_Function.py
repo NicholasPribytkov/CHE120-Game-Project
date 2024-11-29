@@ -9,9 +9,15 @@
 
 def point_calculation(Difficulty, accuracy_fraction, time_fraction):
     
-    points_per_order = int((Difficulty + time_fraction)*accuracy_fraction)
-    # [KY] Sample points_per_order = ((20 + ((20-10)/20))*0.8) = 16
+    points_per_order = int((Difficulty)*(time_fraction)*(accuracy_fraction))
 
-    # [KY] time_fraction is (time given - time taken)/(time given)
+    # [KY] Difficulty of the order is theoretically the highest number of points you can earn per order
+    # [KY] Sample points_per_order = ((20*((40-5)/40)*0.8) = 14
+    # Medium difficulty, little time taken, high accuracy
+
+    # [KY] Sample points_per_order = ((30*((50-40)/50)*0.6) = 4
+    # High difficulty, large percentage of time taken, medium accuracy
+
+    # [KY] time_fraction is (time given - time taken)/(time given), as defined in GooseUpdates.py (fraction of time remaining)
 
     return points_per_order
