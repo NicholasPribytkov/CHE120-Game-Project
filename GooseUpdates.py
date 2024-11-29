@@ -50,31 +50,61 @@ Greeting = ['Hello', 'Hows it going', 'Hi']  # [LAW] List of greetings
 Chemicals = ["NaCl (Sodium Chloride)", "NH3 (Ammonia)", "NH4OH (Ammonium Hydroxide)", "HCl (Hydrochloric Acid)", "NaOH (Sodium Hydroxide)"] # [NP] List of possible chemicals to receive in an order
 
  # [LAW] Instructions for each order
-NaClin = '''You are making Sodium Chloride:
-            - Step 1
-            - Step 2
-            - Step 3
-            - Step 4'''
-NH3in = '''You are making Ammonia:
-            - Step 1
-            - Step 2
-            - Step 3
-            - Step 4'''
-NH4OHin = '''You are making Ammonium Hydroxide:
-            - Step 1
-            - Step 2
-            - Step 3
-            - Step 4'''
-HClin = '''You are making Hydrochloric Acid:
-            - Step 1
-            - Step 2
-            - Step 3
-            - Step 4'''
-NaOHin = '''You are making Sodium Hydroxide:
-            - Step 1
-            - Step 2
-            - Step 3
-            - Step 4'''
+NaClin = ''' Sodium Chloride:
+            - Step 1 Given the equation is Na + Cl -> NaCl, you need 
+            to dispense equal molar quantities of these elements to 
+            the moles of the ordered chemical. This is done by pressing 
+            and holding the buttons corresponding to the elements. 
+            - Step 2 Click the mix button once you have reached the 
+            desired moles of each of your reactants. If you are unhappy 
+            with the result, just click the mix button again.
+            - Step 3 If you are happy with your result click the done button'''
+
+NH3in = ''' Ammonia:
+            - Step 1 Given the equation is N + 3H -> NH3, you need to 
+            dispense stoichiometric molar quantities of these elements 
+            to make the moles of the ordered chemical. This is done by 
+            pressing and holding the buttons corresponding to the elements. 
+            - Step 2 Click the mix button once you have reached the desired 
+            moles of each of your reactants. If you are unhappy with the result, 
+            just click the mix button again.
+            - Step 3 If you are happy with your result click the done button'''
+
+NH4OHin = ''' Ammonium Hydroxide:
+           - Step 1 This is a two-step process, firstly you need to make 
+           Ammonia. Given The equation N + 3H -> NH3 you need to dispense 
+           stoichiometric molar quantities of these elements to make the moles 
+           of the ordered chemical. This is done by pressing and holding the 
+           buttons corresponding to the elements
+           - Step 2 Now click mix once you have reached the desired moles of 
+           each of your first reactants.The next equation is NH3 + O + 2H -> NH4OH 
+           you need to dispense equal molar quantities of these elements to the 
+           moles of the ordered chemical
+           - Step 3 Again now click the mix button once you have reached the desired 
+           moles of each of your reactants. If you are unhappy with the result, 
+           just click the mix button again.
+            - Step 4 If you are happy with your result click the done button. 
+
+'''
+HClin = ''' Hydrochloric Acid:
+            - Step 1 Given the equation is H + Cl -> HCl, you need to dispense 
+            equal molar quantities of these elements to the moles of the ordered 
+            chemical. This is done by pressing and holding the buttons corresponding 
+            to the elements. 
+            - Step 2 Click the mix button once you have reached the desired moles 
+            of each of your reactants. If you are unhappy with the result, just 
+            click the mix button again.
+            - Step 3 If you are happy with your result click the done button'''
+
+NaOHin = ''' Sodium Hydroxide:
+            - Step 1 Given the equation is Na + O + H  -> NaOH, you need to
+            dispense equal molar quantities of these elements to the moles 
+            of the ordered chemical. This is done by pressing and holding 
+            the buttons corresponding to the elements. 
+            - Step 2 Click the mix button once you have reached the desired 
+            moles of each of your reactants. If you are unhappy with the result, 
+            just click the mix button again.
+            - Step 3 If you are happy with your result click the done button'''
 
 ChemicalCorrelator = {"H2O (Water)": FlaskC, "NH4OH (Ammonium Hydroxide)": FlaskB, "NH3 (Ammonia)": FlaskB} # [NP] Matches each chemical with an appropriate sprite
 ChemicalClassification = {"H2O (Water)": mol.H2O(), "NH4OH (Ammonium Hydroxide)": mol.NH4OH(), "NH3 (Ammonia)": mol.NH3(), "NaCl (Sodium Chloride)": mol.NaCl(), "HCl (Hydrochloric Acid)": mol.HCl(), "NaOH (Sodium Hydroxide)": mol.NaOH()}
@@ -375,7 +405,7 @@ def Game(Score): # [NP] The score parameter determines how much score the player
 
     for i in range(len(Chemicals)): # [LAW] Finds what Chemical has been ordered and assigns the instructions to the instructions variable
         if Chemicals[i] in orderchem:
-            instructions = instruction_list[i]
+            instructions = 'You are making ' + str(ordercapacity) + ' Moles of ' + instruction_list[i]
             
 # LOADING FLASKS ==============================================================
 
@@ -628,17 +658,17 @@ def Game(Score): # [NP] The score parameter determines how much score the player
             if mix1 != None:
                 element1 = mix1.Name
                 Moly1= str(element1)+ ' = ' + str(mix1.Quantity)
-                display_text2(Moly1,25,150)# Currently place holder will need to be repositioned
+                display_text2(Moly1,700,650)# Currently place holder will need to be repositioned
                 pygame.display.update()
             if mix2 != None:
                 element2 = mix2.Name
                 Moly2= str(element2)+ ' = ' + str(mix2.Quantity)
-                display_text2(Moly2,225,150)
+                display_text2(Moly2,700,700)
                 pygame.display.update()
             if mix3 != None:
                 element3 = mix3.Name
                 Moly3= str(element3)+ ' = ' + str(mix3.Quantity)
-                display_text2(Moly3,425,150)
+                display_text2(Moly3,700,750)
                 pygame.display.update()
 
         if Show_FlaskCOPY: screen.blit(FlaskCOPY, FlaskCopyPos)  # [LAW] Display FlaskCOPY at the new position
