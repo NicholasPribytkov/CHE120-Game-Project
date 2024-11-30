@@ -323,8 +323,6 @@ def Game(Score, time_allowed): # [NP] The score parameter determines how much sc
  
 # TIMER FUNCTIONS===============================================================
     time_given = time_allowed # [LAW] The amount the timer will cound down for
-   
-    
     
     def display_timer(count_down, initial,fail_time):
         elapsed_time = ((pygame.time.get_ticks()-initial) / 1000)# [LAW] Calculates how much time has elapsed
@@ -339,9 +337,9 @@ def Game(Score, time_allowed): # [NP] The score parameter determines how much sc
         timer_text = 'Remaining Time: ' + str(int(remaining_time))
         display_text(timer_text, 900 ,50)# [LAW] Displays the time on the screen
 
-    def elapsed(initial):
-        player_time_elapsed = ((pygame.time.get_ticks()-initial) / 1000)# [LAW] Calculates the elapsed time of the player once done making the chemical
-        return player_time_elapsed
+    #def elapsed(initial):
+        #player_time_elapsed = ((pygame.time.get_ticks()-initial) / 1000)# [LAW] Calculates the elapsed time of the player once done making the chemical
+        #return player_time_elapsed
       
 
    
@@ -462,16 +460,18 @@ def Game(Score, time_allowed): # [NP] The score parameter determines how much sc
                 running = False  # [LAW] Allows the window to be closed
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 mouse_pos = pygame.mouse.get_pos()
-                if button_rect.collidepoint(mouse_pos) and not show_machine:  # [LAW] Check if the click is within the first button's area
+                if button_rect.collidepoint(mouse_pos) and not show_machine:  # [LAW] Check if the click is within the first button's area ("Accept Order")
                     Show_things = True
                     Show_FlaskCOPY = True
-                    begin=pygame.time.get_ticks()# [LAW] Initial time
-                elif button_rect2.collidepoint(mouse_pos) and not show_machine:  # [LAW] Check if the click is within the second button's area
+                    time_at_startorder = pygame.time.get_ticks()# [LAW] Initial time
+                 
+                elif button_rect2.collidepoint(mouse_pos) and not show_machine:  # [LAW] Check if the click is within the second button's area ("Quit")
                     running = False
                 elif click_area3.collidepoint(mouse_pos) and show_machine: # [NP] Check if the DONE button has been clicked
                     FlaskPhase = 0
                     Move_Flask = True
                     Show_FlaskCOPY = False
+                    time_at_endorder = pygame.time.get_ticks() # [KY] when compared to time_at_startorder, returns time taken to complete order
                 elif playagain_rect.collidepoint(mouse_pos) and OrderOver:
                     Game(0,200)
                 elif endgame_rect.collidepoint(mouse_pos) and OrderOver:
@@ -681,7 +681,7 @@ def Game(Score, time_allowed): # [NP] The score parameter determines how much sc
 
         if Move_Flask:
             done = True
-            time_taken=elapsed(time_given)# [LAW] Returns how long it took the player to make the chemical
+            time_taken=time_at_endorder - time_at_startorder
             time_fraction = (time_given - time_taken)/time_given
          
             if FlaskPhase < FlaskMoves:
@@ -693,14 +693,17 @@ def Game(Score, time_allowed): # [NP] The score parameter determines how much sc
        
                 if mix1 != None:
                     Order_accuracy = accuracy_as_percent(mix1, ChemicalClassification[orderchem], mix1.Quantity , ordercapacity) # [KY] Assign accuracy of order to accuracy_as_percent function call
-                    Order_points = point_calculation(ChemicalClassification[orderchem].Difficulty, Order_accuracy / 100, time_difference) # [KY] Assign points per order to order_match function call
-
+                    Order_points = point_calculation(ChemicalClassification[orderchem].Difficulty, Order_accuracy / 100, time_fraction) # [KY] Assign points per order to order_match function call
+                    
+                    print("Accuracy:" + str(Order_accuracy) + "\nPoints:" + str(Order_points) + "\nTime taken:" + str(time_taken) + "\nTime given: " + str(time_given) + "\nTime fraction: " + str(time_fraction)) #[KY] for testing purposes
+                 
                     if Order_accuracy < 30: # [KY] Checks if the accuracy of the amount produced compared to the amount ordered is below 30 (fail condition)
                         pygame.draw.rect(screen, BLUE, playagain_rect) # [KY] draws play again and quit game buttons (rects are defined above)
                         pygame.draw.rect(screen, RED, endgame_rect) 
                         font.render_to(screen, (360, 385), "Game Over - Click to Play Again", WHITE)
                         font.render_to(screen, (550, 535), "Quit Game", WHITE)
                         OrderOver = True
+                     
                     else:
                         if time_given >= 5:
                             time_given -= 5
