@@ -322,7 +322,8 @@ def Game(Score, time_allowed): # [NP] The score parameter determines how much sc
     font2 = pygame.freetype.SysFont(TextFont, FontSizes[1])
  
 # TIMER FUNCTIONS===============================================================
-    time_given = time_allowed # [LAW] The amount the timer will cound down for
+    time_given = time_allowed # [LAW] The amount the timer will count down for
+    begin=pygame.time.get_ticks()# [LAW] Initial time
     
     def display_timer(count_down, initial,fail_time):
         elapsed_time = ((pygame.time.get_ticks()-initial) / 1000)# [LAW] Calculates how much time has elapsed
