@@ -163,6 +163,7 @@ QuitButtonFontPos = (1010, 660)
 
 OrderAFontPos = [760, 150]
 OrderBFontPos = [760, 190]
+OrderCFontPos = [760, 230]
 InstructionsFontPos = [35, 250]
 
 CustomerOffset = 1.5 # [NP] How much the customer moves per frame
@@ -406,7 +407,8 @@ def Game(Score, time_allowed): # [NP] The score parameter determines how much sc
     ordercapacity = random.randint(QuantityRange[0], QuantityRange[1]) # [NP] Selects a random quantity
 
     OrderA = random.choice(Greeting) + " " + "I Need " + str(ordercapacity)   # [LAW] Order with random greeting and a random chemical
-    OrderB = "moles of " + str(orderchem)
+    OrderB = "moles of " 
+    OrderC = str(orderchem)
     
 # LOADING INSTRUCTIONS ========================================================
 
@@ -498,7 +500,7 @@ def Game(Score, time_allowed): # [NP] The score parameter determines how much sc
             screen.blit(speech_bubble, SpeechBubblePos)  # [LAW] Positions the speech bubble
             display_text(OrderA, OrderAFontPos[0], OrderAFontPos[1])  # [LAW] Adjusts text position to fit inside the speech bubble
             display_text(OrderB, OrderBFontPos[0], OrderBFontPos[1])
-
+            display_text(OrderC, CFontPos[0], OrderCFontPos[1])
        
         
         if show_machine:
