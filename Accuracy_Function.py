@@ -1,8 +1,7 @@
 # ACCURACY FUNCTION ===========================================================
 
-# This file is a function that determines the accuracy percent of the quantity
-# of the inputted chemical compared to the quantity of the chemical that 
-# is desired in the order.
+# This file contains a function that determines the accuracy percent of the quantity
+# of the produced compared to the quantity of the chemical ordered.
 
 # Parent: GooseUpdates ========================================================
 # Author: Katie Yu ============================================================
