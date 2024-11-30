@@ -464,7 +464,7 @@ def Game(Score, time_allowed): # [NP] The score parameter determines how much sc
                 if button_rect.collidepoint(mouse_pos) and not show_machine:  # [LAW] Check if the click is within the first button's area ("Accept Order")
                     Show_things = True
                     Show_FlaskCOPY = True
-                    time_at_startorder = pygame.time.get_ticks()# [LAW] Initial time
+                    time_at_startorder = pygame.time.get_ticks()/1000 # [LAW] Initial time
                  
                 elif button_rect2.collidepoint(mouse_pos) and not show_machine:  # [LAW] Check if the click is within the second button's area ("Quit")
                     running = False
@@ -472,7 +472,7 @@ def Game(Score, time_allowed): # [NP] The score parameter determines how much sc
                     FlaskPhase = 0
                     Move_Flask = True
                     Show_FlaskCOPY = False
-                    time_at_endorder = pygame.time.get_ticks() # [KY] when compared to time_at_startorder, returns time taken to complete order
+                    time_at_endorder = pygame.time.get_ticks()/1000 # [KY] when compared to time_at_startorder, returns time taken to complete order
                 elif playagain_rect.collidepoint(mouse_pos) and OrderOver:
                     Game(0,200)
                 elif endgame_rect.collidepoint(mouse_pos) and OrderOver:
