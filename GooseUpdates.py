@@ -321,9 +321,7 @@ def Game(Score, time_allowed): # [NP] The score parameter determines how much sc
     font = pygame.freetype.SysFont(TextFont, FontSizes[0])
     font2 = pygame.freetype.SysFont(TextFont, FontSizes[1])
  
-# TIMER FUNCTIONS===============================================================
-    time_given = time_allowed # [LAW] The amount the timer will count down for
-    begin=pygame.time.get_ticks()# [LAW] Initial time
+# TIMER FUNCTIONS==============================================================
     
     def display_timer(count_down, initial,fail_time):
         elapsed_time = ((pygame.time.get_ticks()-initial) / 1000)# [LAW] Calculates how much time has elapsed
@@ -465,6 +463,8 @@ def Game(Score, time_allowed): # [NP] The score parameter determines how much sc
                     Show_things = True
                     Show_FlaskCOPY = True
                     time_at_startorder = pygame.time.get_ticks()/1000 # [LAW] Initial time
+                    time_given = time_allowed # [LAW] The amount the timer will count down for
+                    begin=pygame.time.get_ticks()# [LAW] Initial time
                  
                 elif button_rect2.collidepoint(mouse_pos) and not show_machine:  # [LAW] Check if the click is within the second button's area ("Quit")
                     running = False
@@ -474,7 +474,7 @@ def Game(Score, time_allowed): # [NP] The score parameter determines how much sc
                     Show_FlaskCOPY = False
                     time_at_endorder = pygame.time.get_ticks()/1000 # [KY] when compared to time_at_startorder, returns time taken to complete order
                 elif playagain_rect.collidepoint(mouse_pos) and OrderOver:
-                    Game(0,200)
+                    Game(0,time_allowed)
                 elif endgame_rect.collidepoint(mouse_pos) and OrderOver:
                     running = False
                     
@@ -706,10 +706,9 @@ def Game(Score, time_allowed): # [NP] The score parameter determines how much sc
                         OrderOver = True
                      
                     else:
-                        if time_given >= 5:
-                            time_given -= 5
-                            Game(Score + Order_points, time_given)
-                        elif time_given <= 5:
+                        if time_given > 10:
+                            Game(Score + Order_points, time_given-5)
+                        elif time_given <= 10:
                             Game(Score + Order_points, time_given)
                 else:
                     pygame.draw.rect(screen, BLUE, playagain_rect) # [KY] draws play again and quit game buttons (rects are defined above)
