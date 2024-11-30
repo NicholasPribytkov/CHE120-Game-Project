@@ -51,65 +51,70 @@ Chemicals = ["NaCl (Sodium Chloride)", "NH3 (Ammonia)", "NH4OH (Ammonium Hydroxi
 
  # [LAW] Instructions for each order
 NaClin = ''' Sodium Chloride:
-            - Step 1 Given the equation is Na + Cl -> NaCl, you need 
-            to dispense equal molar quantities of these elements to 
-            the moles of the ordered chemical. This is done by pressing 
-            and holding the buttons corresponding to the elements. 
-            - Step 2 Click the mix button once you have reached the 
-            desired moles of each of your reactants. If you are unhappy 
-            with the result, just click the mix button again.
-            - Step 3 If you are happy with your result click the done button
-            - If the accuracy of the amount you produce is below 30%, you will fail the order'''
+              - Step 1 Given the equation is Na + Cl -> NaCl, you need 
+              to dispense equal molar quantities of these elements to 
+              the moles of the ordered chemical. This is done by pressing 
+              and holding the buttons corresponding to the elements. 
+              - Step 2 Click the mix button once you have reached the 
+              desired moles of each of your reactants. If you are unhappy 
+              with the result, just click the mix button again.
+              - Step 3 If you are happy with your result click the done button
+            
+              If the accuracy of the amount you produce compared to the \namount ordered is below 30%, you will fail the game'''
 
 NH3in = ''' Ammonia:
-            - Step 1 Given the equation is N + 3H -> NH3, you need to 
-            dispense stoichiometric molar quantities of these elements 
-            to make the moles of the ordered chemical. This is done by 
-            pressing and holding the buttons corresponding to the elements. 
-            - Step 2 Click the mix button once you have reached the desired 
-            moles of each of your reactants. If you are unhappy with the result, 
-            just click the mix button again.
-            - Step 3 If you are happy with your result click the done button
-            - If the accuracy of the amount you produce is below 30%, you will fail the order'''
+              - Step 1 Given the equation is N + 3H -> NH3, you need to 
+              dispense stoichiometric molar quantities of these elements 
+              to make the moles of the ordered chemical. This is done by 
+              pressing and holding the buttons corresponding to the elements. 
+              - Step 2 Click the mix button once you have reached the desired 
+              moles of each of your reactants. If you are unhappy with the result, 
+              just click the mix button again.
+              - Step 3 If you are happy with your result click the done button
+            
+              If the accuracy of the amount you produce compared to the \namount ordered is below 30%, you will fail the game'''
 
-NH4OHin = ''' Ammonium Hydroxide:
-           - Step 1 This is a two-step process, firstly you need to make 
-           Ammonia. Given The equation N + 3H -> NH3 you need to dispense 
-           stoichiometric molar quantities of these elements to make the moles 
-           of the ordered chemical. This is done by pressing and holding the 
-           buttons corresponding to the elements
-           - Step 2 Now click mix once you have reached the desired moles of 
-           each of your first reactants.The next equation is NH3 + O + 2H -> NH4OH 
-           you need to dispense equal molar quantities of these elements to the 
-           moles of the ordered chemical
-           - Step 3 Again now click the mix button once you have reached the desired 
-           moles of each of your reactants. If you are unhappy with the result, 
-           just click the mix button again.
-            - Step 4 If you are happy with your result click the done button.
-            - If the accuracy of the amount you produce is below 30%, you will fail the order'''
+NH4OHin =   ''' Ammonium Hydroxide:
+              - Step 1 This is a two-step process, firstly you need to make 
+              Ammonia. Given The equation N + 3H -> NH3 you need to dispense 
+              stoichiometric molar quantities of these elements to make the moles 
+              of the ordered chemical. This is done by pressing and holding the 
+              buttons corresponding to the elements
+              - Step 2 Now click mix once you have reached the desired moles of 
+              each of your first reactants.The next equation is NH3 + O + 2H -> NH4OH 
+              you need to dispense equal molar quantities of these elements to the 
+              moles of the ordered chemical
+              - Step 3 Again now click the mix button once you have reached the desired 
+              moles of each of your reactants. If you are unhappy with the result, 
+              just click the mix button again.
+              - Step 4 If you are happy with your result click the done button.
+           
+              If the accuracy of the amount you produce compared to the \namount ordered is below 30%, you will fail the game'''
 
 
 HClin = ''' Hydrochloric Acid:
-            - Step 1 Given the equation is H + Cl -> HCl, you need to dispense 
-            equal molar quantities of these elements to the moles of the ordered 
-            chemical. This is done by pressing and holding the buttons corresponding 
-            to the elements. 
-            - Step 2 Click the mix button once you have reached the desired moles 
-            of each of your reactants. If you are unhappy with the result, just 
-            click the mix button again.
-            - Step 3 If you are happy with your result click the done button
-            - If the accuracy of the amount you produce is below 30%, you will fail the order'''
+             - Step 1 Given the equation is H + Cl -> HCl, you need to dispense 
+             equal molar quantities of these elements to the moles of the ordered 
+             chemical. This is done by pressing and holding the buttons corresponding 
+             to the elements. 
+             - Step 2 Click the mix button once you have reached the desired moles 
+             of each of your reactants. If you are unhappy with the result, just 
+             click the mix button again.
+             - Step 3 If you are happy with your result click the done button
+            
+             If the accuracy of the amount you produce compared to the \namount ordered is below 30%, you will fail the game'''
 
 NaOHin = ''' Sodium Hydroxide:
-            - Step 1 Given the equation is Na + O + H  -> NaOH, you need to
-            dispense equal molar quantities of these elements to the moles 
-            of the ordered chemical. This is done by pressing and holding 
-            the buttons corresponding to the elements. 
-            - Step 2 Click the mix button once you have reached the desired 
-            moles of each of your reactants. If you are unhappy with the result, 
-            just click the mix button again.
-            - Step 3 If you are happy with your result click the done button
-            - If the accuracy of the amount you produce is below 30%, you will fail the order'''
+             - Step 1 Given the equation is Na + O + H  -> NaOH, you need to
+             dispense equal molar quantities of these elements to the moles 
+             of the ordered chemical. This is done by pressing and holding 
+             the buttons corresponding to the elements. 
+             - Step 2 Click the mix button once you have reached the desired 
+             moles of each of your reactants. If you are unhappy with the result, 
+             just click the mix button again.
+             - Step 3 If you are happy with your result click the done button
+            
+             If the accuracy of the amount you produce compared to the \namount ordered is below 30%, you will fail the game'''
 
 ChemicalCorrelator = {"H2O (Water)": FlaskC, "NH4OH (Ammonium Hydroxide)": FlaskB, "NH3 (Ammonia)": FlaskB} # [NP] Matches each chemical with an appropriate sprite
 ChemicalClassification = {"H2O (Water)": mol.H2O(), "NH4OH (Ammonium Hydroxide)": mol.NH4OH(), "NH3 (Ammonia)": mol.NH3(), "NaCl (Sodium Chloride)": mol.NaCl(), "HCl (Hydrochloric Acid)": mol.HCl(), "NaOH (Sodium Hydroxide)": mol.NaOH()}
@@ -158,7 +163,7 @@ QuitButtonFontPos = (1010, 660)
 
 OrderAFontPos = [760, 150]
 OrderBFontPos = [760, 190]
-InstructionsFontPos = [30, 250]
+InstructionsFontPos = [35, 250]
 
 CustomerOffset = 1.5 # [NP] How much the customer moves per frame
 FlaskOffset = 10 # [NP] How much the flask moves per frame
@@ -387,7 +392,7 @@ def Game(Score, time_allowed): # [NP] The score parameter determines how much sc
     FlaskMoves = MoveFrames // FlaskSpeed
     mixing_start = False
     OrderOver = False
-    OrderPoints = 0
+    Order_points = 0
     
 # CUSTOMER CREATION ===========================================================
     
@@ -407,7 +412,7 @@ def Game(Score, time_allowed): # [NP] The score parameter determines how much sc
 
     for i in range(len(Chemicals)): # [LAW] Finds what Chemical has been ordered and assigns the instructions to the instructions variable
         if Chemicals[i] in orderchem:
-            instructions = 'You are making ' + str(ordercapacity) + ' Moles of ' + instruction_list[i]
+            instructions = 'Welcome to the Goose Lab!\n' + 'You are making ' + str(ordercapacity) + ' Moles of ' + instruction_list[i]
             
 # LOADING FLASKS ==============================================================
 
