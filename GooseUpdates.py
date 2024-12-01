@@ -87,9 +87,7 @@ NH4OHin =   ''' Ammonium Hydroxide:
               - Step 3 Again now click the mix button once you have reached the desired 
               moles of each of your reactants. If you are unhappy with the result, 
               just click the mix button again.
-              - Step 4 If you are happy with your result click the done button.
-           
-              If the accuracy of the amount you produce compared to the \namount ordered is below 30%, you will fail the game'''
+              - Step 4 If you are happy with your result click the done button.'''
 
 
 HClin = ''' Hydrochloric Acid:
@@ -500,7 +498,7 @@ def Game(Score, time_allowed): # [NP] The score parameter determines how much sc
             screen.blit(speech_bubble, SpeechBubblePos)  # [LAW] Positions the speech bubble
             display_text(OrderA, OrderAFontPos[0], OrderAFontPos[1])  # [LAW] Adjusts text position to fit inside the speech bubble
             display_text(OrderB, OrderBFontPos[0], OrderBFontPos[1])
-            display_text(OrderC, CFontPos[0], OrderCFontPos[1])
+            display_text(OrderC, OrderCFontPos[0], OrderCFontPos[1])
        
         
         if show_machine:
