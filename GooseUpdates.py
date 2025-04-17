@@ -27,22 +27,22 @@ import Mixing_Function as mix # [NP] This function lets the player mix chemicals
 parentfile = os.path.dirname(__file__) # [NP] Find the path for the parent folder
 
 # [NP] Call all image files
-HAM = r"" + parentfile + "/Images/GooseJordan.png"
-MAT = r"" + parentfile + "/Images/GooseMatheus.png"
-PEND = r"" + parentfile + "/Images/GoosePendar.png"
-NICK = r"" + parentfile + "/Images/GooseNP.png"
-ZINO = r"" + parentfile + "/Images/GooseZino.png"
-HELMET = r"" + parentfile + "/Images/GooseEng.png"
-KATIE = r"" + parentfile + "/Images/GooseKY.png"
-LAW = r"" + parentfile + "/Images/GooseLAW.png"
-GLIAM = r"" + parentfile + "/Images/GooseLG.png"
-KAMKAR = r"" + parentfile + "/Images/Kamkar.png"
-Speech = r"" + parentfile + "/Images/Speech-Bubble.png"
-Background = r"" + parentfile + "/Images/Background.png"
-MachineIMG = r"" + parentfile + "/Images/Machine2.0.png"
-FlaskA = r"" + parentfile + "/Images/FlaskA.png"
-FlaskB = r"" + parentfile + "/Images/FlaskB.png"
-FlaskC = r"" + parentfile + "/Images/FlaskC.png"
+HAM = r"" + parentfile + "\Images\GooseJordan.png"
+MAT = r"" + parentfile + "\Images\GooseMatheus.png"
+PEND = r"" + parentfile + "\Images\GoosePendar.png"
+NICK = r"" + parentfile + "\Images\GooseNP.png"
+ZINO = r"" + parentfile + "\Images\GooseZino.png"
+HELMET = r"" + parentfile + "\Images\GooseEng.png"
+KATIE = r"" + parentfile + "\Images\GooseKY.png"
+LAW = r"" + parentfile + "\Images\GooseLAW.png"
+GLIAM = r"" + parentfile + "\Images\GooseLG.png"
+KAMKAR = r"" + parentfile + "\Images\Kamkar.png"
+Speech = r"" + parentfile + "\Images\Speech-Bubble.png"
+Background = r"" + parentfile + "\Images\Background.png"
+MachineIMG = r"" + parentfile + "\Images\Machine2.0.png"
+FlaskA = r"" + parentfile + "\Images\FlaskA.png"
+FlaskB = r"" + parentfile + "\Images\FlaskB.png"
+FlaskC = r"" + parentfile + "\Images\FlaskC.png"
 
 # OPTION LISTINGS =============================================================
 
