@@ -44,6 +44,8 @@ FlaskA = r"" + parentfile + "\Images\FlaskA.png"
 FlaskB = r"" + parentfile + "\Images\FlaskB.png"
 FlaskC = r"" + parentfile + "\Images\FlaskC.png"
 
+# [KY] Mac needed forward slashes for some reason, changed back to backslashes
+
 # OPTION LISTINGS =============================================================
 
 Greeting = ['Hello', 'Hows it going', 'Hi']  # [LAW] List of greetings
